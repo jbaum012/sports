@@ -15,13 +15,12 @@ class CreateGamesTable extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->id();
-            $table->integer('home_team_score');
-            $table->integer('away_team_score');
-            $table->integer('week_number');
+            $table->dateTime('starts_at');
+            $table->integer('home_team_score')->nullable();
+            $table->integer('away_team_score')->nullable();
             $table->integer('spread');
 
             $table->foreignId('season_id')->constrained();
-            $table->unsignedBigInteger('winner');
             $table->unsignedBigInteger('home_team_id');
             $table->unsignedBigInteger('away_team_id');
             $table->timestamps();
@@ -30,9 +29,6 @@ class CreateGamesTable extends Migration
                 ->references('id')->on('teams')
                 ->onDelete('cascade');
             $table->foreign('away_team_id')
-                ->references('id')->on('teams')
-                ->onDelete('cascade');
-            $table->foreign('winner')
                 ->references('id')->on('teams')
                 ->onDelete('cascade');
         });

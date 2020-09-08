@@ -6,7 +6,7 @@
       borderBottom: '10px solid ' + team.secondary_color
     }"
   >
-    <h2 class="text-white m-0">{{ team.name }}</h2>
+    <h3 class="text-white m-0">{{ team.name }}</h3>
   </b-card>
 </template>
 

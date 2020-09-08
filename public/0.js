@@ -50,13 +50,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -65,14 +58,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      teams: []
+      games: []
     };
   },
   mounted: function mounted() {
     var _this = this;
 
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/teams').then(function (r) {
-      return _this.teams = r.data;
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/week/1/games').then(function (r) {
+      return _this.games = r.data;
     });
   }
 });
@@ -104,7 +97,7 @@ var render = function() {
       }
     },
     [
-      _c("h2", { staticClass: "text-white m-0" }, [
+      _c("h3", { staticClass: "text-white m-0" }, [
         _vm._v(_vm._s(_vm.team.name))
       ])
     ]
@@ -132,35 +125,16 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("h1", [_vm._v("Hello World")]),
-      _vm._v(" "),
-      _c(
-        "b-container",
-        [
-          _c(
-            "b-row",
-            { attrs: { cols: "2" } },
-            _vm._l(_vm.teams, function(team) {
-              return _c(
-                "b-col",
-                { key: team.id },
-                [_c("team-card", { attrs: { team: team } })],
-                1
-              )
-            }),
-            1
-          )
-        ],
-        1
-      )
-    ],
-    1
-  )
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [_c("h1", [_vm._v("Hello World")])])
+  }
+]
 render._withStripped = true
 
 

@@ -1,13 +1,6 @@
 <template>
   <div>
     <h1>Hello World</h1>
-    <b-container>
-      <b-row cols="2">
-        <b-col v-for="team in teams" :key="team.id">
-          <team-card :team="team" />
-        </b-col>
-      </b-row>
-    </b-container>
   </div>
 </template>
 
@@ -20,11 +13,11 @@ export default {
   },
   data() {
     return {
-      teams: []
+      games: []
     }
   },
   mounted() {
-    axios.get('/api/teams').then(r => (this.teams = r.data))
+    axios.get('/api/week/1/games').then(r => (this.games = r.data))
   }
 }
 </script>

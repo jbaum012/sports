@@ -6,10 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Team extends Model
 {
-
-    public function gameForWeek($week)
+    public function gamesForWeek($week)
     {
-        return $this->games()->where('week_number', $week)->get();
+        return $this->games()->where('week', $week);
     }
 
     public function season()
@@ -29,12 +28,7 @@ class Team extends Model
 
     public function games()
     {
-        return $this->homeGames()->concat($this->awayGames);
-    }
-
-    public function wonGames()
-    {
-        return $this->hasMany('App\Game', 'winner');
+        return $this->homeGames->concat($this->awayGames)->sortBy('week');
     }
 
     public function bets()

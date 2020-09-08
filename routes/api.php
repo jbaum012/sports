@@ -18,4 +18,5 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/user', fn (Request $request) => $request->user());
     Route::get('/teams', 'TeamController@index');
     Route::get('/week', 'CurrentWeekController@show');
+    Route::get('/week/{week}/games', 'WeeklyGamesController@show');
 });
