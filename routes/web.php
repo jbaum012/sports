@@ -17,14 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
 Route::get('/redirect', 'Auth\LoginController@redirectToProvider');
 Route::get('/callback', 'Auth\LoginController@handleProviderCallback');
 
 Route::middleware('auth:web')->group(function () {
-    Route::get('/home', 'HomeController@index')->name('home');
-    Route::resources([
-        'sports' => 'SportController',
-    ]);
+    Route::get('/{any}', 'SpaController@index')->where('any', '.*')->name('spa');
 });
