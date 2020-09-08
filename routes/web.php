@@ -22,4 +22,9 @@ Auth::routes();
 Route::get('/redirect', 'Auth\LoginController@redirectToProvider');
 Route::get('/callback', 'Auth\LoginController@handleProviderCallback');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware('auth:web')->group(function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::resources([
+        'sports' => 'SportController',
+    ]);
+});
