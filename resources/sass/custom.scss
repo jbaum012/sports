@@ -1,0 +1,53 @@
+// Base grayscale colors definitions
+$white: #fff;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black: #000;
+
+// Base colors definitions
+$blue: #00408e;
+$indigo: #50207a;
+$purple: #351c53;
+$pink: #b30ca7;
+$red: #b30c17;
+$orange: #cf7c11;
+$yellow: #fcf91c;
+$green: #4fd138;
+$teal: #38d187;
+$cyan: #38d1c7;
+
+// Theme color default definitions
+$primary: $blue;
+$secondary: $gray-600;
+$success: $green;
+$info: $cyan;
+$warning: $yellow;
+$danger: $red;
+$light: $gray-100;
+$dark: $gray-800;
+
+// This table defines the theme colors (variant names)
+$theme-colors: ();
+$theme-colors: map-merge(
+    (
+        'primary': $primary,
+        'secondary': $secondary,
+        'success': $success,
+        'info': $info,
+        'warning': $warning,
+        'danger': $danger,
+        'light': $light,
+        'dark': $dark
+    ),
+    $theme-colors
+);
+
+@import '~bootstrap/scss/bootstrap.scss';
+@import '~bootstrap-vue/src/index.scss';
