@@ -16,10 +16,8 @@ class CreateTeamsTable extends Migration
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('acronym');
             $table->string('primary_color');
             $table->string('secondary_color');
-            $table->string('logo');
             $table->timestamps();
         });
     }

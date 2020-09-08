@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class SeasonSeeder extends Seeder
 {
@@ -11,8 +12,10 @@ class SeasonSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('seasons')->insert([
+        factory('App\Season')->create([
             'name' => '2020 NFL',
+            'score_card_cost' => 200,
+            'max_double_down' => 2
         ]);
     }
 }
