@@ -12,6 +12,11 @@ Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 
+import vSelect from 'vue-select'
+import 'vue-select/dist/vue-select.css'
+
+Vue.component('v-select', vSelect)
+
 axios.defaults.withCredentials = true
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 axios.get('/sanctum/csrf-cookie').then(response => {})

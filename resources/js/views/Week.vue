@@ -2,7 +2,7 @@
   <div>
     <h1 class="d-flex">
       Week {{ week }}
-      <b-button class="ml-auto" varient="primary">Add Game</b-button>
+      <b-button class="ml-auto mr-2" varient="primary">Add Game</b-button>
     </h1>
   </div>
 </template>

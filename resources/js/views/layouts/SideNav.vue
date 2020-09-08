@@ -3,12 +3,16 @@
     <div class="p-3 border-right">
       <b-nav vertical>
         <b-nav-item :to="{ name: 'home' }">Home</b-nav-item>
-        <b-nav-item
-          v-for="week in weeks"
-          :key="week"
-          :to="{ name: 'week', params: { week } }"
-          >Week {{ week }}</b-nav-item
+        <b-nav-item :to="{ name: 'week', params: { week: currentWeek } }"
+          >This Week (week {{ currentWeek }})</b-nav-item
         >
+        <b-nav-form class="w-100">
+          Find Week<v-select
+            style="width:100%;"
+            :options="weeksArray"
+            @input="goToWeek"
+          ></v-select>
+        </b-nav-form>
       </b-nav>
     </div>
   </b-col>
@@ -16,7 +20,6 @@
 
 <script>
 import axios from 'axios'
-import { mapState, mapMutations } from 'vuex'
 export default {
   props: {
     size: {
@@ -27,21 +30,22 @@ export default {
   data() {
     return {
       columnSize: this.size,
+      currentWeek: null,
       weeks: 17
     }
   },
-  mounted() {
-    if (this.user === null) {
-      axios.get('api/user').then(r => {
-        this.setUser(r.data)
-      })
-    }
+  beforeMount() {
+    axios.get('/api/week').then(r => (this.currentWeek = r.data))
   },
   methods: {
-    ...mapMutations(['setUser'])
+    goToWeek(week) {
+      this.$router.push({ name: 'week', params: { week } })
+    }
   },
   computed: {
-    ...mapState(['user'])
+    weeksArray() {
+      return Array.from({ length: this.weeks }, (_, i) => i + 1)
+    }
   }
 }
 </script>

@@ -52,7 +52,7 @@ var render = function() {
         _vm._v("\n    Week " + _vm._s(_vm.week) + "\n    "),
         _c(
           "b-button",
-          { staticClass: "ml-auto", attrs: { varient: "primary" } },
+          { staticClass: "ml-auto mr-2", attrs: { varient: "primary" } },
           [_vm._v("Add Game")]
         )
       ],

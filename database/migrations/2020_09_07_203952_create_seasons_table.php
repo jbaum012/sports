@@ -16,6 +16,7 @@ class CreateSeasonsTable extends Migration
         Schema::create('seasons', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->date('starts_at');
             $table->integer('score_card_cost');
             $table->integer('max_double_down');
             $table->timestamps();

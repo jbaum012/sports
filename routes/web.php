@@ -21,5 +21,5 @@ Route::get('/redirect', 'Auth\LoginController@redirectToProvider');
 Route::get('/callback', 'Auth\LoginController@handleProviderCallback');
 
 Route::middleware('auth:web')->group(function () {
-    Route::get('/{any}', 'SpaController@index')->where('any', '.*')->name('spa');
+    Route::get('/{any}', 'SpaController@index')->where('any', '^((?!api).)*')->name('spa');
 });

@@ -16,8 +16,9 @@ class CreateBetsTable extends Migration
         Schema::create('bets', function (Blueprint $table) {
             $table->id();
             $table->boolean('double_down');
-            $table->foreignId('team_id')->constrained();
+            $table->foreignId('game_id')->constrained();
             $table->foreignId('user_id')->constrained();
+            $table->foreignId('team_id')->constrained();
             $table->timestamps();
         });
     }

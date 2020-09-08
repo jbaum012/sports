@@ -15,14 +15,15 @@ class CreateGamesTable extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('home_team_id');
-            $table->unsignedBigInteger('away_team_id');
             $table->integer('home_team_score');
             $table->integer('away_team_score');
-            $table->foreignId('season_id')->constrained();
             $table->integer('week_number');
             $table->integer('spread');
+
+            $table->foreignId('season_id')->constrained();
             $table->unsignedBigInteger('winner');
+            $table->unsignedBigInteger('home_team_id');
+            $table->unsignedBigInteger('away_team_id');
             $table->timestamps();
 
             $table->foreign('home_team_id')
