@@ -18,5 +18,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/user', fn (Request $request) => $request->user());
     Route::get('/teams', 'TeamController@index');
     Route::get('/week', 'CurrentWeekController@show');
-    Route::get('/week/{week}/games', 'WeeklyGamesController@show');
+    Route::get('/week/{week_id}/games', 'WeeklyGamesController@show');
+    Route::get('/bet/{game_id}', 'BetController@show');
+    Route::post('/bet', 'BetController@store');
+    Route::put('/bet/{bet}', 'BetController@update');
 });

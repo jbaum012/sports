@@ -5,6 +5,8 @@ namespace Tests\Unit;
 use App\Season;
 use Carbon\Carbon;
 use Tests\TestCase;
+use Laravel\Sanctum\Sanctum;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class GamesTest extends TestCase
@@ -64,5 +66,16 @@ class GamesTest extends TestCase
         ]);
 
         $this->assertNull($game1->winner);
+    }
+
+    /** @test **/
+    public function game_can_retrieve_user_bet()
+    {
+        $bet = factory('App\Bet')->create();
+        $otherBets = factory('App\Bet', 5)->create([
+            'game_id' => $bet->game_id
+        ]);
+        $this->actingAs($bet->user);
+        $this->assertEquals($bet->id, $bet->game->userBet->id);
     }
 }

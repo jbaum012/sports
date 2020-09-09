@@ -22,7 +22,13 @@ const router = new Router({
         {
           path: '/week/:week',
           name: 'week',
-          props: true,
+          props: route => {
+            const week = Number.parseInt(route.params.week, 10)
+            if (Number.isNaN(week)) {
+              return null
+            }
+            return { week }
+          },
           component: () => import('../views/Week.vue')
         }
       ]

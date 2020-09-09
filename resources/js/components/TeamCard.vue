@@ -1,13 +1,5 @@
 <template>
-  <b-card
-    class="mb-2"
-    :style="{
-      backgroundColor: team.primary_color,
-      borderBottom: '10px solid ' + team.secondary_color
-    }"
-  >
-    <h3 class="text-white m-0">{{ team.name }}</h3>
-  </b-card>
+  <div class="p-2 pb-0 text-white text-center" :style="style">{{ team.nickname }}</div>
 </template>
 
 <script>
@@ -16,6 +8,19 @@ export default {
     team: {
       type: Object,
       required: true
+    },
+    highlight: {
+      type: Boolean,
+      default: false
+    }
+  },
+  computed: {
+    style() {
+      return {
+        outline: '1px solid black',
+        backgroundColor: this.team.primary_color,
+        borderBottom: '5px solid ' + this.team.secondary_color
+      }
     }
   }
 }

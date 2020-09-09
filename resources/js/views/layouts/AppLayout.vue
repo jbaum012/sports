@@ -22,7 +22,7 @@
     </b-navbar>
     <b-container fluid class="p-0">
       <b-row :no-gutters="true">
-        <b-col class="mt-3 ml-3">
+        <b-col class="mt-3 ml-sm-3">
           <router-view></router-view>
         </b-col>
       </b-row>

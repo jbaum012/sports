@@ -4,31 +4,29 @@
       Week {{ week }}
       <b-button class="ml-auto mr-2" varient="primary">Add Game</b-button>
     </h1>
-    <b-container>
-      <b-row cols="2">
-        <b-col v-for="game in games" :key="game.id">
-          <b-card>
-            <b-row>
-              <b-col>
-                <team-card :team="game.away_team"></team-card>
-              </b-col>
-              <b-col>
-                <team-card :team="game.home_team"></team-card>
-              </b-col>
-            </b-row>
-          </b-card>
-        </b-col>
-      </b-row>
-    </b-container>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">My Bet</th>
+          <th scope="col">Teams</th>
+          <th scope="col">Spread</th>
+          <th scope="col">Score</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <betting-card v-for="game in games" :key="game.id" :game="game" />
+      </tbody>
+    </table>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
-import TeamCard from '../components/TeamCard.vue'
+import BettingCard from '../components/BettingCard.vue'
 export default {
   components: {
-    TeamCard
+    BettingCard
   },
   props: {
     week: {
@@ -46,7 +44,12 @@ export default {
   },
   methods: {
     fetchData() {
-      axios.get(`/api/week/${this.week}/games`).then(r => (this.games = r.data))
+      axios
+        .get(`/api/week/${this.week}/games`)
+        .then((r) => (this.games = r.data))
+    },
+    submitBet(team) {
+      console.log(team.name)
     }
   },
   watch: {

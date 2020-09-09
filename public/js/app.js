@@ -49934,7 +49934,14 @@ var render = function() {
           _c(
             "b-row",
             { attrs: { "no-gutters": true } },
-            [_c("b-col", { staticClass: "mt-3 ml-3" }, [_c("router-view")], 1)],
+            [
+              _c(
+                "b-col",
+                { staticClass: "mt-3 ml-sm-3" },
+                [_c("router-view")],
+                1
+              )
+            ],
             1
           )
         ],
@@ -66601,14 +66608,24 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: '',
       name: 'home',
       component: function component() {
-        return __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ../views/Home.vue */ "./resources/js/views/Home.vue"));
+        return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ../views/Home.vue */ "./resources/js/views/Home.vue"));
       }
     }, {
       path: '/week/:week',
       name: 'week',
-      props: true,
+      props: function props(route) {
+        var week = Number.parseInt(route.params.week, 10);
+
+        if (Number.isNaN(week)) {
+          return null;
+        }
+
+        return {
+          week: week
+        };
+      },
       component: function component() {
-        return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ../views/Week.vue */ "./resources/js/views/Week.vue"));
+        return __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ../views/Week.vue */ "./resources/js/views/Week.vue"));
       }
     }]
   }, {

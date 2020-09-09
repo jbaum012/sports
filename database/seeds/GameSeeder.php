@@ -17,129 +17,142 @@ class GameSeeder extends Seeder
         factory('App\Game')->create([
             'season_id' => 1,
             'starts_at' => Carbon::create('2020', '09', '10', '19', '30'),
-            'spread' => 0,
-            'home_team_id' => Team::firstWhere('name', 'like', '%Chiefs')->id,
-            'away_team_id' => Team::firstWhere('name', 'like', '%Texans')->id
+            'home_team_id' => Team::firstWhere('nickname', 'Chiefs')->id,
+            'away_team_id' => Team::firstWhere('nickname', 'Texans')->id,
+            'spread' => 9.5,
+            'spread_team_id' => Team::firstWhere('nickname', 'Chiefs')->id,
         ]);
         // game 2
         factory('App\Game')->create([
             'season_id' => 1,
             'starts_at' => Carbon::create('2020', '09', '13', '12', '00'),
-            'spread' => 0,
-            'home_team_id' => Team::firstWhere('name', 'like', '%Bills')->id,
-            'away_team_id' => Team::firstWhere('name', 'like', '%Jets')->id
+            'home_team_id' => Team::firstWhere('nickname', 'Bills')->id,
+            'away_team_id' => Team::firstWhere('nickname', 'Jets')->id,
+            'spread' => 6.5,
+            'spread_team_id' => Team::firstWhere('nickname', 'Bills')->id,
         ]);
         // game 1
         factory('App\Game')->create([
             'season_id' => 1,
             'starts_at' => Carbon::create('2020', '09', '13', '12', '00'),
-            'spread' => 0,
-            'home_team_id' => Team::firstWhere('name', 'like', '%Vikings')->id,
-            'away_team_id' => Team::firstWhere('name', 'like', '%Packers')->id
+            'home_team_id' => Team::firstWhere('nickname', 'Vikings')->id,
+            'away_team_id' => Team::firstWhere('nickname', 'Packers')->id,
+            'spread' => 2.5,
+            'spread_team_id' => Team::firstWhere('nickname', 'Vikings')->id,
         ]);
         // game 1
         factory('App\Game')->create([
             'season_id' => 1,
             'starts_at' => Carbon::create('2020', '09', '13', '12', '00'),
-            'spread' => 0,
-            'home_team_id' => Team::firstWhere('name', 'like', '%Team')->id,
-            'away_team_id' => Team::firstWhere('name', 'like', '%Eagles')->id
+            'home_team_id' => Team::firstWhere('nickname', 'Washington')->id,
+            'away_team_id' => Team::firstWhere('nickname', 'Eagles')->id,
+            'spread' => 6,
+            'spread_team_id' => Team::firstWhere('nickname', 'Eagles')->id
         ]);
         // game 1
         factory('App\Game')->create([
             'season_id' => 1,
             'starts_at' => Carbon::create('2020', '09', '13', '12', '00'),
-            'spread' => 0,
-            'home_team_id' => Team::firstWhere('name', 'like', '%Ravens')->id,
-            'away_team_id' => Team::firstWhere('name', 'like', '%Browns')->id
+            'home_team_id' => Team::firstWhere('nickname', 'Ravens')->id,
+            'away_team_id' => Team::firstWhere('nickname', 'Browns')->id,
+            'spread' => 8,
+            'spread_team_id' => Team::firstWhere('nickname', 'Ravens')->id
         ]);
         // game 1
         factory('App\Game')->create([
             'season_id' => 1,
             'starts_at' => Carbon::create('2020', '09', '13', '12', '00'),
-            'spread' => 0,
-            'home_team_id' => Team::firstWhere('name', 'like', '%Jaguars')->id,
-            'away_team_id' => Team::firstWhere('name', 'like', '%Colts')->id
+            'home_team_id' => Team::firstWhere('nickname', 'Jaguars')->id,
+            'away_team_id' => Team::firstWhere('nickname', 'Colts')->id,
+            'spread' => 7.5,
+            'spread_team_id' => Team::firstWhere('nickname', 'Colts')->id,
         ]);
         // game 1
         factory('App\Game')->create([
             'season_id' => 1,
             'starts_at' => Carbon::create('2020', '09', '13', '12', '00'),
-            'spread' => 0,
-            'home_team_id' => Team::firstWhere('name', 'like', '%Panthers')->id,
-            'away_team_id' => Team::firstWhere('name', 'like', '%Raiders')->id
+            'home_team_id' => Team::firstWhere('nickname', 'Panthers')->id,
+            'away_team_id' => Team::firstWhere('nickname', 'Raiders')->id,
+            'spread' => 2.5,
+            'spread_team_id' => Team::firstWhere('nickname', 'Raiders')->id,
         ]);
         // game 1
         factory('App\Game')->create([
             'season_id' => 1,
             'starts_at' => Carbon::create('2020', '09', '13', '12', '00'),
-            'spread' => 0,
-            'home_team_id' => Team::firstWhere('name', 'like', '%Lions')->id,
-            'away_team_id' => Team::firstWhere('name', 'like', '%Bears')->id
+            'home_team_id' => Team::firstWhere('nickname', 'Lions')->id,
+            'away_team_id' => Team::firstWhere('nickname', 'Bears')->id,
+            'spread' => 3,
+            'spread_team_id' => Team::firstWhere('nickname', 'Lions')->id,
         ]);
         // game 1
         factory('App\Game')->create([
             'season_id' => 1,
             'starts_at' => Carbon::create('2020', '09', '13', '12', '00'),
-            'spread' => 0,
-            'home_team_id' => Team::firstWhere('name', 'like', '%Falcons')->id,
-            'away_team_id' => Team::firstWhere('name', 'like', '%Seahawks')->id
+            'home_team_id' => Team::firstWhere('nickname', 'Falcons')->id,
+            'away_team_id' => Team::firstWhere('nickname', 'Seahawks')->id,
+            'spread' => 1.5,
+            'spread_team_id' => Team::firstWhere('nickname', 'Seahawks')->id,
         ]);
         // game 1
         factory('App\Game')->create([
             'season_id' => 1,
             'starts_at' => Carbon::create('2020', '09', '13', '12', '00'),
-            'spread' => 0,
-            'home_team_id' => Team::firstWhere('name', 'like', '%Patriots')->id,
-            'away_team_id' => Team::firstWhere('name', 'like', '%Dolphins')->id
+            'home_team_id' => Team::firstWhere('nickname', 'Patriots')->id,
+            'away_team_id' => Team::firstWhere('nickname', 'Dolphins')->id,
+            'spread' => 6,
+            'spread_team_id' => Team::firstWhere('nickname', 'Patriots')->id,
         ]);
         // game 1
         factory('App\Game')->create([
             'season_id' => 1,
             'starts_at' => Carbon::create('2020', '09', '13', '14', '05'),
-            'spread' => 0,
-            'home_team_id' => Team::firstWhere('name', 'like', '%Bengals')->id,
-            'away_team_id' => Team::firstWhere('name', 'like', '%Chargers')->id
+            'home_team_id' => Team::firstWhere('nickname', 'Bengals')->id,
+            'away_team_id' => Team::firstWhere('nickname', 'Chargers')->id,
+            'spread' => 3,
+            'spread_team_id' => Team::firstWhere('nickname', 'Chargers')->id,
         ]);
         // game 1
         factory('App\Game')->create([
             'season_id' => 1,
             'starts_at' => Carbon::create('2020', '09', '13', '14', '25'),
-            'spread' => 0,
-            'spread' => 0,
-            'home_team_id' => Team::firstWhere('name', 'like', '%49ers')->id,
-            'away_team_id' => Team::firstWhere('name', 'like', '%Cardinals')->id
+            'home_team_id' => Team::firstWhere('nickname', '49ers')->id,
+            'away_team_id' => Team::firstWhere('nickname', 'Cardinals')->id,
+            'spread' => 7,
+            'spread_team_id' => Team::firstWhere('nickname', '49ers')->id,
         ]);
         // game 1
         factory('App\Game')->create([
             'season_id' => 1,
             'starts_at' => Carbon::create('2020', '09', '13', '14', '25'),
-            'spread' => 0,
-            'home_team_id' => Team::firstWhere('name', 'like', '%Saints')->id,
-            'away_team_id' => Team::firstWhere('name', 'like', '%Buccaneers')->id
+            'home_team_id' => Team::firstWhere('nickname', 'Saints')->id,
+            'away_team_id' => Team::firstWhere('nickname', 'Buccaneers')->id,
+            'spread' => 3.5,
+            'spread_team_id' => Team::firstWhere('nickname', 'Saints')->id,
         ]);
         // game 1
         factory('App\Game')->create([
             'season_id' => 1,
             'starts_at' => Carbon::create('2020', '09', '13', '19', '20'),
-            'spread' => 0,
-            'home_team_id' => Team::firstWhere('name', 'like', '%Rams')->id,
-            'away_team_id' => Team::firstWhere('name', 'like', '%Cowboys')->id
+            'home_team_id' => Team::firstWhere('nickname', 'Rams')->id,
+            'away_team_id' => Team::firstWhere('nickname', 'Cowboys')->id,
+            'spread' => 2.5,
+            'spread_team_id' => Team::firstWhere('nickname', 'Cowboys')->id,
         ]);
         // game 1
         factory('App\Game')->create([
             'season_id' => 1,
             'starts_at' => Carbon::create('2020', '09', '14', '18', '10'),
-            'spread' => 0,
-            'home_team_id' => Team::firstWhere('name', 'like', '%Giants')->id,
-            'away_team_id' => Team::firstWhere('name', 'like', '%Steelers')->id
+            'home_team_id' => Team::firstWhere('nickname', 'Giants')->id,
+            'away_team_id' => Team::firstWhere('nickname', 'Steelers')->id,
+            'spread' => 4.5,
+            'spread_team_id' => Team::firstWhere('nickname', 'Steelers')->id,
         ]);
         factory('App\Game')->create([
             'season_id' => 1,
             'starts_at' => Carbon::create('2020', '09', '14', '21', '20'),
-            'spread' => 0,
-            'home_team_id' => Team::firstWhere('name', 'like', '%Broncos')->id,
-            'away_team_id' => Team::firstWhere('name', 'like', '%Titans')->id
+            'home_team_id' => Team::firstWhere('nickname', 'Broncos')->id,
+            'away_team_id' => Team::firstWhere('nickname', 'Titans')->id
         ]);
     }
 }

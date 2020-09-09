@@ -21,8 +21,11 @@ class GameResource extends JsonResource
             'home_team_score' => $this->home_team_score,
             'away_team_score' => $this->away_team_score,
             'spread' => $this->spread,
+            'spread_team' => new TeamResource($this->spreadTeam),
             'home_team' => new TeamResource($this->homeTeam),
-            'away_team' => new TeamResource($this->awayTeam)
+            'away_team' => new TeamResource($this->awayTeam),
+            'user_bet' => new BetResource($this->userBet),
+            'allow_bets' => $this->allowNewBets()
         ];
     }
 }
