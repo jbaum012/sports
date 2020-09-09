@@ -1,6 +1,1 @@
-html,
-body,
-#app {
-  height: 100%;
-}
-
+#app,body,html{height:100%}
