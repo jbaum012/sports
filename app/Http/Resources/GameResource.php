@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class GameResource extends JsonResource
@@ -17,7 +18,11 @@ class GameResource extends JsonResource
         return [
             'id' => $this->id,
             'season_id' => $this->season_id,
-            'starts_at' => $this->starts_at,
+            'home_team_id' => $this->home_team_id,
+            'away_team_id' => $this->away_team_id,
+            'spread_team_id' => $this->spread_team_id,
+            'date' => $this->starts_at->toJSON(),
+            'time' => $this->starts_at->format('H:i:s'),
             'home_team_score' => $this->home_team_score,
             'away_team_score' => $this->away_team_score,
             'spread' => $this->spread,

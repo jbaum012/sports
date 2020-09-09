@@ -5,11 +5,15 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    user: null
+    user: null,
+    teams: null
   },
   mutations: {
     setUser(state, user) {
       state.user = user
+    },
+    setTeams(state, teams) {
+      state.teams = teams
     }
   }
 })

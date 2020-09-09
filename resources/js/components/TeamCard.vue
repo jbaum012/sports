@@ -1,5 +1,7 @@
 <template>
-  <div class="p-2 pb-0 text-white text-center" :style="style">{{ team.nickname }}</div>
+  <div class="p-2 pb-0 text-white text-center" :style="style">
+    {{ team.nickname }}
+  </div>
 </template>
 
 <script>
@@ -17,7 +19,7 @@ export default {
   computed: {
     style() {
       return {
-        outline: '1px solid black',
+        outline: this.highlight ? '10px solid purple' : '1px solid black',
         backgroundColor: this.team.primary_color,
         borderBottom: '5px solid ' + this.team.secondary_color
       }

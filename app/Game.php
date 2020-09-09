@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Game extends Model
 {
+    protected $appends = ['week'];
+
+    protected $casts = [
+        'starts_at' => 'datetime',
+    ];
+
     public function allowNewBets()
     {
         return Carbon::now() < $this->starts_at;

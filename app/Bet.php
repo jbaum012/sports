@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Bet extends Model
 {
+    protected $casts = [
+        'double_down' => 'boolean',
+    ];
     public function user()
     {
         return $this->belongsTo('App\User');

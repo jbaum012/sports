@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use PDO;
 
 class User extends Authenticatable
 {
@@ -40,5 +41,14 @@ class User extends Authenticatable
     public function bets()
     {
         return $this->hasMany('App\Bet');
+    }
+
+    public function doubleDownCount($week)
+    {
+        $games = Game::all();
+        $filtered = $games->filter(function ($game) use ($week) {
+            return $game->week == $week && $game->user_bet->double_down;
+        });
+        return $filtered->count();
     }
 }

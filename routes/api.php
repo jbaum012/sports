@@ -16,10 +16,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/user', fn (Request $request) => $request->user());
+
     Route::get('/teams', 'TeamController@index');
+
     Route::get('/week', 'CurrentWeekController@show');
     Route::get('/week/{week_id}/games', 'WeeklyGamesController@show');
+
     Route::get('/bet/{game_id}', 'BetController@show');
     Route::post('/bet', 'BetController@store');
     Route::put('/bet/{bet}', 'BetController@update');
+
+    Route::post('/bet/{bet}/double-down', 'DoubleDownController@store');
+    Route::delete('/bet/{bet}/double-down', 'DoubleDownController@destroy');
+
+    Route::get('/game/{game}', 'GameController@show');
+    Route::post('/game', 'GameController@store');
+    Route::put('/game/{game}', 'GameController@update');
+    Route::delete('/game/{game}', 'GameController@destroy');
 });
