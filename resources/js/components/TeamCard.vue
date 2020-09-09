@@ -19,7 +19,7 @@ export default {
   computed: {
     style() {
       return {
-        outline: this.highlight ? '10px solid purple' : '1px solid black',
+        outline: this.highlight ? '10px solid hotpink' : '1px solid black',
         backgroundColor: this.team.primary_color,
         borderBottom: '5px solid ' + this.team.secondary_color
       }
