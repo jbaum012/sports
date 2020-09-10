@@ -87,7 +87,7 @@ export default {
     },
     resultsClass() {
       let hasWinner = this.game.winner !== null
-      let wonBet = this.game.user_bet.won
+      let wonBet = this.game.user_bet !== null && this.game.user_bet.won
       return {
         'table-success': wonBet,
         'table-danger': hasWinner && !wonBet
