@@ -106,7 +106,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     resultsClass: function resultsClass() {
       var hasWinner = this.game.winner !== null;
-      var wonBet = this.game.user_bet.won;
+      var wonBet = this.game.user_bet !== null && this.game.user_bet.won;
       return {
         'table-success': wonBet,
         'table-danger': hasWinner && !wonBet

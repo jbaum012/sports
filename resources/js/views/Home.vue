@@ -30,12 +30,20 @@
                 </thead>
                 <tbody>
                   <tr v-for="game in week" :key="game.id">
-                    <td>
+                    <td
+                      :class="{
+                        'table-success':
+                          game.winner !== null &&
+                          game.winner.id === game.home_team.id
+                      }"
+                    >
                       <span class="mr-1" v-for="bet in game.home_bets">
                         <img
                           :id="bet.user + bet.id"
                           :style="{
-                            boxShadow: bet.won ? '0 0 0 2px green' : 'none'
+                            boxShadow: bet.double_down
+                              ? '0 0 0 2px hotpink'
+                              : 'none'
                           }"
                           class="img-fluid rounded-circle avatar"
                           :src="bet.user_avatar"
@@ -45,18 +53,38 @@
                         </b-tooltip>
                       </span>
                     </td>
-                    <td>
+                    <td
+                      :class="{
+                        'table-success':
+                          game.winner !== null &&
+                          game.winner.id === game.home_team.id
+                      }"
+                    >
                       <team-card :team="game.home_team"></team-card>
                     </td>
-                    <td>
+                    <td
+                      :class="{
+                        'table-success':
+                          game.winner !== null &&
+                          game.winner.id === game.away_team.id
+                      }"
+                    >
                       <team-card :team="game.away_team"></team-card>
                     </td>
-                    <td>
+                    <td
+                      :class="{
+                        'table-success':
+                          game.winner !== null &&
+                          game.winner.id === game.away_team.id
+                      }"
+                    >
                       <span class="mr-1" v-for="bet in game.away_bets">
                         <img
                           :id="bet.user + bet.id"
                           :style="{
-                            boxShadow: bet.won ? '0 0 0 5px green' : 'none'
+                            boxShadow: bet.double_down
+                              ? '0 0 0 5px hotpink'
+                              : 'none'
                           }"
                           class="img-fluid rounded-circle avatar"
                           :src="bet.user_avatar"
