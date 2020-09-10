@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class WeeklyGamesController extends Controller
 {
+
     public function show($week_id)
     {
         $games = Game::where('season_id', env('BETTING_SEASON', 1))

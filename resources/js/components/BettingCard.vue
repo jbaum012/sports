@@ -1,5 +1,5 @@
 <template>
-  <tr>
+  <tr :class="resultsClass">
     <td>
       <team-card
         class="pointer"
@@ -32,7 +32,6 @@
     <td>{{ homeScore }} - {{ awayScore }}</td>
     <td>
       <b-button variant="primary" v-b-modal="gameModalId">Update Game</b-button>
-      <b-button variant="secondary">View Bets</b-button>
       <b-modal
         :id="gameModalId"
         title="Game"
@@ -85,6 +84,14 @@ export default {
     },
     gameModalId() {
       return 'game-modal-' + this.game.id
+    },
+    resultsClass() {
+      let hasWinner = this.game.winner !== null
+      let wonBet = this.game.user_bet.won
+      return {
+        'table-success': wonBet,
+        'table-danger': hasWinner && !wonBet
+      }
     }
   },
   methods: {

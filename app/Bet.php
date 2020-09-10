@@ -3,12 +3,22 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use PDO;
 
 class Bet extends Model
 {
     protected $casts = [
-        'double_down' => 'boolean',
+        'double_down' => 'boolean'
     ];
+
+    public function getWonAttribute()
+    {
+        return is_null($this->game->winner)
+            ? null
+            : $this->game->winner == $this->team;
+        // return $this->game->winner === $this->team;
+    }
+
     public function user()
     {
         return $this->belongsTo('App\User');
@@ -21,6 +31,6 @@ class Bet extends Model
 
     public function team()
     {
-        return $this->belongsTo('App\Team', 'team_id');
+        return $this->belongsTo('App\Team');
     }
 }

@@ -9,7 +9,7 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">My Bet</th>
+          <th scope="col">My Pick</th>
           <th scope="col">Teams</th>
           <th scope="col">Spread</th>
           <th scope="col">Score</th>
@@ -50,7 +50,7 @@ export default {
   props: {
     week: {
       type: Number,
-      required: true
+      default: 1
     }
   },
   data() {
@@ -58,6 +58,7 @@ export default {
       games: []
     }
   },
+  beforeMount() {},
   mounted() {
     this.fetchData()
     if (this.teams === null) {
@@ -81,8 +82,11 @@ export default {
     ...mapMutations(['setTeams'])
   },
   watch: {
-    // call again the method if the route changes
-    $route: 'fetchData'
+    $route(newRoute, oldRoute) {
+      if (newRoute.params !== oldRoute.params) {
+        this.fetchData()
+      }
+    }
   }
 }
 </script>

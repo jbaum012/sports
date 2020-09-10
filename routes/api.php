@@ -19,7 +19,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::get('/teams', 'TeamController@index');
 
-    Route::get('/week', 'CurrentWeekController@show');
+    Route::get('/current-week', 'CurrentWeekController@show');
     Route::get('/week/{week_id}/games', 'WeeklyGamesController@show');
 
     Route::get('/bet/{game_id}', 'BetController@show');
@@ -29,6 +29,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/bet/{bet}/double-down', 'DoubleDownController@store');
     Route::delete('/bet/{bet}/double-down', 'DoubleDownController@destroy');
 
+    Route::get('/games', 'GameController@index');
     Route::get('/game/{game}', 'GameController@show');
     Route::post('/game', 'GameController@store');
     Route::put('/game/{game}', 'GameController@update');

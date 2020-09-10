@@ -19,7 +19,9 @@ class BetResource extends JsonResource
             'double_down' => $this->double_down,
             'game_id' => $this->game_id,
             'user' => $this->user->name,
-            'team' => new TeamResource($this->team)
+            'user_avatar' => $this->user->avatar,
+            'team' => new TeamResource($this->team),
+            'won' => $this->won
         ];
     }
 }

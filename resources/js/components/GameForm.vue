@@ -21,19 +21,6 @@
     <hr />
     <b-row v-if="teams">
       <b-col sm="12" md="6">
-        <label for="home_team">Home Team</label>
-        <v-select
-          placeholder="Home team"
-          :options="homeTeams"
-          label="name"
-          :clearable="false"
-          :reduce="team => team.id"
-          v-model="game.home_team_id"
-        ></v-select>
-        <label>Score</label>
-        <b-input v-model="game.home_team_score"></b-input>
-      </b-col>
-      <b-col sm="12" md="6">
         <label for="away_team">Away Team</label>
         <v-select
           placeholder="Away team"
@@ -45,6 +32,19 @@
         ></v-select>
         <label>Score</label>
         <b-input v-model="game.away_team_score"></b-input>
+      </b-col>
+      <b-col sm="12" md="6">
+        <label for="home_team">Home Team</label>
+        <v-select
+          placeholder="Home team"
+          :options="homeTeams"
+          label="name"
+          :clearable="false"
+          :reduce="team => team.id"
+          v-model="game.home_team_id"
+        ></v-select>
+        <label>Score</label>
+        <b-input v-model="game.home_team_score"></b-input>
       </b-col>
     </b-row>
     <hr />

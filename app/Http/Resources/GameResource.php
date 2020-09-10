@@ -21,6 +21,7 @@ class GameResource extends JsonResource
             'home_team_id' => $this->home_team_id,
             'away_team_id' => $this->away_team_id,
             'spread_team_id' => $this->spread_team_id,
+            'week' => $this->week,
             'date' => $this->starts_at->toJSON(),
             'time' => $this->starts_at->format('H:i:s'),
             'home_team_score' => $this->home_team_score,
@@ -30,7 +31,10 @@ class GameResource extends JsonResource
             'home_team' => new TeamResource($this->homeTeam),
             'away_team' => new TeamResource($this->awayTeam),
             'user_bet' => new BetResource($this->userBet),
-            'allow_bets' => $this->allowNewBets()
+            'home_bets' => BetResource::collection($this->betsForHome()),
+            'away_bets' => BetResource::collection($this->betsForAway()),
+            'allow_bets' => $this->allowNewBets(),
+            'winner' => is_null($this->winner) ? null : new TeamResource($this->winner)
         ];
     }
 }

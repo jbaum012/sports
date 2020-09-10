@@ -7,12 +7,12 @@
         <b-navbar-nav>
           <b-nav-item :to="{ name: 'home' }">Home</b-nav-item>
           <b-nav-item :to="{ name: 'week', params: { week: currentWeek } }"
-            >This Week (week {{ currentWeek }})</b-nav-item
+            >This Week's Picks</b-nav-item
           >
         </b-navbar-nav>
         <b-navbar-nav>
           <v-select
-            placeholder="week"
+            placeholder="picks by week"
             class="week-select"
             :options="weeksArray"
             @input="goToWeek"
@@ -32,6 +32,7 @@
 
 <script>
 import axios from 'axios'
+import { mapMutations, mapState } from 'vuex'
 export default {
   props: {
     size: {
@@ -39,25 +40,20 @@ export default {
       default: 2
     }
   },
-  data() {
-    return {
-      columnSize: this.size,
-      currentWeek: null,
-      weeks: 17
-    }
-  },
   beforeMount() {
-    axios.get('/api/week').then(r => (this.currentWeek = r.data))
+    axios.get('/api/current-week').then(r => this.setCurrentWeek(r.data))
   },
   methods: {
     goToWeek(week) {
       this.$router.push({ name: 'week', params: { week } })
-    }
+    },
+    ...mapMutations(['setCurrentWeek'])
   },
   computed: {
     weeksArray() {
-      return Array.from({ length: this.weeks }, (_, i) => i + 1)
-    }
+      return Array.from({ length: this.currentWeek + 1 }, (_, i) => i + 1)
+    },
+    ...mapState(['currentWeek', 'totalWeeks'])
   }
 }
 </script>
@@ -66,7 +62,7 @@ export default {
 .week-select .vs__search::placeholder,
 .week-select .vs__dropdown-toggle,
 .week-select .vs__dropdown-menu {
-  min-width: 100px;
+  min-width: 200px;
   background: white;
   border: none;
 }

@@ -6,7 +6,9 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     user: null,
-    teams: null
+    teams: null,
+    currentWeek: null,
+    totalWeeks: 17
   },
   mutations: {
     setUser(state, user) {
@@ -14,6 +16,9 @@ const store = new Vuex.Store({
     },
     setTeams(state, teams) {
       state.teams = teams
+    },
+    setCurrentWeek(state, week) {
+      state.currentWeek = week
     }
   }
 })

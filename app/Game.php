@@ -19,9 +19,52 @@ class Game extends Model
         return Carbon::now() < $this->starts_at;
     }
 
+    public function betsForHome()
+    {
+        return $this->bets->where('team_id', $this->home_team_id);
+    }
+
+    public function betsForAway()
+    {
+        return $this->bets->where('team_id', $this->away_team_id);
+    }
+
+    public function getUserBetAttribute()
+    {
+        return $this->bets()->where('user_id', Auth::id())->first();
+    }
+
     public function getWeekAttribute()
     {
         return $this->season->starts_at->diffInWeeks($this->starts_at) + 1;
+    }
+
+    public function getWinnerAttribute()
+    {
+        if (is_null($this->home_team_score) || is_null($this->away_team_score)) {
+            return null;
+        }
+
+        if ($this->home_team_score === $this->away_team_score) {
+            return null;
+        }
+        $homeWonGame = $this->home_team_score > $this->away_team_score;
+        $homeHasSpread = $this->spread_team_id === $this->home_team_id;
+        $awayHasSpread = $this->spread_team_id === $this->away_team_id;
+        $scoreSpread = abs($this->home_team_score - $this->away_team_score);
+        $beatSpread = is_null($this->spread) ? true : $scoreSpread > $this->spread;
+
+        if ($homeWonGame && $homeHasSpread && $beatSpread) {
+            return $this->homeTeam;
+        }
+
+        if (!$homeWonGame && $awayHasSpread && $beatSpread) {
+            return $this->awayTeam;
+        }
+
+        return $homeWonGame
+            ? $this->homeTeam
+            : $this->awayTeam;
     }
 
     public function season()
@@ -47,25 +90,5 @@ class Game extends Model
     public function awayTeam()
     {
         return $this->belongsTo('App\Team', 'away_team_id');
-    }
-
-    public function getUserBetAttribute()
-    {
-        return $this->bets()->where('user_id', Auth::id())->first();
-    }
-
-    public function getWinnerAttribute()
-    {
-        if ($this->home_team_score === null || $this->away_team_score === null) {
-            return null;
-        }
-
-        if ($this->home_team_score === $this->away_team_score) {
-            return null;
-        }
-
-        return $this->home_team_score > $this->away_team_score
-            ? $this->homeTeam
-            : $this->awayTeam;
     }
 }

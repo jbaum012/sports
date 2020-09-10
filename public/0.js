@@ -64,7 +64,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -104,6 +103,14 @@ __webpack_require__.r(__webpack_exports__);
     },
     gameModalId: function gameModalId() {
       return 'game-modal-' + this.game.id;
+    },
+    resultsClass: function resultsClass() {
+      var hasWinner = this.game.winner !== null;
+      var wonBet = this.game.user_bet.won;
+      return {
+        'table-success': wonBet,
+        'table-danger': hasWinner && !wonBet
+      };
     }
   },
   methods: {
@@ -537,7 +544,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   props: {
     week: {
       type: Number,
-      required: true
+      "default": 1
     }
   },
   data: function data() {
@@ -545,6 +552,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       games: []
     };
   },
+  beforeMount: function beforeMount() {},
   mounted: function mounted() {
     this.fetchData();
 
@@ -574,8 +582,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapMutations"])(['setTeams'])),
   watch: {
-    // call again the method if the route changes
-    $route: 'fetchData'
+    $route: function $route(newRoute, oldRoute) {
+      if (newRoute.params !== oldRoute.params) {
+        this.fetchData();
+      }
+    }
   }
 });
 
@@ -694,7 +705,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("tr", [
+  return _c("tr", { class: _vm.resultsClass }, [
     _c(
       "td",
       [
@@ -775,10 +786,6 @@ var render = function() {
           },
           [_vm._v("Update Game")]
         ),
-        _vm._v(" "),
-        _c("b-button", { attrs: { variant: "secondary" } }, [
-          _vm._v("View Bets")
-        ]),
         _vm._v(" "),
         _c(
           "b-modal",
@@ -997,48 +1004,6 @@ var render = function() {
                 "b-col",
                 { attrs: { sm: "12", md: "6" } },
                 [
-                  _c("label", { attrs: { for: "home_team" } }, [
-                    _vm._v("Home Team")
-                  ]),
-                  _vm._v(" "),
-                  _c("v-select", {
-                    attrs: {
-                      placeholder: "Home team",
-                      options: _vm.homeTeams,
-                      label: "name",
-                      clearable: false,
-                      reduce: function(team) {
-                        return team.id
-                      }
-                    },
-                    model: {
-                      value: _vm.game.home_team_id,
-                      callback: function($$v) {
-                        _vm.$set(_vm.game, "home_team_id", $$v)
-                      },
-                      expression: "game.home_team_id"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("label", [_vm._v("Score")]),
-                  _vm._v(" "),
-                  _c("b-input", {
-                    model: {
-                      value: _vm.game.home_team_score,
-                      callback: function($$v) {
-                        _vm.$set(_vm.game, "home_team_score", $$v)
-                      },
-                      expression: "game.home_team_score"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-col",
-                { attrs: { sm: "12", md: "6" } },
-                [
                   _c("label", { attrs: { for: "away_team" } }, [
                     _vm._v("Away Team")
                   ]),
@@ -1071,6 +1036,48 @@ var render = function() {
                         _vm.$set(_vm.game, "away_team_score", $$v)
                       },
                       expression: "game.away_team_score"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-col",
+                { attrs: { sm: "12", md: "6" } },
+                [
+                  _c("label", { attrs: { for: "home_team" } }, [
+                    _vm._v("Home Team")
+                  ]),
+                  _vm._v(" "),
+                  _c("v-select", {
+                    attrs: {
+                      placeholder: "Home team",
+                      options: _vm.homeTeams,
+                      label: "name",
+                      clearable: false,
+                      reduce: function(team) {
+                        return team.id
+                      }
+                    },
+                    model: {
+                      value: _vm.game.home_team_id,
+                      callback: function($$v) {
+                        _vm.$set(_vm.game, "home_team_id", $$v)
+                      },
+                      expression: "game.home_team_id"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("label", [_vm._v("Score")]),
+                  _vm._v(" "),
+                  _c("b-input", {
+                    model: {
+                      value: _vm.game.home_team_score,
+                      callback: function($$v) {
+                        _vm.$set(_vm.game, "home_team_score", $$v)
+                      },
+                      expression: "game.home_team_score"
                     }
                   })
                 ],
@@ -1286,7 +1293,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("My Bet")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("My Pick")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Teams")]),
         _vm._v(" "),

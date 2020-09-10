@@ -16,7 +16,9 @@ class GameController extends Controller
      */
     public function index()
     {
-        //
+        $games = Game::all();
+        $collection = GameResource::collection($games);
+        return $collection->groupBy('week')->reverse();
     }
 
     /**

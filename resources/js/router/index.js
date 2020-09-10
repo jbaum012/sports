@@ -11,11 +11,11 @@ const router = new Router({
   mode: 'history',
   routes: [
     {
-      path: '/app',
+      path: '/',
       component: AppLayout,
       children: [
         {
-          path: '',
+          path: '/home',
           name: 'home',
           component: () => import('../views/Home.vue')
         },
