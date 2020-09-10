@@ -48,23 +48,33 @@ class Game extends Model
         if ($this->home_team_score === $this->away_team_score) {
             return null;
         }
+
         $homeWonGame = $this->home_team_score > $this->away_team_score;
+
+        if (is_null($this->spread) || is_null($this->spread_team_id)) {
+            return $homeWonGame
+                ? $this->homeTeam
+                : $this->awayTeam;
+        }
+
         $homeHasSpread = $this->spread_team_id === $this->home_team_id;
         $awayHasSpread = $this->spread_team_id === $this->away_team_id;
         $scoreSpread = abs($this->home_team_score - $this->away_team_score);
-        $beatSpread = is_null($this->spread) ? true : $scoreSpread > $this->spread;
+        $beatSpread = $scoreSpread > $this->spread;
 
-        if ($homeWonGame && $homeHasSpread && $beatSpread) {
-            return $this->homeTeam;
+        if ($homeWonGame) {
+            if ($homeHasSpread && $beatSpread) {
+                return $this->homeTeam;
+            } else {
+                return $this->awayTeam;
+            }
+        } else {
+            if ($awayHasSpread && $beatSpread) {
+                return $this->awayTeam;
+            } else {
+                return $this->homeTeam;
+            }
         }
-
-        if (!$homeWonGame && $awayHasSpread && $beatSpread) {
-            return $this->awayTeam;
-        }
-
-        return $homeWonGame
-            ? $this->homeTeam
-            : $this->awayTeam;
     }
 
     public function season()

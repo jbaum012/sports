@@ -29,7 +29,7 @@
       <span v-if="game.spread_team">{{ game.spread_team.nickname }}</span>
       <code v-if="game.spread">{{ game.spread }}</code>
     </td>
-    <td>{{ homeScore }} - {{ awayScore }}</td>
+    <td>{{ awayScore }} - {{ homeScore }}</td>
     <td>
       <b-button variant="primary" v-b-modal="gameModalId">Update Game</b-button>
       <b-modal

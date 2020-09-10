@@ -766,7 +766,7 @@ var render = function() {
       _vm.game.spread ? _c("code", [_vm._v(_vm._s(_vm.game.spread))]) : _vm._e()
     ]),
     _vm._v(" "),
-    _c("td", [_vm._v(_vm._s(_vm.homeScore) + " - " + _vm._s(_vm.awayScore))]),
+    _c("td", [_vm._v(_vm._s(_vm.awayScore) + " - " + _vm._s(_vm.homeScore))]),
     _vm._v(" "),
     _c(
       "td",
