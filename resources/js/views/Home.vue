@@ -42,7 +42,7 @@
                           :id="bet.user + bet.id"
                           :style="{
                             boxShadow: bet.double_down
-                              ? '0 0 0 2px hotpink'
+                              ? '0 0 0 5px hotpink'
                               : 'none'
                           }"
                           class="img-fluid rounded-circle avatar"
