@@ -60,19 +60,19 @@ class Game extends Model
         $homeHasSpread = $this->spread_team_id === $this->home_team_id;
         $awayHasSpread = $this->spread_team_id === $this->away_team_id;
         $scoreSpread = abs($this->home_team_score - $this->away_team_score);
-        $beatSpread = $scoreSpread > $this->spread;
+        $beatSpread = is_null($this->spread) ? true : $scoreSpread < $this->spread;
 
         if ($homeWonGame) {
-            if ($homeHasSpread && $beatSpread) {
-                return $this->homeTeam;
+            if ($homeHasSpread) {
+                return $beatSpread ? $this->homeTeam : $this->awayTeam;
             } else {
-                return $this->awayTeam;
+                return $this->homeTeam;
             }
         } else {
-            if ($awayHasSpread && $beatSpread) {
-                return $this->awayTeam;
+            if ($awayHasSpread) {
+                return $beatSpread ? $this->awayTeam : $this->homeTeam;
             } else {
-                return $this->homeTeam;
+                return $this->awayTeam;
             }
         }
     }

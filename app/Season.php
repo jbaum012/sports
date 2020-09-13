@@ -16,6 +16,11 @@ class Season extends Model
         return $this->starts_at->diffInWeeks(Carbon::now()) + 1;
     }
 
+    public function pickWeek()
+    {
+        return $this->starts_at->subDays(2)->diffInWeeks(Carbon::now()) + 1;
+    }
+
     public function games()
     {
         return $this->hasMany('App\Games');
