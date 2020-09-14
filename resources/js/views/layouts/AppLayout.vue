@@ -9,6 +9,7 @@
           <b-nav-item :to="{ name: 'week', params: { week: pickWeek } }"
             >This Week's Picks</b-nav-item
           >
+          <b-nav-item :to="{ name: 'standings' }">Standings</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav>
           <v-select

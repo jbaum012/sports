@@ -2,10 +2,12 @@
 
 namespace App;
 
+use PDO;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use PDO;
+use PhpParser\Node\Expr\AssignOp\Mul;
 
 class User extends Authenticatable
 {
@@ -50,5 +52,23 @@ class User extends Authenticatable
             return $game->week == $week && $game->user_bet->double_down;
         });
         return $filtered->count();
+    }
+
+    public function currentPoints()
+    {
+        $season = env('BETTING_SEASON', 1);
+        $total = 0;
+        foreach ($this->bets as $bet) {
+            if ($bet->game->season_id != $season) {
+                continue;
+            }
+            $multiplier = $bet->double_down ? 2 : 1;
+            if ($bet->won) {
+                $total = $total + (1 * $multiplier);
+            } else {
+                $total = $total - (1 * $multiplier);
+            }
+        }
+        return $total;
     }
 }

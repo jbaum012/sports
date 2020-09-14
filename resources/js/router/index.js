@@ -4,9 +4,6 @@ import AppLayout from '../views/layouts/AppLayout.vue'
 
 Vue.use(Router)
 
-const Foo = { template: '<div>foo</div>' }
-const Bar = { template: '<div>bar</div>' }
-
 const router = new Router({
   mode: 'history',
   routes: [
@@ -30,11 +27,14 @@ const router = new Router({
             return { week }
           },
           component: () => import('../views/Week.vue')
+        },
+        {
+          path: '/standings',
+          name: 'standings',
+          component: () => import('../views/Standings.vue')
         }
       ]
-    },
-    { path: '/foo', component: Foo },
-    { path: '/bar', component: Bar }
+    }
   ]
 })
 
