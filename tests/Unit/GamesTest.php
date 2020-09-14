@@ -95,4 +95,21 @@ class GamesTest extends TestCase
 
         $this->assertEquals($team->id, $game->winner->id);
     }
+
+    /** @test **/
+    public function spread_team_that_beats_the_spread_is_considered_won()
+    {
+        $team = factory('App\Team')->create();
+        $spreadTeam = factory('App\Team')->create();
+        $game = factory('App\Game')->create([
+            'home_team_id' => $spreadTeam->id,
+            'away_team_id' => $team->id,
+            'spread_team_id' => $spreadTeam->id,
+            'spread' => 9.5,
+            'home_team_score' => 34,
+            'away_team_score' => 20,
+        ]);
+
+        $this->assertEquals($spreadTeam->id, $game->winner->id);
+    }
 }

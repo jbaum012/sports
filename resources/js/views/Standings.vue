@@ -1,8 +1,12 @@
 <template>
   <div class="d-flex flex-column">
-    <b-card class="mx-auto mb-3" v-for="(user, index) in users" :key="user.id">
-      <img style="width: 45px" :src="user.avatar" /> {{ user.name }}
-      {{ user.points }}
+    <b-card
+      class="mx-auto mb-2"
+      v-for="(user, index) in sortedUsers"
+      :key="user.id"
+    >
+      <img style="width: 40px" :src="user.avatar" /> {{ user.name }}:
+      <code>{{ user.points }}</code>
     </b-card>
   </div>
 </template>
@@ -19,6 +23,11 @@ export default {
     axios.get('/api/standings').then(r => {
       this.users = r.data
     })
+  },
+  computed: {
+    sortedUsers() {
+      return this.users.sort((a, b) => a.points - b.points)
+    }
   }
 }
 </script>
