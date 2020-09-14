@@ -78,4 +78,21 @@ class GamesTest extends TestCase
         $this->actingAs($bet->user);
         $this->assertEquals($bet->id, $bet->game->userBet->id);
     }
+
+    /** @test **/
+    public function non_spread_team_can_win_game()
+    {
+        $team = factory('App\Team')->create();
+        $spreadTeam = factory('App\Team')->create();
+        $game = factory('App\Game')->create([
+            'home_team_id' => $spreadTeam->id,
+            'away_team_id' => $team->id,
+            'spread_team_id' => $spreadTeam->id,
+            'spread' => 2.5,
+            'home_team_score' => 34,
+            'away_team_score' => 43,
+        ]);
+
+        $this->assertEquals($team->id, $game->winner->id);
+    }
 }

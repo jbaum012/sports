@@ -20,6 +20,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/teams', 'TeamController@index');
 
     Route::get('/current-week', 'CurrentWeekController@show');
+    Route::get('/pick-week', 'PickWeekController@show');
     Route::get('/week/{week_id}/games', 'WeeklyGamesController@show');
 
     Route::get('/bet/{game_id}', 'BetController@show');
