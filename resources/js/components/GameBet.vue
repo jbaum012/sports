@@ -4,9 +4,9 @@
       <user-card
         v-for="bet in game.home_bets"
         :key="bet.id"
-        :user="bet.user"
+        :user="{ name: bet.user, avatar: bet.user_avatar }"
         :highlight="bet.double_down"
-        :show-name="false"
+        variant="icon"
       >
       </user-card>
     </b-td>
