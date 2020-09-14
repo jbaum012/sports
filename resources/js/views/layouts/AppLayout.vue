@@ -1,11 +1,11 @@
 <template>
   <div>
-    <b-navbar variant="faded" type="dark" class="bg-primary">
-      <b-navbar-brand tag="h1" class="mb-0">Sports</b-navbar-brand>
+    <b-navbar toggleable="lg" type="dark" class="bg-primary">
+      <b-navbar-brand href="/home" class="mb-0">Sports</b-navbar-brand>
+
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item :to="{ name: 'home' }">Home</b-nav-item>
           <b-nav-item :to="{ name: 'week', params: { week: pickWeek } }"
             >This Week's Picks</b-nav-item
           >
