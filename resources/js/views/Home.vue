@@ -5,108 +5,13 @@
     <b-row cols="1">
       <b-col v-for="(week, index) in betsByWeek" :key="index">
         <b-card no-body class="mb-1">
-          <b-card-header header-tag="header" class="p-1" role="tab">
-            <b-button
-              block
-              v-b-toggle="'collapse' + index"
-              :variant="index == currentWeek ? 'primary' : 'secondary'"
-              >Week {{ index }}</b-button
-            >
-          </b-card-header>
-          <b-collapse
-            :id="'collapse' + index"
-            :visible="index == currentWeek"
-            role="tabpanel"
+          <weekly-picks
+            :picks="week"
+            :variant="index == currentWeek ? 'primary' : 'secondary'"
+            :open="index == currentWeek"
+            :week="index + 1"
           >
-            <b-card-body>
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>Picked By</th>
-                    <th>Home Team</th>
-                    <th>Away Team</th>
-                    <th>Picked By</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="game in week" :key="game.id">
-                    <td
-                      :class="{
-                        'table-warning':
-                          game.winner === null && game.has_scores,
-                        'table-success':
-                          game.winner !== null &&
-                          game.winner.id === game.home_team.id
-                      }"
-                    >
-                      <span class="mr-1" v-for="bet in game.home_bets">
-                        <img
-                          :id="bet.user + bet.id"
-                          :style="{
-                            boxShadow: bet.double_down
-                              ? '0 0 0 5px hotpink'
-                              : 'none'
-                          }"
-                          class="img-fluid rounded-circle avatar"
-                          :src="bet.user_avatar"
-                        />
-                        <b-tooltip :target="bet.user + bet.id" triggers="hover">
-                          {{ bet.user }}
-                        </b-tooltip>
-                      </span>
-                    </td>
-                    <td
-                      :class="{
-                        'table-warning':
-                          game.winner === null && game.has_scores,
-                        'table-success':
-                          game.winner !== null &&
-                          game.winner.id === game.home_team.id
-                      }"
-                    >
-                      <team-card :team="game.home_team"></team-card>
-                    </td>
-                    <td
-                      :class="{
-                        'table-warning':
-                          game.winner === null && game.has_scores,
-                        'table-success':
-                          game.winner !== null &&
-                          game.winner.id === game.away_team.id
-                      }"
-                    >
-                      <team-card :team="game.away_team"></team-card>
-                    </td>
-                    <td
-                      :class="{
-                        'table-warning':
-                          game.winner === null && game.has_scores,
-                        'table-success':
-                          game.winner !== null &&
-                          game.winner.id === game.away_team.id
-                      }"
-                    >
-                      <span class="mr-1" v-for="bet in game.away_bets">
-                        <img
-                          :id="bet.user + bet.id"
-                          :style="{
-                            boxShadow: bet.double_down
-                              ? '0 0 0 5px hotpink'
-                              : 'none'
-                          }"
-                          class="img-fluid rounded-circle avatar"
-                          :src="bet.user_avatar"
-                        />
-                        <b-tooltip :target="bet.user + bet.id" triggers="hover">
-                          {{ bet.user }}
-                        </b-tooltip>
-                      </span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </b-card-body>
-          </b-collapse>
+          </weekly-picks>
         </b-card>
       </b-col>
     </b-row>
@@ -116,10 +21,10 @@
 <script>
 import axios from 'axios'
 import { mapState } from 'vuex'
-import TeamCard from '../components/TeamCard'
+import WeeklyPicks from '../components/WeeklyPicks.vue'
 export default {
   components: {
-    TeamCard
+    WeeklyPicks
   },
   mounted() {
     axios.get('/api/games').then(r => {
@@ -137,8 +42,4 @@ export default {
 }
 </script>
 
-<style scoped>
-.avatar {
-  max-width: 40px;
-}
-</style>
+<style scoped></style>
