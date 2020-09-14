@@ -1,6 +1,6 @@
 <template>
   <b-tr>
-    <b-td :class="homeTeamResults">
+    <b-td :class="homeTeamResults" class="d-flex">
       <user-card
         v-for="bet in game.home_bets"
         :key="bet.id"
@@ -16,7 +16,7 @@
     <b-td :class="awayTeamResults">
       <team-card :team="game.away_team"></team-card>
     </b-td>
-    <b-td :class="awayTeamResults">
+    <b-td :class="awayTeamResults" class="d-flex">
       <user-card
         v-for="bet in game.away_bets"
         :key="bet.id"

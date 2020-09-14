@@ -1,5 +1,5 @@
 <template>
-  <div class="inline-block">
+  <div>
     <img
       ref="avatar"
       :class="{ outlineAvatar: highlight }"
