@@ -59,7 +59,7 @@ class User extends Authenticatable
         $season = env('BETTING_SEASON', 1);
         $total = 0;
         foreach ($this->bets as $bet) {
-            if ($bet->game->season_id != $season) {
+            if ($bet->game->season_id != $season || is_null($bet->won)) {
                 continue;
             }
             $multiplier = $bet->double_down ? 2 : 1;
