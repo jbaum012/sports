@@ -32,6 +32,8 @@
                   <tr v-for="game in week" :key="game.id">
                     <td
                       :class="{
+                        'table-warning':
+                          game.winner === null && game.has_scores,
                         'table-success':
                           game.winner !== null &&
                           game.winner.id === game.home_team.id
@@ -55,6 +57,8 @@
                     </td>
                     <td
                       :class="{
+                        'table-warning':
+                          game.winner === null && game.has_scores,
                         'table-success':
                           game.winner !== null &&
                           game.winner.id === game.home_team.id
@@ -64,6 +68,8 @@
                     </td>
                     <td
                       :class="{
+                        'table-warning':
+                          game.winner === null && game.has_scores,
                         'table-success':
                           game.winner !== null &&
                           game.winner.id === game.away_team.id
@@ -73,6 +79,8 @@
                     </td>
                     <td
                       :class="{
+                        'table-warning':
+                          game.winner === null && game.has_scores,
                         'table-success':
                           game.winner !== null &&
                           game.winner.id === game.away_team.id

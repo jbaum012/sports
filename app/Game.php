@@ -39,6 +39,11 @@ class Game extends Model
         return $this->season->starts_at->diffInWeeks($this->starts_at) + 1;
     }
 
+    public function getHasScoresAttribute()
+    {
+        return !is_null($this->home_team_score) || !is_null($this->away_team_score);
+    }
+
     public function getWinnerAttribute()
     {
         if (is_null($this->home_team_score) || is_null($this->away_team_score)) {
@@ -64,13 +69,13 @@ class Game extends Model
 
         if ($homeWonGame) {
             if ($homeHasSpread) {
-                return $beatSpread ? $this->homeTeam : $this->awayTeam;
+                return $beatSpread ? $this->homeTeam : null;
             } else {
                 return $this->homeTeam;
             }
         } else {
             if ($awayHasSpread) {
-                return $beatSpread ? $this->awayTeam : $this->homeTeam;
+                return $beatSpread ? $this->awayTeam : null;
             } else {
                 return $this->awayTeam;
             }

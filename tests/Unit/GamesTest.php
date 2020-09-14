@@ -112,4 +112,19 @@ class GamesTest extends TestCase
 
         $this->assertEquals($spreadTeam->id, $game->winner->id);
     }
+
+    /** @test **/
+    public function push_retuns_null_winner()
+    {
+        $spreadTeam = factory('App\Team')->create();
+        $game = factory('App\Game')->create([
+            'home_team_id' => $spreadTeam->id,
+            'spread_team_id' => $spreadTeam->id,
+            'spread' => 1,
+            'home_team_score' => 1,
+            'away_team_score' => 0,
+        ]);
+
+        $this->assertNull($game->winner);
+    }
 }

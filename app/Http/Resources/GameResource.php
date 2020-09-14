@@ -34,6 +34,7 @@ class GameResource extends JsonResource
             'home_bets' => BetResource::collection($this->betsForHome()),
             'away_bets' => BetResource::collection($this->betsForAway()),
             'allow_bets' => $this->allowNewBets(),
+            'has_scores' => $this->has_scores,
             'winner' => is_null($this->winner) ? null : new TeamResource($this->winner)
         ];
     }
