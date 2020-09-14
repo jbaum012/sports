@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <span>
     <img
       ref="avatar"
       :class="{ outlineAvatar: highlight }"
@@ -11,7 +11,7 @@
     </b-tooltip>
     <span v-if="variant !== 'icon'">{{ user.name }}</span>
     <slot v-if="variant !== 'icon'"></slot>
-  </div>
+  </span>
 </template>
 
 <script>
