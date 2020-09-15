@@ -6,25 +6,32 @@
         >Add Game</b-button
       >
     </h1>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">My Pick</th>
-          <th scope="col">Teams</th>
-          <th scope="col">Spread</th>
-          <th scope="col">Score</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <betting-card
-          v-for="game in games"
-          :key="game.id"
-          :game="game"
-          @deleted="fetchData"
-        />
-      </tbody>
-    </table>
+    <b-table-simple responsive>
+      <b-thead>
+        <b-tr>
+          <b-th scope="col">My Pick</b-th>
+          <b-th scope="col">Teams</b-th>
+          <b-th scope="col">Spread</b-th>
+          <!-- <b-th scope="col">Score</b-th> -->
+          <b-th scope="col"></b-th>
+        </b-tr>
+      </b-thead>
+      <b-tbody>
+        <template v-for="(games, index) in groupedGames">
+          <b-tr class="bg-dark text-white"
+            ><b-td colspan="4"
+              ><span>{{ weekDisplay(index) }}</span></b-td
+            ></b-tr
+          >
+          <betting-card
+            v-for="game in games"
+            :key="game.id"
+            :game="game"
+            @deleted="fetchData"
+          />
+        </template>
+      </b-tbody>
+    </b-table-simple>
     <b-modal
       id="new-game-modal"
       title="Game"
@@ -42,6 +49,8 @@ import axios from 'axios'
 import { mapState, mapMutations } from 'vuex'
 import BettingCard from '../components/BettingCard.vue'
 import GameForm from '../components/GameForm.vue'
+import moment from 'moment'
+import groupBy from 'lodash.groupby'
 export default {
   components: {
     BettingCard,
@@ -55,13 +64,13 @@ export default {
   },
   data() {
     return {
-      games: []
+      gamesThisWeek: []
     }
   },
   beforeMount() {},
   mounted() {
     this.fetchData()
-    if (this.teams === null) {
+    if (this.teams === null || this.teams === undefined) {
       this.fetchTeams()
     }
   },
@@ -70,7 +79,9 @@ export default {
   },
   methods: {
     fetchData() {
-      axios.get(`/api/week/${this.week}/games`).then(r => (this.games = r.data))
+      axios
+        .get(`/api/week/${this.week}/games`)
+        .then(r => (this.gamesThisWeek = r.data))
     },
     fetchTeams() {
       axios.get('/api/teams').then(r => this.setTeams(r.data))
@@ -79,7 +90,17 @@ export default {
       this.$bvModal.hide('new-game-modal')
       this.fetchData()
     },
+    weekDisplay(week) {
+      return moment.utc(week).format('dddd, MMM Do h:mm a')
+    },
     ...mapMutations(['setTeams'])
+  },
+  computed: {
+    groupedGames() {
+      return groupBy(this.gamesThisWeek, game => {
+        return game.date
+      })
+    }
   },
   watch: {
     $route(newRoute, oldRoute) {

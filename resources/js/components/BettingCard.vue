@@ -2,7 +2,7 @@
   <tr :class="resultsClass">
     <td>
       <team-card
-        class="pointer"
+        :class="{ pointer: game.allow_bets }"
         v-if="game.user_bet"
         :highlight="game.user_bet.double_down"
         :team="game.user_bet.team"
@@ -11,17 +11,23 @@
       <span v-else>-</span>
     </td>
     <td>
-      <div class="d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center justify-content-around">
         <team-card
-          class="pointer"
+          :class="{ pointer: game.allow_bets }"
           :team="game.away_team"
+          :score="game.away_team_score"
           @click.native="betOnTeam(game.away_team)"
         ></team-card>
-        <span>@</span>
+        <div class="p-1 h4">
+          <span v-if="game.winner">to</span>
+          <span v-else>@</span>
+        </div>
         <team-card
-          class="pointer"
+          :class="{ pointer: game.allow_bets }"
           :team="game.home_team"
+          :score="game.home_team_score"
           @click.native="betOnTeam(game.home_team)"
+          variant="left"
         ></team-card>
       </div>
     </td>
@@ -29,7 +35,7 @@
       <span v-if="game.spread_team">{{ game.spread_team.nickname }}</span>
       <code v-if="game.spread">{{ game.spread }}</code>
     </td>
-    <td>{{ awayScore }} - {{ homeScore }}</td>
+    <!-- <td>{{ awayScore }} - {{ homeScore }}</td> -->
     <td>
       <b-button variant="primary" v-b-modal="gameModalId">Update Game</b-button>
       <b-modal

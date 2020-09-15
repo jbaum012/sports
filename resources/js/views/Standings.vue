@@ -5,15 +5,20 @@
       v-for="(user, index) in sortedUsers"
       :key="user.id"
     >
-      <img style="width: 40px" :src="user.avatar" /> {{ user.name }}:
-      <code>{{ user.points }}</code>
+      <user-card :user="user"
+        >:<code>{{ user.points }}</code></user-card
+      >
     </b-card>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import UserCard from '../components/UserCard'
 export default {
+  components: {
+    UserCard
+  },
   data() {
     return {
       users: []
