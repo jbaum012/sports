@@ -6,7 +6,7 @@
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item :to="{ name: 'week', params: { week: pickWeek } }"
+          <b-nav-item :to="{ name: 'week', params: { week: currentWeek } }"
             >This Week's Picks</b-nav-item
           >
           <b-nav-item :to="{ name: 'standings' }">Standings</b-nav-item>
@@ -35,14 +35,8 @@
 import axios from 'axios'
 import { mapMutations, mapState } from 'vuex'
 export default {
-  data() {
-    return {
-      pickWeek: null
-    }
-  },
   beforeMount() {
     axios.get('/api/current-week').then(r => this.setCurrentWeek(r.data))
-    axios.get('/api/pick-week').then(r => (this.pickWeek = r.data))
   },
   methods: {
     goToWeek(week) {

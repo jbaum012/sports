@@ -18,7 +18,7 @@ class Season extends Model
 
     public function pickWeek()
     {
-        return $this->starts_at->subDays(2)->diffInWeeks(Carbon::now());
+        return ceil($this->starts_at->subDays(3)->floatDiffInRealDays(Carbon::now()) / 7);
     }
 
     public function games()

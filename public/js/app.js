@@ -2087,19 +2087,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      pickWeek: null
-    };
-  },
   beforeMount: function beforeMount() {
     var _this = this;
 
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/current-week').then(function (r) {
       return _this.setCurrentWeek(r.data);
-    });
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/pick-week').then(function (r) {
-      return _this.pickWeek = r.data;
     });
   },
   methods: _objectSpread({
@@ -49902,7 +49894,7 @@ var render = function() {
                     "b-nav-item",
                     {
                       attrs: {
-                        to: { name: "week", params: { week: _vm.pickWeek } }
+                        to: { name: "week", params: { week: _vm.currentWeek } }
                       }
                     },
                     [_vm._v("This Week's Picks")]
