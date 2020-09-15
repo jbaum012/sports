@@ -34,8 +34,8 @@ export default {
 </script>
 
 <style>
-.oultine-avatar {
-  outline: 0 0 0 5px hotpink;
+.outline-avatar {
+  box-shadow: 0 0 0 5px hotpink;
 }
 .avatar {
   max-width: 40px;
