@@ -678,7 +678,7 @@ var render = function() {
                       variant:
                         index == _vm.currentWeek ? "primary" : "secondary",
                       open: index == _vm.currentWeek,
-                      week: index + 1
+                      week: index
                     }
                   })
                 ],

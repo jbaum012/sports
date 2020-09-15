@@ -9,7 +9,7 @@
             :picks="week"
             :variant="index == currentWeek ? 'primary' : 'secondary'"
             :open="index == currentWeek"
-            :week="index + 1"
+            :week="index"
           >
           </weekly-picks>
         </b-card>
