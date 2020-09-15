@@ -2,7 +2,7 @@
   <span>
     <img
       ref="avatar"
-      :class="{ outlineAvatar: highlight }"
+      :class="{ 'outline-avatar': highlight }"
       class="img-fluid rounded-circle avatar"
       :src="user.avatar"
     />

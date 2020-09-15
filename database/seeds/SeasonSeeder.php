@@ -15,7 +15,7 @@ class SeasonSeeder extends Seeder
     {
         factory('App\Season')->create([
             'name' => '2020 NFL',
-            'starts_at' => Carbon::create('2020', '09', '10'),
+            'starts_at' => Carbon::create('2020', '09', '08'),
             'score_card_cost' => 200,
             'max_double_down' => 2
         ]);
