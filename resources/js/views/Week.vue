@@ -16,7 +16,7 @@
           <b-th scope="col"></b-th>
         </b-tr>
       </b-thead>
-      <b-tbody>
+      <b-tbody v-if="!busy">
         <template v-for="(games, index) in groupedGames">
           <b-tr class="bg-dark text-white"
             ><b-td colspan="4"
@@ -30,6 +30,17 @@
             @deleted="fetchData"
           />
         </template>
+      </b-tbody>
+      <b-tbody v-else>
+        <b-tr v-for="(n, index) in 7" :key="index">
+          <b-td v-for="(m, index) in 4" :key="index">
+            <skeleton-loader
+              height="40px"
+              width="100%"
+              :random-width="false"
+            ></skeleton-loader>
+          </b-td>
+        </b-tr>
       </b-tbody>
     </b-table-simple>
     <b-modal
@@ -64,15 +75,12 @@ export default {
   },
   data() {
     return {
-      gamesThisWeek: []
+      gamesThisWeek: [],
+      busy: true
     }
   },
-  beforeMount() {},
   mounted() {
     this.fetchData()
-    if (this.teams === null || this.teams === undefined) {
-      this.fetchTeams()
-    }
   },
   computed: {
     ...mapState(['teams'])
@@ -81,7 +89,15 @@ export default {
     fetchData() {
       axios
         .get(`/api/week/${this.week}/games`)
-        .then(r => (this.gamesThisWeek = r.data))
+        .then(r => {
+          this.gamesThisWeek = r.data
+          if (this.teams === null || this.teams === undefined) {
+            this.fetchTeams()
+          }
+        })
+        .finally(() => {
+          this.busy = false
+        })
     },
     fetchTeams() {
       axios.get('/api/teams').then(r => this.setTeams(r.data))

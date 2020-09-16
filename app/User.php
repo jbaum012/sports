@@ -49,6 +49,9 @@ class User extends Authenticatable
     {
         $games = Game::all();
         $filtered = $games->filter(function ($game) use ($week) {
+            if (is_null($game->user_bet)) {
+                return false;
+            }
             return $game->week == $week && $game->user_bet->double_down;
         });
         return $filtered->count();

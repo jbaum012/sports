@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import SkeletonLoader from './components/SkeletonLoader.vue'
 import axios from 'axios'
 import store from './store'
 import router from './router'
@@ -11,6 +12,8 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
+
+Vue.component('skeleton-loader', SkeletonLoader)
 
 import vSelect from 'vue-select'
 import 'vue-select/dist/vue-select.css'
