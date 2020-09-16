@@ -1,8 +1,7 @@
 <template>
   <tr :class="resultsClass">
-    <td class="d-flex justify-content-center">
+    <td>
       <team-card
-        style="flex-basis: 100%"
         :class="{ pointer: game.allow_bets }"
         :dim="busy"
         v-if="game.user_bet"
@@ -10,7 +9,6 @@
         :team="game.user_bet.team"
         @click.native="doubleDown"
       />
-      <span v-else>-</span>
     </td>
     <td>
       <div class="d-flex align-items-center justify-content-around">

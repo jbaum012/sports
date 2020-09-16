@@ -6,7 +6,7 @@
         >Add Game</b-button
       >
     </h1>
-    <b-table-simple responsive>
+    <b-table-simple responsive bordered>
       <b-thead>
         <b-tr>
           <b-th scope="col">My Pick</b-th>
