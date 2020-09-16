@@ -14,22 +14,19 @@
       <div class="d-flex align-items-center justify-content-around">
         <team-card
           style="flex-basis: 33%;"
-          :class="{ pointer: showPointer(game.away_team) }"
+          :class="{ pointer: game.allow_bets }"
           :dim="busy"
           :team="game.away_team"
           :score="game.away_team_score"
           @click.native="betOnTeam(game.away_team)"
         ></team-card>
-        <div
-          class="p-1 h4 d-flex justify-content-center"
-          style="flex-basis: 33%"
-        >
+        <div class="p-1 h4 d-flex justify-content-center" style="flex-basis: 33%">
           <span v-if="game.winner">to</span>
           <span v-else>@</span>
         </div>
         <team-card
           style="flex-basis: 33%;"
-          :class="{ pointer: showPointer(game.home_team) }"
+          :class="{ pointer: game.allow_bets }"
           :dim="busy"
           :team="game.home_team"
           :score="game.home_team_score"
@@ -45,13 +42,7 @@
     <!-- <td>{{ awayScore }} - {{ homeScore }}</td> -->
     <td>
       <b-button variant="primary" v-b-modal="gameModalId">Update Game</b-button>
-      <b-modal
-        :id="gameModalId"
-        title="Game"
-        size="lg"
-        hide-footer
-        :no-close-on-backdrop="true"
-      >
+      <b-modal :id="gameModalId" title="Game" size="lg" hide-footer :no-close-on-backdrop="true">
         <game-form
           :game-id="game.id"
           @saved="$bvModal.hide(gameModalId)"
@@ -117,12 +108,12 @@ export default {
       if (this.game.user_bet.double_down) {
         axios
           .delete(`/api/bet/${this.game.user_bet.id}/double-down`)
-          .then(r => (this.game.user_bet = r.data))
+          .then((r) => (this.game.user_bet = r.data))
           .finally(() => (this.busy = false))
       } else {
         axios
           .post(`/api/bet/${this.game.user_bet.id}/double-down`)
-          .then(r => (this.game.user_bet = r.data))
+          .then((r) => (this.game.user_bet = r.data))
           .finally(() => (this.busy = false))
       }
     },
@@ -138,13 +129,13 @@ export default {
       if (this.game.user_bet === null) {
         axios
           .post('/api/bet', { game_id: this.game.id, team_id: team.id })
-          .then(r => (this.game.user_bet = r.data))
+          .then((r) => (this.game.user_bet = r.data))
           .finally(() => (this.busy = false))
       } else {
         this.game.user_bet.team_id = team.id
         axios
           .put(`/api/bet/${this.game.user_bet.id}`, this.game.user_bet)
-          .then(r => (this.game.user_bet = r.data))
+          .then((r) => (this.game.user_bet = r.data))
           .finally(() => (this.busy = false))
       }
     }
