@@ -1,11 +1,12 @@
 <template>
   <b-tr>
-    <b-td :class="homeTeamResults" class="">
+    <b-td :class="homeTeamResults" class="text-right">
       <user-card
         v-for="bet in game.home_bets"
         :key="bet.id"
         :user="{ name: bet.user, avatar: bet.user_avatar }"
         :highlight="bet.double_down"
+        class="ml-auto"
         variant="icon"
       >
       </user-card>

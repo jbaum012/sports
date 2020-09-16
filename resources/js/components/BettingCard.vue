@@ -14,7 +14,7 @@
       <div class="d-flex align-items-center justify-content-around">
         <team-card
           style="flex-basis: 33%;"
-          :class="{ pointer: game.allow_bets }"
+          :class="{ pointer: showPointer(game.away_team) }"
           :dim="busy"
           :team="game.away_team"
           :score="game.away_team_score"
@@ -29,7 +29,7 @@
         </div>
         <team-card
           style="flex-basis: 33%;"
-          :class="{ pointer: game.allow_bets }"
+          :class="{ pointer: showPointer(game.home_team) }"
           :dim="busy"
           :team="game.home_team"
           :score="game.home_team_score"
