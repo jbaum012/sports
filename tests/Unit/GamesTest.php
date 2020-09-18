@@ -117,15 +117,29 @@ class GamesTest extends TestCase
     public function push_retuns_null_winner()
     {
         $spreadTeam = factory('App\Team')->create();
+        $otherTeam = factory('App\Team')->create();
         $game = factory('App\Game')->create([
             'home_team_id' => $spreadTeam->id,
+            'away_team_id' => $otherTeam->id,
             'spread_team_id' => $spreadTeam->id,
-            'spread' => 1,
-            'home_team_score' => 1,
-            'away_team_score' => 0,
+            'spread' => 3.0,
+            'home_team_score' => 13,
+            'away_team_score' => 16,
+        ]);
+
+        $betForSpread = factory('App\Bet')->create([
+            'game_id' => $game->id,
+            'team_id' => $spreadTeam->id
+        ]);
+
+        $betAgainstSpread = factory('App\Bet')->create([
+            'game_id' => $game->id,
+            'team_id' => $spreadTeam->id
         ]);
 
         $this->assertNull($game->winner);
+        $this->assertNull($betForSpread->won);
+        $this->assertNull($betAgainstSpread->won);
     }
 
     /** @test **/

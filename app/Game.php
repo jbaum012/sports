@@ -12,6 +12,7 @@ class Game extends Model
 
     protected $casts = [
         'starts_at' => 'datetime',
+        'spread' => 'float'
     ];
 
     public function allowNewBets()
@@ -66,7 +67,7 @@ class Game extends Model
         $awayHasSpread = $this->spread_team_id === $this->away_team_id;
         $scoreSpread = abs($this->home_team_score - $this->away_team_score);
         $beatSpread = is_null($this->spread) ? true : $scoreSpread > $this->spread;
-        $spreadPush = is_null($this->spread) ? false : $scoreSpread === $this->spread;
+        $spreadPush = is_null($this->spread) ? false : $scoreSpread == $this->spread;
 
         if ($spreadPush) {
             return null;
