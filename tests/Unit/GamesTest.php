@@ -127,4 +127,21 @@ class GamesTest extends TestCase
 
         $this->assertNull($game->winner);
     }
+
+    /** @test **/
+    public function non_spread_team_loses_game_but_beats_spread_counds_as_win()
+    {
+        $nonSpreadTeam = factory('App\Team')->create();
+        $otherTeam = factory('App\Team')->create();
+        $game = factory('App\Game')->create([
+            'home_team_id' => $nonSpreadTeam->id,
+            'away_team_id' => $otherTeam->id,
+            'spread_team_id' => $otherTeam->id,
+            'spread' => 6,
+            'home_team_score' => 30,
+            'away_team_score' => 35,
+        ]);
+
+        $this->assertEquals($nonSpreadTeam->id, $game->winner->id);
+    }
 }
