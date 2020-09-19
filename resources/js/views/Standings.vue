@@ -28,7 +28,6 @@ export default {
     axios.get('/api/standings').then((r) => {
       this.users = r.data
     })
-    axios.get('/api/user/1/stats').then((r) => console.log(r.data))
   },
   computed: {
     sortedUsers() {
