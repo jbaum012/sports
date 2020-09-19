@@ -48,7 +48,7 @@
                 :title="
                   'Number of times ' +
                     user.name +
-                    ' was the only won to win a bet'
+                    ' was the only one to win a bet'
                 "
                 >Lone Wolf:</b-td
               >
@@ -61,7 +61,7 @@
                 :title="
                   'Number of times ' +
                     user.name +
-                    ' was the only won to lose a bet'
+                    ' was the only one to lose a bet'
                 "
                 >Loan Wolf:</b-td
               >

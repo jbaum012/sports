@@ -438,7 +438,7 @@ var render = function() {
                                 title:
                                   "Number of times " +
                                   user.name +
-                                  " was the only won to win a bet"
+                                  " was the only one to win a bet"
                               }
                             },
                             [_vm._v("Lone Wolf:")]
@@ -469,7 +469,7 @@ var render = function() {
                                 title:
                                   "Number of times " +
                                   user.name +
-                                  " was the only won to lose a bet"
+                                  " was the only one to lose a bet"
                               }
                             },
                             [_vm._v("Loan Wolf:")]
