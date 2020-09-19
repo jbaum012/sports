@@ -46,13 +46,13 @@ class UserStatisticService
         $count = 0;
         foreach ($this->games as $game) {
             if ($game->betsForAway()->count() === 1) {
-                $bet = $game->betsForAway()[0];
+                $bet = $game->betsForAway()->first();
                 if ($bet->user_id === $this->user->id && $bet->won) {
                     ++$count;
                 }
             }
             if ($game->betsForHome()->count() === 1) {
-                $bet = $game->betsForHome()[0];
+                $bet = $game->betsForHome()->first();
                 if ($bet->user_id === $this->user->id && $bet->won) {
                     ++$count;
                 }
@@ -67,13 +67,13 @@ class UserStatisticService
         $count = 0;
         foreach ($this->games as $game) {
             if ($game->betsForAway()->count() === 1) {
-                $bet = $game->betsForAway()[0];
+                $bet = $game->betsForAway()->first();
                 if ($bet->user_id === $this->user->id && $bet->won === false) {
                     ++$count;
                 }
             }
             if ($game->betsForHome()->count() === 1) {
-                $bet = $game->betsForHome()[0];
+                $bet = $game->betsForHome()->first();
                 if ($bet->user_id === $this->user->id && $bet->won === false) {
                     ++$count;
                 }
