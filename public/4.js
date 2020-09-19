@@ -213,18 +213,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -329,552 +317,486 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "b-container",
-    { attrs: { fluid: "" } },
-    [
-      _c(
-        "b-row",
-        _vm._l(_vm.sortedUsers, function(user, index) {
-          return _c(
-            "b-col",
-            { key: user.id, attrs: { col: "12" } },
+    "div",
+    _vm._l(_vm.sortedUsers, function(user, index) {
+      return _c(
+        "b-card",
+        { key: user.id },
+        [
+          _c(
+            "b-row",
+            { staticClass: "align-items-center mb-2" },
             [
               _c(
-                "b-card",
+                "b-col",
+                {
+                  staticClass:
+                    "d-flex justify-content-center align-items-center",
+                  attrs: { sm: "12", md: "3" }
+                },
+                [
+                  _c("user-card", {
+                    staticClass: "mx-right",
+                    attrs: { user: user, size: "lg", variant: "icon" }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-col",
+                { staticClass: "text-center", attrs: { sm: "12", md: "3" } },
+                [
+                  _c("b-card", { staticClass: "text-center" }, [
+                    _vm._v("\n          Rank\n          "),
+                    _c("h2", { staticClass: "text-center m-0" }, [
+                      _vm._v(_vm._s(index + 1))
+                    ])
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-col",
+                { attrs: { sm: "12", md: "3" } },
+                [
+                  _c("b-card", { staticClass: "text-center" }, [
+                    _vm._v("\n          Weekly\n          "),
+                    _c("h2", { staticClass: "text-center m-0" }, [
+                      _vm._v(
+                        "\n            " +
+                          _vm._s(_vm.points(user.weekly_points)) +
+                          "\n          "
+                      )
+                    ])
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-col",
+                { attrs: { sm: "12", md: "3" } },
+                [
+                  _c("b-card", { staticClass: "text-center" }, [
+                    _vm._v("\n          Overall\n          "),
+                    _c("h2", { staticClass: "text-center m-0" }, [
+                      _vm._v(_vm._s(user.points))
+                    ])
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-button",
+            {
+              directives: [
+                {
+                  name: "b-toggle",
+                  rawName: "v-b-toggle",
+                  value: "user-stats-" + user.id,
+                  expression: "'user-stats-' + user.id"
+                }
+              ],
+              attrs: { variant: "primary", block: "" }
+            },
+            [_vm._v("Stats")]
+          ),
+          _vm._v(" "),
+          _c(
+            "b-collapse",
+            { staticClass: "mt-2", attrs: { id: "user-stats-" + user.id } },
+            [
+              _c(
+                "b-table-simple",
+                { attrs: { responsive: "", striped: "" } },
                 [
                   _c(
-                    "b-row",
-                    { staticClass: "align-items-center mb-2" },
+                    "b-tbody",
                     [
                       _c(
-                        "b-col",
-                        {
-                          staticClass:
-                            "d-flex justify-content-center align-items-center",
-                          attrs: { sm: "12", md: "3" }
-                        },
-                        [
-                          _c("user-card", {
-                            staticClass: "mx-right",
-                            attrs: { user: user, size: "lg", variant: "icon" }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "b-col",
-                        {
-                          staticClass: "text-center",
-                          attrs: { sm: "12", md: "3" }
-                        },
-                        [
-                          _c("b-card", { staticClass: "text-center" }, [
-                            _vm._v("\n              Rank\n              "),
-                            _c("h2", { staticClass: "text-center m-0" }, [
-                              _vm._v(_vm._s(index + 1))
-                            ])
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "b-col",
-                        { attrs: { sm: "12", md: "3" } },
-                        [
-                          _c("b-card", { staticClass: "text-center" }, [
-                            _vm._v("\n              Weekly\n              "),
-                            _c("h2", { staticClass: "text-center m-0" }, [
-                              _vm._v(
-                                "\n                " +
-                                  _vm._s(_vm.points(user.weekly_points)) +
-                                  "\n              "
-                              )
-                            ])
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "b-col",
-                        { attrs: { sm: "12", md: "3" } },
-                        [
-                          _c("b-card", { staticClass: "text-center" }, [
-                            _vm._v("\n              Overall\n              "),
-                            _c("h2", { staticClass: "text-center m-0" }, [
-                              _vm._v(_vm._s(user.points))
-                            ])
-                          ])
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "b-button",
-                    {
-                      directives: [
-                        {
-                          name: "b-toggle",
-                          rawName: "v-b-toggle",
-                          value: "user-stats-" + user.id,
-                          expression: "'user-stats-' + user.id"
-                        }
-                      ],
-                      attrs: { variant: "primary", block: "" }
-                    },
-                    [_vm._v("Stats")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "b-collapse",
-                    {
-                      staticClass: "mt-2",
-                      attrs: { id: "user-stats-" + user.id }
-                    },
-                    [
-                      _c(
-                        "b-table-simple",
-                        { attrs: { responsive: "", striped: "" } },
+                        "b-tr",
                         [
                           _c(
-                            "b-tbody",
+                            "b-td",
+                            {
+                              directives: [
+                                {
+                                  name: "b-tooltip",
+                                  rawName: "v-b-tooltip.right",
+                                  modifiers: { right: true }
+                                }
+                              ],
+                              staticClass: "text-right w-50 align-middle",
+                              attrs: {
+                                title:
+                                  "Number of times " +
+                                  user.name +
+                                  " was the only won to win a bet"
+                              }
+                            },
+                            [_vm._v("Lone Wolf:")]
+                          ),
+                          _vm._v(" "),
+                          _c("b-td", { staticClass: "text-left w-50" }, [
+                            _vm._v(_vm._s(user.lone_wolf))
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-tr",
+                        [
+                          _c(
+                            "b-td",
+                            {
+                              directives: [
+                                {
+                                  name: "b-tooltip",
+                                  rawName: "v-b-tooltip.right",
+                                  modifiers: { right: true }
+                                }
+                              ],
+                              staticClass: "text-right w-50 align-middle",
+                              attrs: {
+                                title:
+                                  "Number of times " +
+                                  user.name +
+                                  " was the only won to lose a bet"
+                              }
+                            },
+                            [_vm._v("Loan Wolf:")]
+                          ),
+                          _vm._v(" "),
+                          _c("b-td", { staticClass: "text-left w-50" }, [
+                            _vm._v(_vm._s(user.loan_wolf))
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-tr",
+                        [
+                          _c(
+                            "b-td",
+                            {
+                              directives: [
+                                {
+                                  name: "b-tooltip",
+                                  rawName: "v-b-tooltip.right",
+                                  modifiers: { right: true }
+                                }
+                              ],
+                              staticClass: "text-right w-50 align-middle",
+                              attrs: {
+                                title:
+                                  "Number of times " +
+                                  user.name +
+                                  "'s pick won the game but lost the spread"
+                              }
+                            },
+                            [_vm._v("Dicked:")]
+                          ),
+                          _vm._v(" "),
+                          _c("b-td", { staticClass: "text-left w-50" }, [
+                            _vm._v(_vm._s(user.dicked))
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-tr",
+                        [
+                          _c(
+                            "b-td",
+                            {
+                              directives: [
+                                {
+                                  name: "b-tooltip",
+                                  rawName: "v-b-tooltip.right",
+                                  modifiers: { right: true }
+                                }
+                              ],
+                              staticClass: "text-right w-50 align-middle",
+                              attrs: {
+                                title:
+                                  "Number of times " +
+                                  user.name +
+                                  "'s pick lost the game but won the spread"
+                              }
+                            },
+                            [_vm._v("200 IQ play:")]
+                          ),
+                          _vm._v(" "),
+                          _c("b-td", { staticClass: "text-left w-50" }, [
+                            _vm._v(_vm._s(user["200_iq"]))
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-tr",
+                        [
+                          _c(
+                            "b-td",
+                            {
+                              directives: [
+                                {
+                                  name: "b-tooltip",
+                                  rawName: "v-b-tooltip.right",
+                                  modifiers: { right: true }
+                                }
+                              ],
+                              staticClass: "text-right w-50 align-middle",
+                              attrs: {
+                                title:
+                                  "Number of times " +
+                                  user.name +
+                                  " successfully doubled down"
+                              }
+                            },
+                            [_vm._v("Double Do:")]
+                          ),
+                          _vm._v(" "),
+                          _c("b-td", { staticClass: "text-left w-50" }, [
+                            _vm._v(_vm._s(user.double_do))
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-tr",
+                        [
+                          _c(
+                            "b-td",
+                            {
+                              directives: [
+                                {
+                                  name: "b-tooltip",
+                                  rawName: "v-b-tooltip.right",
+                                  modifiers: { right: true }
+                                }
+                              ],
+                              staticClass: "text-right w-50 align-middle",
+                              attrs: {
+                                title:
+                                  "Number of times " +
+                                  user.name +
+                                  " unsuccessfully doubled down"
+                              }
+                            },
+                            [_vm._v("Double Don't:")]
+                          ),
+                          _vm._v(" "),
+                          _c("b-td", { staticClass: "text-left w-50" }, [
+                            _vm._v(_vm._s(user.double_dont))
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-tr",
+                        [
+                          _c(
+                            "b-td",
+                            {
+                              directives: [
+                                {
+                                  name: "b-tooltip",
+                                  rawName: "v-b-tooltip.right",
+                                  modifiers: { right: true }
+                                }
+                              ],
+                              staticClass: "text-right w-50 align-middle",
+                              attrs: {
+                                title:
+                                  "Team that has won " +
+                                  user.name +
+                                  " the most points"
+                              }
+                            },
+                            [_vm._v("Strong Arm:")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "b-td",
+                            { staticClass: "text-left w-50 align-middle" },
                             [
-                              _c(
-                                "b-tr",
-                                [
-                                  _c(
-                                    "b-td",
-                                    {
-                                      directives: [
-                                        {
-                                          name: "b-tooltip",
-                                          rawName: "v-b-tooltip.right",
-                                          modifiers: { right: true }
-                                        }
-                                      ],
-                                      staticClass:
-                                        "text-right w-50 align-middle",
-                                      attrs: {
-                                        title:
-                                          "Number of times " +
-                                          user.name +
-                                          " was the only won to win a bet"
-                                      }
-                                    },
-                                    [_vm._v("Lone Wolf:")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "b-td",
-                                    { staticClass: "text-left w-50" },
-                                    [_vm._v(_vm._s(user.lone_wolf))]
-                                  )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "b-tr",
-                                [
-                                  _c(
-                                    "b-td",
-                                    {
-                                      directives: [
-                                        {
-                                          name: "b-tooltip",
-                                          rawName: "v-b-tooltip.right",
-                                          modifiers: { right: true }
-                                        }
-                                      ],
-                                      staticClass:
-                                        "text-right w-50 align-middle",
-                                      attrs: {
-                                        title:
-                                          "Number of times " +
-                                          user.name +
-                                          " was the only won to lose a bet"
-                                      }
-                                    },
-                                    [_vm._v("Loan Wolf:")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "b-td",
-                                    { staticClass: "text-left w-50" },
-                                    [_vm._v(_vm._s(user.loan_wolf))]
-                                  )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "b-tr",
-                                [
-                                  _c(
-                                    "b-td",
-                                    {
-                                      directives: [
-                                        {
-                                          name: "b-tooltip",
-                                          rawName: "v-b-tooltip.right",
-                                          modifiers: { right: true }
-                                        }
-                                      ],
-                                      staticClass:
-                                        "text-right w-50 align-middle",
-                                      attrs: {
-                                        title:
-                                          "Number of times " +
-                                          user.name +
-                                          "'s pick won the game but lost the spread"
-                                      }
-                                    },
-                                    [_vm._v("Dicked:")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "b-td",
-                                    { staticClass: "text-left w-50" },
-                                    [_vm._v(_vm._s(user.dicked))]
-                                  )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "b-tr",
-                                [
-                                  _c(
-                                    "b-td",
-                                    {
-                                      directives: [
-                                        {
-                                          name: "b-tooltip",
-                                          rawName: "v-b-tooltip.right",
-                                          modifiers: { right: true }
-                                        }
-                                      ],
-                                      staticClass:
-                                        "text-right w-50 align-middle",
-                                      attrs: {
-                                        title:
-                                          "Number of times " +
-                                          user.name +
-                                          "'s pick lost the game but won the spread"
-                                      }
-                                    },
-                                    [_vm._v("200 IQ play:")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "b-td",
-                                    { staticClass: "text-left w-50" },
-                                    [_vm._v(_vm._s(user["200_iq"]))]
-                                  )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "b-tr",
-                                [
-                                  _c(
-                                    "b-td",
-                                    {
-                                      directives: [
-                                        {
-                                          name: "b-tooltip",
-                                          rawName: "v-b-tooltip.right",
-                                          modifiers: { right: true }
-                                        }
-                                      ],
-                                      staticClass:
-                                        "text-right w-50 align-middle",
-                                      attrs: {
-                                        title:
-                                          "Number of times " +
-                                          user.name +
-                                          " successfully doubled down"
-                                      }
-                                    },
-                                    [_vm._v("Double Do:")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "b-td",
-                                    { staticClass: "text-left w-50" },
-                                    [_vm._v(_vm._s(user.double_do))]
-                                  )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "b-tr",
-                                [
-                                  _c(
-                                    "b-td",
-                                    {
-                                      directives: [
-                                        {
-                                          name: "b-tooltip",
-                                          rawName: "v-b-tooltip.right",
-                                          modifiers: { right: true }
-                                        }
-                                      ],
-                                      staticClass:
-                                        "text-right w-50 align-middle",
-                                      attrs: {
-                                        title:
-                                          "Number of times " +
-                                          user.name +
-                                          " unsuccessfully doubled down"
-                                      }
-                                    },
-                                    [_vm._v("Double Don't:")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "b-td",
-                                    { staticClass: "text-left w-50" },
-                                    [_vm._v(_vm._s(user.double_dont))]
-                                  )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "b-tr",
-                                [
-                                  _c(
-                                    "b-td",
-                                    {
-                                      directives: [
-                                        {
-                                          name: "b-tooltip",
-                                          rawName: "v-b-tooltip.right",
-                                          modifiers: { right: true }
-                                        }
-                                      ],
-                                      staticClass:
-                                        "text-right w-50 align-middle",
-                                      attrs: {
-                                        title:
-                                          "Team that has won " +
-                                          user.name +
-                                          " the most points"
-                                      }
-                                    },
-                                    [_vm._v("Strong Arm:")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "b-td",
-                                    {
-                                      staticClass: "text-left w-50 align-middle"
-                                    },
-                                    [
-                                      user.strong_arm !== null
-                                        ? _c("team-card", {
-                                            attrs: { team: user.strong_arm }
-                                          })
-                                        : _c(
-                                            "span",
-                                            { staticClass: "text-muted" },
-                                            [_vm._v("N/A")]
-                                          )
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "b-tr",
-                                [
-                                  _c(
-                                    "b-td",
-                                    {
-                                      directives: [
-                                        {
-                                          name: "b-tooltip",
-                                          rawName: "v-b-tooltip.right",
-                                          modifiers: { right: true }
-                                        }
-                                      ],
-                                      staticClass:
-                                        "text-right w-50 align-middle",
-                                      attrs: {
-                                        title:
-                                          "Team that has lost " +
-                                          user.name +
-                                          " the most points"
-                                      }
-                                    },
-                                    [_vm._v("Limp Dick:")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "b-td",
-                                    {
-                                      staticClass: "text-left w-50 align-middle"
-                                    },
-                                    [
-                                      user.limp_dick !== null
-                                        ? _c("team-card", {
-                                            attrs: { team: user.limp_dick }
-                                          })
-                                        : _c(
-                                            "span",
-                                            { staticClass: "text-muted" },
-                                            [_vm._v("N/A")]
-                                          )
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "b-tr",
-                                [
-                                  _c(
-                                    "b-td",
-                                    {
-                                      directives: [
-                                        {
-                                          name: "b-tooltip",
-                                          rawName: "v-b-tooltip.right",
-                                          modifiers: { right: true }
-                                        }
-                                      ],
-                                      staticClass:
-                                        "text-right w-50 align-middle",
-                                      attrs: {
-                                        title:
-                                          "Team that " +
-                                          user.name +
-                                          " has picked the most"
-                                      }
-                                    },
-                                    [_vm._v("Favorite Team:")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "b-td",
-                                    {
-                                      staticClass: "text-left w-50 align-middle"
-                                    },
-                                    [
-                                      user.favorite_team !== null
-                                        ? _c("team-card", {
-                                            attrs: { team: user.favorite_team }
-                                          })
-                                        : _c(
-                                            "span",
-                                            { staticClass: "text-muted" },
-                                            [_vm._v("N/A")]
-                                          )
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "b-tr",
-                                [
-                                  _c(
-                                    "b-td",
-                                    {
-                                      directives: [
-                                        {
-                                          name: "b-tooltip",
-                                          rawName: "v-b-tooltip.right",
-                                          modifiers: { right: true }
-                                        }
-                                      ],
-                                      staticClass:
-                                        "text-right w-50 align-middle",
-                                      attrs: {
-                                        title:
-                                          "Team that " +
-                                          user.name +
-                                          " has bet against the most"
-                                      }
-                                    },
-                                    [_vm._v("BE GONE:")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "b-td",
-                                    {
-                                      staticClass: "text-left w-50 align-middle"
-                                    },
-                                    [
-                                      user.be_gone !== null
-                                        ? _c("team-card", {
-                                            attrs: { team: user.be_gone }
-                                          })
-                                        : _c(
-                                            "span",
-                                            { staticClass: "text-muted" },
-                                            [_vm._v("N/A")]
-                                          )
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "b-tr",
-                                [
-                                  _c(
-                                    "b-td",
-                                    {
-                                      directives: [
-                                        {
-                                          name: "b-tooltip",
-                                          rawName: "v-b-tooltip.right",
-                                          modifiers: { right: true }
-                                        }
-                                      ],
-                                      staticClass:
-                                        "text-right w-50 align-middle",
-                                      attrs: { title: "Are you beating Tony?" }
-                                    },
-                                    [_vm._v("Better than tony?")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "b-td",
-                                    { staticClass: "text-left w-50" },
-                                    [
-                                      user.better_than_tony
-                                        ? _c("h2", { staticClass: "m-0" }, [
-                                            _vm._v("🏆")
-                                          ])
-                                        : _c("h2", { staticClass: "m-0" }, [
-                                            _vm._v("💩")
-                                          ])
-                                    ]
-                                  )
-                                ],
-                                1
-                              )
+                              user.strong_arm !== null
+                                ? _c("team-card", {
+                                    attrs: { team: user.strong_arm }
+                                  })
+                                : _c("span", { staticClass: "text-muted" }, [
+                                    _vm._v("N/A")
+                                  ])
                             ],
                             1
                           )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-tr",
+                        [
+                          _c(
+                            "b-td",
+                            {
+                              directives: [
+                                {
+                                  name: "b-tooltip",
+                                  rawName: "v-b-tooltip.right",
+                                  modifiers: { right: true }
+                                }
+                              ],
+                              staticClass: "text-right w-50 align-middle",
+                              attrs: {
+                                title:
+                                  "Team that has lost " +
+                                  user.name +
+                                  " the most points"
+                              }
+                            },
+                            [_vm._v("Limp Dick:")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "b-td",
+                            { staticClass: "text-left w-50 align-middle" },
+                            [
+                              user.limp_dick !== null
+                                ? _c("team-card", {
+                                    attrs: { team: user.limp_dick }
+                                  })
+                                : _c("span", { staticClass: "text-muted" }, [
+                                    _vm._v("N/A")
+                                  ])
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-tr",
+                        [
+                          _c(
+                            "b-td",
+                            {
+                              directives: [
+                                {
+                                  name: "b-tooltip",
+                                  rawName: "v-b-tooltip.right",
+                                  modifiers: { right: true }
+                                }
+                              ],
+                              staticClass: "text-right w-50 align-middle",
+                              attrs: {
+                                title:
+                                  "Team that " +
+                                  user.name +
+                                  " has picked the most"
+                              }
+                            },
+                            [_vm._v("Favorite Team:")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "b-td",
+                            { staticClass: "text-left w-50 align-middle" },
+                            [
+                              user.favorite_team !== null
+                                ? _c("team-card", {
+                                    attrs: { team: user.favorite_team }
+                                  })
+                                : _c("span", { staticClass: "text-muted" }, [
+                                    _vm._v("N/A")
+                                  ])
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-tr",
+                        [
+                          _c(
+                            "b-td",
+                            {
+                              directives: [
+                                {
+                                  name: "b-tooltip",
+                                  rawName: "v-b-tooltip.right",
+                                  modifiers: { right: true }
+                                }
+                              ],
+                              staticClass: "text-right w-50 align-middle",
+                              attrs: {
+                                title:
+                                  "Team that " +
+                                  user.name +
+                                  " has bet against the most"
+                              }
+                            },
+                            [_vm._v("BE GONE:")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "b-td",
+                            { staticClass: "text-left w-50 align-middle" },
+                            [
+                              user.be_gone !== null
+                                ? _c("team-card", {
+                                    attrs: { team: user.be_gone }
+                                  })
+                                : _c("span", { staticClass: "text-muted" }, [
+                                    _vm._v("N/A")
+                                  ])
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-tr",
+                        [
+                          _c(
+                            "b-td",
+                            {
+                              directives: [
+                                {
+                                  name: "b-tooltip",
+                                  rawName: "v-b-tooltip.right",
+                                  modifiers: { right: true }
+                                }
+                              ],
+                              staticClass: "text-right w-50 align-middle",
+                              attrs: { title: "Are you beating Tony?" }
+                            },
+                            [_vm._v("Better than tony?")]
+                          ),
+                          _vm._v(" "),
+                          _c("b-td", { staticClass: "text-left w-50" }, [
+                            user.better_than_tony
+                              ? _c("h2", { staticClass: "m-0" }, [_vm._v("🏆")])
+                              : _c("h2", { staticClass: "m-0" }, [_vm._v("💩")])
+                          ])
                         ],
                         1
                       )
@@ -887,10 +809,10 @@ var render = function() {
             ],
             1
           )
-        }),
+        ],
         1
       )
-    ],
+    }),
     1
   )
 }
