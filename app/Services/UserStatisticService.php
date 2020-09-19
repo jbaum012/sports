@@ -92,7 +92,7 @@ class UserStatisticService
         $count = 0;
         foreach ($this->user->bets as $bet) {
             $lost = $bet->won === false;
-            $teamWonGame = $bet->team === $bet->game->scoreWinner();
+            $teamWonGame = $bet->team_id === $bet->game->scoreWinner()->id;
             if ($lost && $teamWonGame) {
                 ++$count;
             }
@@ -106,7 +106,7 @@ class UserStatisticService
         $count = 0;
         foreach ($this->user->bets as $bet) {
             $won = $bet->won;
-            $teamLostGame = $bet->team !== $bet->game->scoreWinner();
+            $teamLostGame = $bet->team_id !== $bet->game->scoreWinner()->id;
             if ($won && $teamLostGame) {
                 ++$count;
             }
