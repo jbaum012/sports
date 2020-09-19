@@ -222,7 +222,7 @@ export default {
   },
   computed: {
     sortedUsers() {
-      return orderBy(this.users, 'points')
+      return orderBy(this.users, 'points', 'desc')
     }
   },
   methods: {

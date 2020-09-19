@@ -240,7 +240,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     sortedUsers: function sortedUsers() {
-      return lodash_orderby__WEBPACK_IMPORTED_MODULE_3___default()(this.users, 'points');
+      return lodash_orderby__WEBPACK_IMPORTED_MODULE_3___default()(this.users, 'points', 'desc');
     }
   },
   methods: {
