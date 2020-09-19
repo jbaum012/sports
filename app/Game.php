@@ -103,7 +103,7 @@ class Game extends Model
 
     public function beatSpread()
     {
-        return is_null($this->spread) ? true : $this->scoreSpread() > $this->spread;
+        return is_null($this->spread) ? true : $this->spreadScore() > $this->spread;
     }
 
     public function season()
