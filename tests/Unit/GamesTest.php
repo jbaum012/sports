@@ -5,8 +5,6 @@ namespace Tests\Unit;
 use App\Season;
 use Carbon\Carbon;
 use Tests\TestCase;
-use Laravel\Sanctum\Sanctum;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class GamesTest extends TestCase

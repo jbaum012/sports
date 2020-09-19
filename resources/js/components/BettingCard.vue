@@ -121,7 +121,7 @@ export default {
       if (
         this.busy ||
         !this.game.allow_bets ||
-        this.game.user_bet.team.id === team.id
+        (this.game.user_bet !== null && this.game.user_bet.team.id === team.id)
       ) {
         return
       }

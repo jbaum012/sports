@@ -16,7 +16,6 @@ class Bet extends Model
         return is_null($this->game->winner)
             ? null
             : $this->game->winner == $this->team;
-        // return $this->game->winner === $this->team;
     }
 
     public function user()

@@ -1,15 +1,15 @@
 <template>
-  <div class="d-flex flex-column">
-    <b-card
-      class="mx-auto mb-2"
-      v-for="(user, index) in sortedUsers"
-      :key="user.id"
-    >
-      <user-card :user="user"
-        >:<code>{{ user.points }}</code></user-card
-      >
-    </b-card>
-  </div>
+  <b-container fluid>
+    <b-row cols="2">
+      <b-col v-for="(user, index) in sortedUsers" :key="user.id">
+        <b-card class="mx-auto mb-2">
+          <user-card :user="user" size="lg">
+            <code>{{ user.points }}</code>
+          </user-card>
+        </b-card>
+      </b-col>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
@@ -25,9 +25,10 @@ export default {
     }
   },
   beforeMount() {
-    axios.get('/api/standings').then(r => {
+    axios.get('/api/standings').then((r) => {
       this.users = r.data
     })
+    axios.get('/api/user/1/stats').then((r) => console.log(r.data))
   },
   computed: {
     sortedUsers() {

@@ -1,15 +1,16 @@
 <template>
   <b-tr>
     <b-td :class="homeTeamResults" class="text-right">
-      <user-card
-        v-for="bet in game.home_bets"
-        :key="bet.id"
-        :user="{ name: bet.user, avatar: bet.user_avatar }"
-        :highlight="bet.double_down"
-        class="ml-auto"
-        variant="icon"
-      >
-      </user-card>
+      <div class="d-flex">
+        <user-card
+          v-for="bet in game.home_bets"
+          :key="bet.id"
+          :user="{ name: bet.user, avatar: bet.user_avatar }"
+          :highlight="bet.double_down"
+          class="ml-auto"
+          variant="icon"
+        ></user-card>
+      </div>
     </b-td>
     <b-td :class="homeTeamResults">
       <team-card :team="game.home_team"></team-card>
@@ -17,15 +18,16 @@
     <b-td :class="awayTeamResults">
       <team-card :team="game.away_team"></team-card>
     </b-td>
-    <b-td :class="awayTeamResults" class="">
-      <user-card
-        v-for="bet in game.away_bets"
-        :key="bet.id"
-        :user="{ name: bet.user, avatar: bet.user_avatar }"
-        :highlight="bet.double_down"
-        variant="icon"
-      >
-      </user-card>
+    <b-td :class="awayTeamResults" class>
+      <div class="d-flex">
+        <user-card
+          v-for="bet in game.away_bets"
+          :key="bet.id"
+          :user="{ name: bet.user, avatar: bet.user_avatar }"
+          :highlight="bet.double_down"
+          variant="icon"
+        ></user-card>
+      </div>
     </b-td>
   </b-tr>
 </template>
