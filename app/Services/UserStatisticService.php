@@ -3,8 +3,10 @@
 namespace App\Services;
 
 use App\Game;
+use App\Team;
 use App\User;
-use App\Http\Resources\UserStatsResource;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Resources\TeamResource;
 
 class UserStatisticService
 {
@@ -94,6 +96,20 @@ class UserStatisticService
         return $count;
     }
 
+    // number of times you picked the losing team and won due to spread
+    public function twoHundredIq()
+    {
+        $count = null;
+        foreach ($this->user->bets as $bet) {
+            $won = $bet->won;
+            $teamLostGame = $bet->team !== $bet->game->scoreWinner();
+            if ($won && $teamLostGame) {
+                ++$count;
+            }
+        }
+        return $count;
+    }
+
     // Team that has gotten user the most points (none if tied)
     public function strongArm()
     {
@@ -101,14 +117,15 @@ class UserStatisticService
         foreach ($this->user->bets as $bet) {
             if ($bet->won) {
                 $multiplier = $bet->double_down ? 2 : 1;
-                $wonTeams[$bet->team_id] = $wonTeams[$bet->team_id] + (1 * $multiplier);
+                $currentValue = isset($wonTeams[$bet->team_id]) ? $wonTeams[$bet->team_id] : 0;
+                $wonTeams[$bet->team_id] = $currentValue + (1 * $multiplier);
             }
         }
         if (count($wonTeams) === 0) {
             return null;
         }
         $teams = array_keys($wonTeams, min($wonTeams));
-        return count($teams) > 1 ? null : $teams[0];
+        return count($teams) > 1 ? null : new TeamResource(Team::find($teams[0]));
     }
 
     // team that has lost the user the most points (none if tied)
@@ -118,43 +135,52 @@ class UserStatisticService
         foreach ($this->user->bets as $bet) {
             if ($bet->won) {
                 $multiplier = $bet->double_down ? 2 : 1;
-                $lostTeams[$bet->team_id] = $lostTeams[$bet->team_id] - (1 * $multiplier);
+                $currentValue = isset($lostTeams[$bet->team_id]) ? $lostTeams[$bet->team_id] : 0;
+                $lostTeams[$bet->team_id] = $currentValue + (1 * $multiplier);
             }
         }
         if (count($lostTeams) === 0) {
             return null;
         }
         $teams = array_keys($lostTeams, min($lostTeams));
-        return count($teams) > 1 ? null : $teams[0];
+        return count($teams) > 1 ? null : new TeamResource(Team::find($teams[0]));
     }
 
     // does the user have more points than Tony
     public function betterThanTony()
     {
+        $tony = User::where('name', 'Tony Vetter')->first();
+        if (is_null($tony)) {
+            return false;
+        }
+        return $this->user->currentPoints() > $tony->currentPoints();
     }
 
     // Most picked team
     public function favoriteTeam()
     {
+        $teams = $this->user->bets->groupBy('team_id');
+        $max = $teams->max();
+        return $max[0]->team;
     }
 
     // Most picked against team
     public function beGone()
     {
+        // $teams = $this->user->bets->groupBy('team_id');
+        // $max = $teams->max();
+        // return $max[0]->team;
     }
 
     // Number of times user won a double down
     public function doubleDo()
     {
+        return $this->user->bets->where('double_down', true)->where('won', true)->count();
     }
 
     // Number of times user lost a double down
     public function doubleDont()
     {
-    }
-
-    // number of times you picked the losing team and won due to spread
-    public function twoHundredIq()
-    {
+        return $this->user->bets->where('double_down', true)->where('won', false)->count();
     }
 }
