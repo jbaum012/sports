@@ -5,18 +5,21 @@ namespace App\Services;
 use App\Game;
 use App\Team;
 use App\User;
-use Illuminate\Support\Facades\Auth;
+use App\Season;
 use App\Http\Resources\TeamResource;
+use Illuminate\Support\Facades\Auth;
 
 class UserStatisticService
 {
     protected $user;
+    protected $week;
     protected $games;
 
     public function __construct(User $user)
     {
         $this->user = $user;
         $this->games = Game::all();
+        $this->week = Season::find(env('BETTING_SEASON', 1))->currentWeek();
     }
 
     public function getUserStats()
@@ -25,10 +28,11 @@ class UserStatisticService
             'id' => $this->user->id,
             'name' => $this->user->name,
             'avatar' => $this->user->avatar,
+            'points' => $this->user->currentPoints(),
+            'weekly_points' => $this->user->weeklyPoints($this->week),
             'lone_wolf' => $this->loneWolf(),
             'loan_wolf' => $this->loanWolf(),
             'dicked' => $this->dicked(),
-            'strong_arm' => $this->strongArm(),
             'strong_arm' => $this->strongArm(),
             'limp_dick' => $this->limpDick(),
             'better_than_tony' => $this->betterThanTony(),
@@ -36,7 +40,7 @@ class UserStatisticService
             'be_gone' => $this->beGone(),
             'double_do' => $this->doubleDo(),
             'double_dont' => $this->doubleDont(),
-            '200_iq' => $this->twoHundredIq()
+            '200_iq' => $this->twoHundredIq(),
         ];
     }
 
@@ -87,9 +91,9 @@ class UserStatisticService
     {
         $count = null;
         foreach ($this->user->bets as $bet) {
-            $lost = $bet->won === false;
-            $teamWonGame = $bet->team === $bet->game->scoreWinner();
-            if ($lost && $teamWonGame) {
+            $won = $bet->won;
+            $teamLostGame = $bet->team !== $bet->game->scoreWinner();
+            if ($won && $teamLostGame) {
                 ++$count;
             }
         }
@@ -101,9 +105,9 @@ class UserStatisticService
     {
         $count = null;
         foreach ($this->user->bets as $bet) {
-            $won = $bet->won;
-            $teamLostGame = $bet->team !== $bet->game->scoreWinner();
-            if ($won && $teamLostGame) {
+            $lost = $bet->won === false;
+            $teamWonGame = $bet->team === $bet->game->scoreWinner();
+            if ($lost && $teamWonGame) {
                 ++$count;
             }
         }
@@ -133,7 +137,7 @@ class UserStatisticService
     {
         $lostTeams = [];
         foreach ($this->user->bets as $bet) {
-            if ($bet->won) {
+            if ($bet->won === false) {
                 $multiplier = $bet->double_down ? 2 : 1;
                 $currentValue = isset($lostTeams[$bet->team_id]) ? $lostTeams[$bet->team_id] : 0;
                 $lostTeams[$bet->team_id] = $currentValue + (1 * $multiplier);
@@ -159,17 +163,27 @@ class UserStatisticService
     // Most picked team
     public function favoriteTeam()
     {
-        $teams = $this->user->bets->groupBy('team_id');
-        $max = $teams->max();
-        return $max[0]->team;
+        $picks = [];
+        foreach ($this->user->bets as $bet) {
+            $currentFrequency = isset($picks[$bet->team->id]) ? $picks[$bet->team->id] : 0;
+            $picks[$bet->team->id] = $currentFrequency + 1;
+        }
+        $team = array_keys($picks, max($picks));
+        return count($team) > 1 ? null : new TeamResource(Team::find($team[0]));
     }
 
     // Most picked against team
     public function beGone()
     {
-        // $teams = $this->user->bets->groupBy('team_id');
-        // $max = $teams->max();
-        // return $max[0]->team;
+        $betAgainst = [];
+        foreach ($this->user->bets as $bet) {
+            $pickedTeam = $bet->team;
+            $otherTeam = $bet->game->homeTeam === $pickedTeam ? $bet->game->awayTeam : $bet->game->homeTeam;
+            $currentFrequency = isset($betAgainst[$otherTeam->id]) ? $betAgainst[$otherTeam->id] : 0;
+            $betAgainst[$otherTeam->id] = $currentFrequency + 1;
+        }
+        $team = array_keys($betAgainst, max($betAgainst));
+        return count($team) > 1 ? null : new TeamResource(Team::find($team[0]));
     }
 
     // Number of times user won a double down

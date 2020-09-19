@@ -74,4 +74,23 @@ class User extends Authenticatable
         }
         return $total;
     }
+
+    public function weeklyPoints($week)
+    {
+        $total = 0;
+        $games = $this->bets->pluck('game');
+        $games = $games->where('week', $week)->pluck('id');
+        foreach ($this->bets as $bet) {
+            if (!$games->contains($bet->game_id)) {
+                continue;
+            }
+            $multiplier = $bet->double_down ? 2 : 1;
+            if ($bet->won) {
+                $total = $total + (1 * $multiplier);
+            } else {
+                $total = $total - (1 * $multiplier);
+            }
+        }
+        return $total;
+    }
 }

@@ -37,6 +37,4 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::delete('/game/{game}', 'GameController@destroy');
 
     Route::get('/standings', 'StandingsController@index');
-
-    Route::get('/user/{user}/stats', 'UserStatsController@show');
 });
