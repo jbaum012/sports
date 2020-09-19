@@ -159,7 +159,7 @@ export default {
   },
   computed: {
     sortedUsers() {
-      return this.users.sort((a, b) => a.points + b.points)
+      return this.users.sort((a, b) => b.points - a.points)
     }
   },
   methods: {
