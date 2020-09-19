@@ -1,1 +1,897 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{13:function(e,t,a){var r=a(167);"string"==typeof r&&(r=[[e.i,r,""]]);var s={hmr:!0,transform:void 0,insertInto:void 0};a(8)(r,s);r.locals&&(e.exports=r.locals)},166:function(e,t,a){"use strict";var r=a(13);a.n(r).a},167:function(e,t,a){(e.exports=a(7)(!1)).push([e.i,".outline-avatar{box-shadow:0 0 0 5px #ff69b4}.avatar{max-width:40px}",""])},17:function(e,t,a){"use strict";var r={props:{user:{type:Object,required:!0},highlight:{type:Boolean,default:!1},variant:{type:String,default:"default"},size:{type:String,default:"md"}},computed:{avatarSize:function(){return{"":"25px",sm:"30px",md:"50px",lg:"75px",xl:"180px"}[this.size]},margin:function(){return{"":"2px",sm:"5px",md:"10px",lg:"12px",xl:"15px"}[this.size]},nameSize:function(){return{"":".5rem",sm:".8rem",md:"1rem",lg:"2.2rem",xl:"4rem"}[this.size]},nameStyles:function(){return{"font-size":this.nameSize,"margin-right":this.margin}},avatarStyles:function(){return{"max-width":this.avatarSize,"margin-right":this.margin}}}},s=(a(166),a(2)),n=Object(s.a)(r,(function(){var e=this,t=e.$createElement,a=e._self._c||t;return a("div",{staticClass:"d-flex align-items-center"},[a("img",{ref:"avatar",staticClass:"img-fluid rounded-circle avatar",class:{"outline-avatar":e.highlight},style:e.avatarStyles,attrs:{src:e.user.avatar}}),e._v(" "),a("b-tooltip",{attrs:{target:function(){return e.$refs.avatar},triggers:"hover"}},[e._v(e._s(e.user.name))]),e._v(" "),"icon"!==e.variant?a("span",{style:e.nameStyles},[e._v(e._s(e.user.name))]):e._e(),e._v(" "),"icon"!==e.variant?e._t("default"):e._e()],2)}),[],!1,null,null,null);t.a=n.exports},206:function(e,t,a){"use strict";a.r(t);var r=a(3),s=a.n(r),n=a(5),i=a(9),l=a(17),o={components:{TeamCard:i.a,UserCard:l.a},props:{game:{type:Object,required:!0}},computed:{homeTeamResults:function(){return{"table-warning":null===this.game.winner&&this.game.has_scores,"table-success":null!==this.game.winner&&this.game.winner.id===this.game.home_team.id}},awayTeamResults:function(){return{"table-warning":null===this.game.winner&&this.game.has_scores,"table-success":null!==this.game.winner&&this.game.winner.id===this.game.away_team.id}}}},c=a(2),u={components:{GameBet:Object(c.a)(o,(function(){var e=this,t=e.$createElement,a=e._self._c||t;return a("b-tr",[a("b-td",{staticClass:"text-right",class:e.homeTeamResults},[a("div",{staticClass:"d-flex"},e._l(e.game.home_bets,(function(e){return a("user-card",{key:e.id,staticClass:"ml-auto",attrs:{user:{name:e.user,avatar:e.user_avatar},highlight:e.double_down,variant:"icon"}})})),1)]),e._v(" "),a("b-td",{class:e.homeTeamResults},[a("team-card",{attrs:{team:e.game.home_team}})],1),e._v(" "),a("b-td",{class:e.awayTeamResults},[a("team-card",{attrs:{team:e.game.away_team}})],1),e._v(" "),a("b-td",{class:e.awayTeamResults},[a("div",{staticClass:"d-flex"},e._l(e.game.away_bets,(function(e){return a("user-card",{key:e.id,attrs:{user:{name:e.user,avatar:e.user_avatar},highlight:e.double_down,variant:"icon"}})})),1)])],1)}),[],!1,null,"0799dd69",null).exports},props:{picks:{type:Array,required:!0},variant:{type:String,default:"secondary"},open:{type:Boolean,default:!1},week:{required:!0}}};function d(e,t){var a=Object.keys(e);if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(e);t&&(r=r.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),a.push.apply(a,r)}return a}function m(e,t,a){return t in e?Object.defineProperty(e,t,{value:a,enumerable:!0,configurable:!0,writable:!0}):e[t]=a,e}var p={data:function(){return{betsByWeek:[],busy:!0}},components:{WeeklyPicks:Object(c.a)(u,(function(){var e=this,t=e.$createElement,a=e._self._c||t;return e.picks?a("b-card",{staticClass:"mb-1",attrs:{"no-body":""}},[a("b-card-header",{staticClass:"p-1",attrs:{"header-tag":"header",role:"tab"}},[a("b-button",{directives:[{name:"b-toggle",rawName:"v-b-toggle",value:"collapse"+e.week,expression:"'collapse' + week"}],attrs:{block:"",variant:e.variant}},[e._v("Week "+e._s(e.week))])],1),e._v(" "),a("b-collapse",{attrs:{id:"collapse"+e.week,visible:e.open,role:"tabpanel"}},[a("b-card-body",[a("b-table-simple",{attrs:{hover:"",small:"",responsive:""}},[a("b-thead",[a("b-tr",[a("b-th",[e._v("Picked By")]),e._v(" "),a("b-th",[e._v("Home Team")]),e._v(" "),a("b-th",[e._v("Away Team")]),e._v(" "),a("b-th",[e._v("Picked By")])],1)],1),e._v(" "),a("b-tbody",e._l(e.picks,(function(e){return a("game-bet",{key:e.id,attrs:{game:e}})})),1)],1)],1)],1)],1):e._e()}),[],!1,null,"290cb42d",null).exports},mounted:function(){this.fetchBets()},computed:function(e){for(var t=1;t<arguments.length;t++){var a=null!=arguments[t]?arguments[t]:{};t%2?d(Object(a),!0).forEach((function(t){m(e,t,a[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(a)):d(Object(a)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(a,t))}))}return e}({},Object(n.c)(["currentWeek"])),methods:{fetchBets:function(){var e=this;s.a.get("/api/games").then((function(t){e.betsByWeek=t.data,e.busy=!1}))}}},h=Object(c.a)(p,(function(){var e=this,t=e.$createElement,a=e._self._c||t;return a("b-container",{attrs:{fluid:""}},[a("h1",[e._v("Picks")]),e._v(" "),e.busy?a("div",e._l(5,(function(e,t){return a("b-card",{key:t,staticClass:"mb-2"},[a("skeleton-loader",{attrs:{height:"40px",width:"100%","random-width":!1}})],1)})),1):a("div",e._l(e.betsByWeek,(function(t,r){return a("weekly-picks",{key:r,attrs:{picks:t,variant:r==e.currentWeek?"primary":"secondary",open:r==e.currentWeek,week:r}})})),1)])}),[],!1,null,"7124bbbf",null);t.default=h.exports},9:function(e,t,a){"use strict";var r={props:{team:{type:Object,required:!0},highlight:{type:Boolean,default:!1},score:{type:Number,default:null},variant:{type:String,default:"right"},dim:{type:Boolean,default:!1}},computed:{cardStyle:function(){return{outline:this.highlight?"10px solid hotpink":"1px solid black","flex-direction":"right"===this.variant?"row":"row-reverse"}},teamStyle:function(){return{backgroundColor:this.team.primary_color,borderBottom:"5px solid "+this.team.secondary_color}}}},s=a(2),n=Object(s.a)(r,(function(){var e=this,t=e.$createElement,a=e._self._c||t;return a("div",{staticClass:"d-flex flex-grow"},[e.dim?a("skeleton-loader",{attrs:{height:"45px",width:"100%"}}):a("div",{staticClass:"d-flex flex-grow w-100 text-center",style:e.cardStyle},[a("div",{staticClass:"p-2 pb-0 text-white text-center w-100",style:e.teamStyle},[e._v("\n        "+e._s(e.team.nickname)+"\n      ")]),e._v(" "),null!==e.score?a("div",{staticClass:"d-flex align-items-center p-2 bg-white h4 mb-0"},[e._v("\n        "+e._s(e.score)+"\n      ")]):e._e()])],1)}),[],!1,null,"773f1a21",null);t.a=n.exports}}]);
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[4],{
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Standings.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Standings.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_UserCard_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/UserCard.vue */ "./resources/js/components/UserCard.vue");
+/* harmony import */ var _components_TeamCard_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/TeamCard.vue */ "./resources/js/components/TeamCard.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    UserCard: _components_UserCard_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    TeamCard: _components_TeamCard_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
+  data: function data() {
+    return {
+      users: []
+    };
+  },
+  beforeMount: function beforeMount() {
+    var _this = this;
+
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/standings').then(function (r) {
+      _this.users = r.data;
+    });
+  },
+  computed: {
+    sortedUsers: function sortedUsers() {
+      return this.users.sort(function (a, b) {
+        return a.points + b.points;
+      });
+    }
+  },
+  methods: {
+    points: function points(value) {
+      if (value > 0) {
+        return '+' + value;
+      }
+
+      return value;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Standings.vue?vue&type=style&index=0&id=14c4b418&scoped=true&lang=scss&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Standings.vue?vue&type=style&index=0&id=14c4b418&scoped=true&lang=scss& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".point-box[data-v-14c4b418] {\n  border: 2px solid black;\n  text-align: center;\n}\n.point-box__title[data-v-14c4b418] {\n  border-bottom: 2px solid black;\n  font-size: 2rem;\n  width: 100%;\n}\n.point-box__score[data-v-14c4b418] {\n  font-size: 2rem;\n  color: #31ca5a;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Standings.vue?vue&type=style&index=0&id=14c4b418&scoped=true&lang=scss&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Standings.vue?vue&type=style&index=0&id=14c4b418&scoped=true&lang=scss& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./Standings.vue?vue&type=style&index=0&id=14c4b418&scoped=true&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Standings.vue?vue&type=style&index=0&id=14c4b418&scoped=true&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Standings.vue?vue&type=template&id=14c4b418&scoped=true&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Standings.vue?vue&type=template&id=14c4b418&scoped=true& ***!
+  \*******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "b-container",
+    { attrs: { fluid: "" } },
+    [
+      _c(
+        "b-row",
+        { attrs: { "cols-sm": "1", "cols-md": "2" } },
+        _vm._l(_vm.sortedUsers, function(user, index) {
+          return _c(
+            "b-col",
+            { key: user.id },
+            [
+              _c(
+                "b-card",
+                [
+                  _c(
+                    "b-row",
+                    { staticClass: "align-items-center mb-2" },
+                    [
+                      _c(
+                        "b-col",
+                        { staticClass: "d-flex", attrs: { sm: "12", md: "3" } },
+                        [
+                          _c("user-card", {
+                            staticClass: "mx-right",
+                            attrs: { user: user, size: "lg", variant: "icon" }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-col",
+                        {
+                          staticClass: "text-center",
+                          attrs: { sm: "12", md: "3" }
+                        },
+                        [
+                          _c("b-card", { staticClass: "text-center" }, [
+                            _vm._v("\n              Rank\n              "),
+                            _c("h2", { staticClass: "text-center m-0" }, [
+                              _vm._v(_vm._s(index + 1))
+                            ])
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-col",
+                        { attrs: { sm: "12", md: "3" } },
+                        [
+                          _c("b-card", { staticClass: "text-center" }, [
+                            _vm._v("\n              Weekly\n              "),
+                            _c("h2", { staticClass: "text-center m-0" }, [
+                              _vm._v(_vm._s(_vm.points(user.weekly_points)))
+                            ])
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-col",
+                        { attrs: { sm: "12", md: "3" } },
+                        [
+                          _c("b-card", { staticClass: "text-center" }, [
+                            _vm._v("\n              Overall\n              "),
+                            _c("h2", { staticClass: "text-center m-0" }, [
+                              _vm._v(_vm._s(user.points))
+                            ])
+                          ])
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-button",
+                    {
+                      directives: [
+                        {
+                          name: "b-toggle",
+                          rawName: "v-b-toggle",
+                          value: "user-stats-" + user.id,
+                          expression: "'user-stats-' + user.id"
+                        }
+                      ],
+                      attrs: { variant: "primary", block: "" }
+                    },
+                    [_vm._v("Stats")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-collapse",
+                    {
+                      staticClass: "mt-2",
+                      attrs: { id: "user-stats-" + user.id }
+                    },
+                    [
+                      _c(
+                        "b-table-simple",
+                        { attrs: { responsive: "", striped: "" } },
+                        [
+                          _c(
+                            "b-tbody",
+                            [
+                              _c(
+                                "b-tr",
+                                [
+                                  _c(
+                                    "b-td",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "b-tooltip",
+                                          rawName: "v-b-tooltip.right",
+                                          modifiers: { right: true }
+                                        }
+                                      ],
+                                      staticClass:
+                                        "text-right w-50 align-middle",
+                                      attrs: {
+                                        title:
+                                          "Number of times " +
+                                          user.name +
+                                          " was the only won to win a bet"
+                                      }
+                                    },
+                                    [_vm._v("Lone Wolf:")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "b-td",
+                                    { staticClass: "text-left w-50" },
+                                    [_vm._v(_vm._s(user.lone_wolf))]
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "b-tr",
+                                [
+                                  _c(
+                                    "b-td",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "b-tooltip",
+                                          rawName: "v-b-tooltip.right",
+                                          modifiers: { right: true }
+                                        }
+                                      ],
+                                      staticClass:
+                                        "text-right w-50 align-middle",
+                                      attrs: {
+                                        title:
+                                          "Number of times " +
+                                          user.name +
+                                          " was the only won to lose a bet"
+                                      }
+                                    },
+                                    [_vm._v("Loan Wolf:")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "b-td",
+                                    { staticClass: "text-left w-50" },
+                                    [_vm._v(_vm._s(user.loan_wolf))]
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "b-tr",
+                                [
+                                  _c(
+                                    "b-td",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "b-tooltip",
+                                          rawName: "v-b-tooltip.right",
+                                          modifiers: { right: true }
+                                        }
+                                      ],
+                                      staticClass:
+                                        "text-right w-50 align-middle",
+                                      attrs: {
+                                        title:
+                                          "Number of times " +
+                                          user.name +
+                                          "'s pick won the game but lost the spread"
+                                      }
+                                    },
+                                    [_vm._v("Dicked:")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "b-td",
+                                    { staticClass: "text-left w-50" },
+                                    [_vm._v(_vm._s(user.dicked))]
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "b-tr",
+                                [
+                                  _c(
+                                    "b-td",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "b-tooltip",
+                                          rawName: "v-b-tooltip.right",
+                                          modifiers: { right: true }
+                                        }
+                                      ],
+                                      staticClass:
+                                        "text-right w-50 align-middle",
+                                      attrs: {
+                                        title:
+                                          "Number of times " +
+                                          user.name +
+                                          "'s pick lost the game but won the spread"
+                                      }
+                                    },
+                                    [_vm._v("200 IQ play:")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "b-td",
+                                    { staticClass: "text-left w-50" },
+                                    [_vm._v(_vm._s(user["200_iq"]))]
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "b-tr",
+                                [
+                                  _c(
+                                    "b-td",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "b-tooltip",
+                                          rawName: "v-b-tooltip.right",
+                                          modifiers: { right: true }
+                                        }
+                                      ],
+                                      staticClass:
+                                        "text-right w-50 align-middle",
+                                      attrs: {
+                                        title:
+                                          "Number of times " +
+                                          user.name +
+                                          " successfully doubled down"
+                                      }
+                                    },
+                                    [_vm._v("Double Do:")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "b-td",
+                                    { staticClass: "text-left w-50" },
+                                    [_vm._v(_vm._s(user.double_do))]
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "b-tr",
+                                [
+                                  _c(
+                                    "b-td",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "b-tooltip",
+                                          rawName: "v-b-tooltip.right",
+                                          modifiers: { right: true }
+                                        }
+                                      ],
+                                      staticClass:
+                                        "text-right w-50 align-middle",
+                                      attrs: {
+                                        title:
+                                          "Number of times " +
+                                          user.name +
+                                          " unsuccessfully doubled down"
+                                      }
+                                    },
+                                    [_vm._v("Double Don't:")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "b-td",
+                                    { staticClass: "text-left w-50" },
+                                    [_vm._v(_vm._s(user.double_dont))]
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "b-tr",
+                                [
+                                  _c(
+                                    "b-td",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "b-tooltip",
+                                          rawName: "v-b-tooltip.right",
+                                          modifiers: { right: true }
+                                        }
+                                      ],
+                                      staticClass:
+                                        "text-right w-50 align-middle",
+                                      attrs: {
+                                        title:
+                                          "Team that has won " +
+                                          user.name +
+                                          " the most points"
+                                      }
+                                    },
+                                    [_vm._v("Strong Arm:")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "b-td",
+                                    {
+                                      staticClass: "text-left w-50 align-middle"
+                                    },
+                                    [
+                                      user.strong_arm !== null
+                                        ? _c("team-card", {
+                                            attrs: { team: user.strong_arm }
+                                          })
+                                        : _vm._e()
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "b-tr",
+                                [
+                                  _c(
+                                    "b-td",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "b-tooltip",
+                                          rawName: "v-b-tooltip.right",
+                                          modifiers: { right: true }
+                                        }
+                                      ],
+                                      staticClass:
+                                        "text-right w-50 align-middle",
+                                      attrs: {
+                                        title:
+                                          "Team that has lost " +
+                                          user.name +
+                                          " the most points"
+                                      }
+                                    },
+                                    [_vm._v("Limp Dick:")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "b-td",
+                                    {
+                                      staticClass: "text-left w-50 align-middle"
+                                    },
+                                    [
+                                      user.limp_dick !== null
+                                        ? _c("team-card", {
+                                            attrs: { team: user.limp_dick }
+                                          })
+                                        : _vm._e()
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "b-tr",
+                                [
+                                  _c(
+                                    "b-td",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "b-tooltip",
+                                          rawName: "v-b-tooltip.right",
+                                          modifiers: { right: true }
+                                        }
+                                      ],
+                                      staticClass:
+                                        "text-right w-50 align-middle",
+                                      attrs: {
+                                        title:
+                                          "Team that " +
+                                          user.name +
+                                          " has picked the most"
+                                      }
+                                    },
+                                    [_vm._v("Favorite Team:")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "b-td",
+                                    {
+                                      staticClass: "text-left w-50 align-middle"
+                                    },
+                                    [
+                                      user.favorite_team !== null
+                                        ? _c("team-card", {
+                                            attrs: { team: user.favorite_team }
+                                          })
+                                        : _vm._e()
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "b-tr",
+                                [
+                                  _c(
+                                    "b-td",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "b-tooltip",
+                                          rawName: "v-b-tooltip.right",
+                                          modifiers: { right: true }
+                                        }
+                                      ],
+                                      staticClass:
+                                        "text-right w-50 align-middle",
+                                      attrs: {
+                                        title:
+                                          "Team that " +
+                                          user.name +
+                                          " has bet against the most"
+                                      }
+                                    },
+                                    [_vm._v("BE GONE:")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "b-td",
+                                    {
+                                      staticClass: "text-left w-50 align-middle"
+                                    },
+                                    [
+                                      user.be_gone !== null
+                                        ? _c("team-card", {
+                                            attrs: { team: user.be_gone }
+                                          })
+                                        : _vm._e()
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "b-tr",
+                                [
+                                  _c(
+                                    "b-td",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "b-tooltip",
+                                          rawName: "v-b-tooltip.right",
+                                          modifiers: { right: true }
+                                        }
+                                      ],
+                                      staticClass:
+                                        "text-right w-50 align-middle",
+                                      attrs: { title: "Are you beating Tony?" }
+                                    },
+                                    [_vm._v("Mark of Shame:")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "b-td",
+                                    { staticClass: "text-left w-50" },
+                                    [
+                                      user.better_than_tony
+                                        ? _c("h2", { staticClass: "m-0" }, [
+                                            _vm._v("🏆")
+                                          ])
+                                        : _c("h2", { staticClass: "m-0" }, [
+                                            _vm._v("💩")
+                                          ])
+                                    ]
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        }),
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./resources/js/views/Standings.vue":
+/*!******************************************!*\
+  !*** ./resources/js/views/Standings.vue ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Standings_vue_vue_type_template_id_14c4b418_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Standings.vue?vue&type=template&id=14c4b418&scoped=true& */ "./resources/js/views/Standings.vue?vue&type=template&id=14c4b418&scoped=true&");
+/* harmony import */ var _Standings_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Standings.vue?vue&type=script&lang=js& */ "./resources/js/views/Standings.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Standings_vue_vue_type_style_index_0_id_14c4b418_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Standings.vue?vue&type=style&index=0&id=14c4b418&scoped=true&lang=scss& */ "./resources/js/views/Standings.vue?vue&type=style&index=0&id=14c4b418&scoped=true&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _Standings_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Standings_vue_vue_type_template_id_14c4b418_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Standings_vue_vue_type_template_id_14c4b418_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "14c4b418",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/views/Standings.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/views/Standings.vue?vue&type=script&lang=js&":
+/*!*******************************************************************!*\
+  !*** ./resources/js/views/Standings.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Standings_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Standings.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Standings.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Standings_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/views/Standings.vue?vue&type=style&index=0&id=14c4b418&scoped=true&lang=scss&":
+/*!****************************************************************************************************!*\
+  !*** ./resources/js/views/Standings.vue?vue&type=style&index=0&id=14c4b418&scoped=true&lang=scss& ***!
+  \****************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Standings_vue_vue_type_style_index_0_id_14c4b418_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./Standings.vue?vue&type=style&index=0&id=14c4b418&scoped=true&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Standings.vue?vue&type=style&index=0&id=14c4b418&scoped=true&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Standings_vue_vue_type_style_index_0_id_14c4b418_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Standings_vue_vue_type_style_index_0_id_14c4b418_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Standings_vue_vue_type_style_index_0_id_14c4b418_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Standings_vue_vue_type_style_index_0_id_14c4b418_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Standings_vue_vue_type_style_index_0_id_14c4b418_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/views/Standings.vue?vue&type=template&id=14c4b418&scoped=true&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/views/Standings.vue?vue&type=template&id=14c4b418&scoped=true& ***!
+  \*************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Standings_vue_vue_type_template_id_14c4b418_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Standings.vue?vue&type=template&id=14c4b418&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Standings.vue?vue&type=template&id=14c4b418&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Standings_vue_vue_type_template_id_14c4b418_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Standings_vue_vue_type_template_id_14c4b418_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ })
+
+}]);
