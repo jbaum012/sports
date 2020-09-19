@@ -13,6 +13,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_UserCard_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/UserCard.vue */ "./resources/js/components/UserCard.vue");
 /* harmony import */ var _components_TeamCard_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/TeamCard.vue */ "./resources/js/components/TeamCard.vue");
+/* harmony import */ var lodash_orderby__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash.orderby */ "./node_modules/lodash.orderby/index.js");
+/* harmony import */ var lodash_orderby__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash_orderby__WEBPACK_IMPORTED_MODULE_3__);
 //
 //
 //
@@ -153,6 +155,69 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -175,9 +240,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     sortedUsers: function sortedUsers() {
-      return this.users.sort(function (a, b) {
-        return a.points + b.points;
-      });
+      return lodash_orderby__WEBPACK_IMPORTED_MODULE_3___default()(this.users, 'points');
     }
   },
   methods: {
@@ -312,7 +375,11 @@ var render = function() {
                           _c("b-card", { staticClass: "text-center" }, [
                             _vm._v("\n              Weekly\n              "),
                             _c("h2", { staticClass: "text-center m-0" }, [
-                              _vm._v(_vm._s(_vm.points(user.weekly_points)))
+                              _vm._v(
+                                "\n                " +
+                                  _vm._s(_vm.points(user.weekly_points)) +
+                                  "\n              "
+                              )
                             ])
                           ])
                         ],
