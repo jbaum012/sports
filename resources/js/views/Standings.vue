@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <b-card v-for="(user, index) in sortedUsers" :key="user.id">
       <b-row class="align-items-center mb-2">
         <b-col

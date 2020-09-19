@@ -318,6 +318,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticClass: "container" },
     _vm._l(_vm.sortedUsers, function(user, index) {
       return _c(
         "b-card",
