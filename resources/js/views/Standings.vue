@@ -1,10 +1,14 @@
 <template>
   <b-container fluid>
-    <b-row cols-sm="1" cols-md="2">
-      <b-col v-for="(user, index) in sortedUsers" :key="user.id">
+    <b-row>
+      <b-col col="12" v-for="(user, index) in sortedUsers" :key="user.id">
         <b-card>
           <b-row class="align-items-center mb-2">
-            <b-col sm="12" md="3" class="d-flex">
+            <b-col
+              sm="12"
+              md="3"
+              class="d-flex justify-content-center align-items-center"
+            >
               <user-card
                 :user="user"
                 size="lg"
@@ -131,6 +135,7 @@
                       v-if="user.strong_arm !== null"
                       :team="user.strong_arm"
                     ></team-card>
+                    <span v-else class="text-muted">N/A</span>
                   </b-td>
                 </b-tr>
                 <b-tr>
@@ -147,6 +152,7 @@
                       v-if="user.limp_dick !== null"
                       :team="user.limp_dick"
                     ></team-card>
+                    <span v-else class="text-muted">N/A</span>
                   </b-td>
                 </b-tr>
                 <b-tr>
@@ -161,6 +167,7 @@
                       v-if="user.favorite_team !== null"
                       :team="user.favorite_team"
                     ></team-card>
+                    <span v-else class="text-muted">N/A</span>
                   </b-td>
                 </b-tr>
                 <b-tr>
@@ -177,6 +184,7 @@
                       v-if="user.be_gone !== null"
                       :team="user.be_gone"
                     ></team-card>
+                    <span v-else class="text-muted">N/A</span>
                   </b-td>
                 </b-tr>
                 <b-tr>
@@ -184,7 +192,7 @@
                     class="text-right w-50 align-middle"
                     v-b-tooltip.right
                     title="Are you beating Tony?"
-                    >Mark of Shame:</b-td
+                    >Better than tony?</b-td
                   >
                   <b-td class="text-left w-50">
                     <h2 v-if="user.better_than_tony" class="m-0">🏆</h2>

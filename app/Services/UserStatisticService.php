@@ -89,7 +89,7 @@ class UserStatisticService
     // Number of times user lost only because of the spread
     public function dicked()
     {
-        $count = null;
+        $count = 0;
         foreach ($this->user->bets as $bet) {
             $won = $bet->won;
             $teamLostGame = $bet->team !== $bet->game->scoreWinner();
@@ -103,7 +103,7 @@ class UserStatisticService
     // number of times you picked the losing team and won due to spread
     public function twoHundredIq()
     {
-        $count = null;
+        $count = 0;
         foreach ($this->user->bets as $bet) {
             $lost = $bet->won === false;
             $teamWonGame = $bet->team === $bet->game->scoreWinner();

@@ -217,6 +217,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -326,11 +334,10 @@ var render = function() {
     [
       _c(
         "b-row",
-        { attrs: { "cols-sm": "1", "cols-md": "2" } },
         _vm._l(_vm.sortedUsers, function(user, index) {
           return _c(
             "b-col",
-            { key: user.id },
+            { key: user.id, attrs: { col: "12" } },
             [
               _c(
                 "b-card",
@@ -341,7 +348,11 @@ var render = function() {
                     [
                       _c(
                         "b-col",
-                        { staticClass: "d-flex", attrs: { sm: "12", md: "3" } },
+                        {
+                          staticClass:
+                            "d-flex justify-content-center align-items-center",
+                          attrs: { sm: "12", md: "3" }
+                        },
                         [
                           _c("user-card", {
                             staticClass: "mx-right",
@@ -672,7 +683,11 @@ var render = function() {
                                         ? _c("team-card", {
                                             attrs: { team: user.strong_arm }
                                           })
-                                        : _vm._e()
+                                        : _c(
+                                            "span",
+                                            { staticClass: "text-muted" },
+                                            [_vm._v("N/A")]
+                                          )
                                     ],
                                     1
                                   )
@@ -715,7 +730,11 @@ var render = function() {
                                         ? _c("team-card", {
                                             attrs: { team: user.limp_dick }
                                           })
-                                        : _vm._e()
+                                        : _c(
+                                            "span",
+                                            { staticClass: "text-muted" },
+                                            [_vm._v("N/A")]
+                                          )
                                     ],
                                     1
                                   )
@@ -758,7 +777,11 @@ var render = function() {
                                         ? _c("team-card", {
                                             attrs: { team: user.favorite_team }
                                           })
-                                        : _vm._e()
+                                        : _c(
+                                            "span",
+                                            { staticClass: "text-muted" },
+                                            [_vm._v("N/A")]
+                                          )
                                     ],
                                     1
                                   )
@@ -801,7 +824,11 @@ var render = function() {
                                         ? _c("team-card", {
                                             attrs: { team: user.be_gone }
                                           })
-                                        : _vm._e()
+                                        : _c(
+                                            "span",
+                                            { staticClass: "text-muted" },
+                                            [_vm._v("N/A")]
+                                          )
                                     ],
                                     1
                                   )
@@ -826,7 +853,7 @@ var render = function() {
                                         "text-right w-50 align-middle",
                                       attrs: { title: "Are you beating Tony?" }
                                     },
-                                    [_vm._v("Mark of Shame:")]
+                                    [_vm._v("Better than tony?")]
                                   ),
                                   _vm._v(" "),
                                   _c(
