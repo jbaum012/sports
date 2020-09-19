@@ -322,7 +322,7 @@ var render = function() {
     _vm._l(_vm.sortedUsers, function(user, index) {
       return _c(
         "b-card",
-        { key: user.id },
+        { key: user.id, staticClass: "mb-2" },
         [
           _c(
             "b-row",
