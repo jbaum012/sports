@@ -81,7 +81,7 @@ class User extends Authenticatable
         $games = $this->bets->pluck('game');
         $games = $games->where('week', $week)->pluck('id');
         foreach ($this->bets as $bet) {
-            if (!$games->contains($bet->game_id)) {
+            if (!$games->contains($bet->game_id) || is_null($bet->won)) {
                 continue;
             }
             $multiplier = $bet->double_down ? 2 : 1;
