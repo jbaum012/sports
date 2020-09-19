@@ -1,6 +1,41 @@
 <template>
   <div class="container">
-    <b-card v-for="(user, index) in sortedUsers" :key="user.id" class="mb-2">
+    <b-card v-if="busy" class="mb-3" v-for="(n, index) in 5" :key="index">
+      <b-row class="align-items-center mb-2">
+        <b-col
+          sm="12"
+          md="3"
+          class="d-flex justify-content-center align-items-center"
+        >
+          <skeleton-loader height="75px" width="75px" border-radius="100%" />
+        </b-col>
+        <b-col sm="12" md="3" class="text-center">
+          <b-card class="text-center">
+            Rank
+            <h2 class="text-center m-0"><skeleton-loader /></h2>
+          </b-card>
+        </b-col>
+        <b-col sm="12" md="3" class="text-center">
+          <b-card class="text-center">
+            Weekly
+            <h2 class="text-center m-0"><skeleton-loader /></h2>
+          </b-card>
+        </b-col>
+        <b-col sm="12" md="3" class="text-center">
+          <b-card class="text-center">
+            Weekly
+            <h2 class="text-center m-0"><skeleton-loader /></h2>
+          </b-card>
+        </b-col>
+      </b-row>
+      <skeleton-loader height="38px" border-radius="4px" width="100%" />
+    </b-card>
+    <b-card
+      v-if="!busy"
+      v-for="(user, index) in sortedUsers"
+      :key="user.id"
+      class="mb-2"
+    >
       <b-row class="align-items-center mb-2">
         <b-col
           sm="12"
@@ -200,20 +235,24 @@
 import axios from 'axios'
 import UserCard from '../components/UserCard.vue'
 import TeamCard from '../components/TeamCard.vue'
+import SkeletonLoader from '../components/SkeletonLoader'
 import orderBy from 'lodash.orderby'
 export default {
   components: {
     UserCard,
-    TeamCard
+    TeamCard,
+    SkeletonLoader
   },
   data() {
     return {
-      users: []
+      users: [],
+      busy: true
     }
   },
   beforeMount() {
     axios.get('/api/standings').then(r => {
       this.users = r.data
+      this.busy = false
     })
   },
   computed: {
