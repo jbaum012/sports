@@ -44,7 +44,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -240,11 +239,10 @@ var render = function() {
       _c("b-td", { staticClass: "text-right", class: _vm.homeTeamResults }, [
         _c(
           "div",
-          { staticClass: "d-flex" },
+          { staticClass: "d-flex justify-content-end" },
           _vm._l(_vm.game.home_bets, function(bet) {
             return _c("user-card", {
               key: bet.id,
-              staticClass: "ml-auto",
               attrs: {
                 user: { name: bet.user, avatar: bet.user_avatar },
                 highlight: bet.double_down,

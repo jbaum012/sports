@@ -1,13 +1,12 @@
 <template>
   <b-tr>
     <b-td :class="homeTeamResults" class="text-right">
-      <div class="d-flex">
+      <div class="d-flex justify-content-end">
         <user-card
           v-for="bet in game.home_bets"
           :key="bet.id"
           :user="{ name: bet.user, avatar: bet.user_avatar }"
           :highlight="bet.double_down"
-          class="ml-auto"
           variant="icon"
         ></user-card>
       </div>
