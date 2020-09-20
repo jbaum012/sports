@@ -107,7 +107,7 @@ export default {
       this.fetchData()
     },
     weekDisplay(week) {
-      return moment.utc(week).format('dddd, MMM Do h:mm a')
+      return moment(week).format('dddd, MMM Do h:mm a')
     },
     ...mapMutations(['setTeams'])
   },
