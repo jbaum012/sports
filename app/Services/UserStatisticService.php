@@ -195,6 +195,6 @@ class UserStatisticService
     // Number of times user lost a double down
     public function doubleDont()
     {
-        return $this->user->bets->where('double_down', true)->where('won', false)->count();
+        return $this->user->bets->where('double_down', true)->whereNotNull('won')->where('won', false)->count();
     }
 }
