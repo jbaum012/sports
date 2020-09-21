@@ -30,7 +30,7 @@ export default {
       let titles = {
         golden_dick: 'Golden Dick: being dicked the most',
         double_dude: 'Double Dude: most successful double downs',
-        this_is_fine: 'This is fine: lease successful double downs',
+        this_is_fine: 'This is fine: most unsuccessful double downs',
         party_wolf: 'Party Wolf: most lone wolfs',
         poor: 'Poor: most loan wolfs',
         einstein: 'Big Brain: most 200 IQ plays'
