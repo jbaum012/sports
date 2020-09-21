@@ -43,10 +43,10 @@ export default {
 
 <style lang="scss">
 .achievement {
-  opacity: 20%;
+  opacity: 0.2;
   max-width: 40px;
   &.active {
-    opacity: 100%;
+    opacity: 1;
   }
 }
 </style>
