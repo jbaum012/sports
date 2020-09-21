@@ -41,12 +41,12 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .achievement {
   opacity: 20%;
   max-width: 40px;
   &.active {
-    opacity: 1;
+    opacity: 100%;
   }
 }
 </style>
