@@ -128,7 +128,7 @@ class UserStatisticService
         if (count($wonTeams) === 0) {
             return null;
         }
-        $teams = array_keys($wonTeams, min($wonTeams));
+        $teams = array_keys($wonTeams, max($wonTeams));
         return count($teams) > 1 ? null : new TeamResource(Team::find($teams[0]));
     }
 
@@ -169,7 +169,6 @@ class UserStatisticService
             $picks[$bet->team->id] = $currentFrequency + 1;
         }
         $team = array_keys($picks, max($picks));
-        return count($team);
         return count($team) > 1 ? null : new TeamResource(Team::find($team[0]));
     }
 
