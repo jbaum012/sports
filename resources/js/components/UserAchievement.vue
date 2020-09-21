@@ -3,7 +3,7 @@
     class="achievement img-fluid"
     :class="achievementClasses"
     :src="'/images/'+variant+'.png'"
-    v-b-tooltip.auto
+    v-b-tooltip.top
     :title="variantTitle"
   />
 </template>
