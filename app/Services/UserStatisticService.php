@@ -37,7 +37,7 @@ class UserStatisticService
             'limp_dick' => $this->limpDick(),
             'better_than_tony' => $this->betterThanTony(),
             'favorite_team' => $this->favoriteTeam(),
-            'be_gone' => $this->beGone(),
+            'rejected' => $this->rejected(),
             'double_do' => $this->doubleDo(),
             'double_dont' => $this->doubleDont(),
             '200_iq' => $this->twoHundredIq(),
@@ -129,7 +129,10 @@ class UserStatisticService
             return null;
         }
         $teams = array_keys($wonTeams, max($wonTeams));
-        return count($teams) > 1 ? null : new TeamResource(Team::find($teams[0]));
+        return count($teams) === 0 ? null : [
+            'team' => new TeamResource(Team::find($teams[0])),
+            'score' => max($wonTeams)
+        ];
     }
 
     // team that has lost the user the most points (none if tied)
@@ -146,8 +149,11 @@ class UserStatisticService
         if (count($lostTeams) === 0) {
             return null;
         }
-        $teams = array_keys($lostTeams, min($lostTeams));
-        return count($teams) > 1 ? null : new TeamResource(Team::find($teams[0]));
+        $teams = array_keys($lostTeams, max($lostTeams));
+        return count($teams) === 0 ? null : [
+            'score' => max($lostTeams),
+            'team' => new TeamResource(Team::find($teams[0]))
+        ];
     }
 
     // does the user have more points than Tony
@@ -169,21 +175,27 @@ class UserStatisticService
             $picks[$bet->team->id] = $currentFrequency + 1;
         }
         $team = array_keys($picks, max($picks));
-        return count($team) > 1 ? null : new TeamResource(Team::find($team[0]));
+        return count($team) === 0 ? null : [
+            'team' => new TeamResource(Team::find($team[0])),
+            'score' => max($picks)
+        ];
     }
 
     // Most picked against team
-    public function beGone()
+    public function rejected()
     {
         $betAgainst = [];
         foreach ($this->user->bets as $bet) {
             $pickedTeam = $bet->team;
-            $otherTeam = $bet->game->homeTeam === $pickedTeam ? $bet->game->awayTeam : $bet->game->homeTeam;
+            $otherTeam = $bet->game->opponent($pickedTeam->id);
             $currentFrequency = isset($betAgainst[$otherTeam->id]) ? $betAgainst[$otherTeam->id] : 0;
             $betAgainst[$otherTeam->id] = $currentFrequency + 1;
         }
-        $team = array_keys($betAgainst, max($betAgainst));
-        return count($team) > 1 ? null : new TeamResource(Team::find($team[0]));
+        $teams = array_keys($betAgainst, max($betAgainst));
+        return count($teams) === 0 ? null : [
+            'team' => new TeamResource(Team::find($teams[0])),
+            'score' => max($betAgainst)
+        ];
     }
 
     // Number of times user won a double down

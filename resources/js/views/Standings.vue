@@ -162,7 +162,9 @@
               <b-td class="text-left w-50 align-middle">
                 <team-card
                   v-if="user.strong_arm !== null"
-                  :team="user.strong_arm"
+                  :team="user.strong_arm.team"
+                  :score="user.strong_arm.score"
+                  variant="left"
                 ></team-card>
                 <span v-else class="text-muted">N/A</span>
               </b-td>
@@ -177,7 +179,9 @@
               <b-td class="text-left w-50 align-middle">
                 <team-card
                   v-if="user.limp_dick !== null"
-                  :team="user.limp_dick"
+                  :team="user.limp_dick.team"
+                  :score="user.limp_dick.score"
+                  variant="left"
                 ></team-card>
                 <span v-else class="text-muted">N/A</span>
               </b-td>
@@ -192,7 +196,9 @@
               <b-td class="text-left w-50 align-middle">
                 <team-card
                   v-if="user.favorite_team !== null"
-                  :team="user.favorite_team"
+                  :team="user.favorite_team.team"
+                  :score="user.favorite_team.score"
+                  variant="left"
                 ></team-card>
                 <span v-else class="text-muted">N/A</span>
               </b-td>
@@ -202,12 +208,14 @@
                 class="text-right w-50 align-middle"
                 v-b-tooltip.right
                 :title="'Team that ' + user.name + ' has bet against the most'"
-                >BE GONE:</b-td
+                >Rejected:</b-td
               >
               <b-td class="text-left w-50 align-middle">
                 <team-card
-                  v-if="user.be_gone !== null"
-                  :team="user.be_gone"
+                  v-if="user.rejected !== null"
+                  :team="user.rejected.team"
+                  :score="user.rejected.score"
+                  variant="left"
                 ></team-card>
                 <span v-else class="text-muted">N/A</span>
               </b-td>

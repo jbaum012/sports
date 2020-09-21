@@ -131,4 +131,11 @@ class Game extends Model
     {
         return $this->belongsTo('App\Team', 'away_team_id');
     }
+
+    public function opponent($teamId)
+    {
+        return $teamId === $this->home_team_id
+            ? $this->awayTeam
+            : $this->homeTeam;
+    }
 }
