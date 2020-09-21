@@ -149,13 +149,13 @@ __webpack_require__.r(__webpack_exports__);
     nameStyles: function nameStyles() {
       return {
         'font-size': this.nameSize,
+        'margin-left': this.margin,
         'margin-right': this.margin
       };
     },
     avatarStyles: function avatarStyles() {
       return {
-        'max-width': this.avatarSize,
-        'margin-right': this.margin
+        'max-width': this.avatarSize
       };
     }
   }

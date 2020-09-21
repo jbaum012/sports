@@ -67,13 +67,13 @@ export default {
     nameStyles() {
       return {
         'font-size': this.nameSize,
+        'margin-left': this.margin,
         'margin-right': this.margin
       }
     },
     avatarStyles() {
       return {
-        'max-width': this.avatarSize,
-        'margin-right': this.margin
+        'max-width': this.avatarSize
       }
     }
   }
