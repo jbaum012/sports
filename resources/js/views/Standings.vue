@@ -257,7 +257,7 @@ export default {
   },
   computed: {
     sortedUsers() {
-      return orderBy(this.users, 'points', 'desc')
+      return orderBy(this.users, 'weekly_points', 'desc')
     }
   },
   methods: {

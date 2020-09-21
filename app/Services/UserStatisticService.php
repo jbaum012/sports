@@ -157,7 +157,7 @@ class UserStatisticService
         if (is_null($tony)) {
             return false;
         }
-        return $this->user->currentPoints() > $tony->currentPoints();
+        return $this->user->weeklyPoints($this->week) > $tony->weeklyPoints($this->week);
     }
 
     // Most picked team
@@ -169,6 +169,7 @@ class UserStatisticService
             $picks[$bet->team->id] = $currentFrequency + 1;
         }
         $team = array_keys($picks, max($picks));
+        return count($team);
         return count($team) > 1 ? null : new TeamResource(Team::find($team[0]));
     }
 
