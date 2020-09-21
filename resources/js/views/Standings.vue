@@ -15,7 +15,7 @@
         </b-col>
         <b-col sm="12" md="3" class="text-center">
           <b-card class="text-center">
-            Rank
+            Weekly Rank
             <h2 class="text-center m-0">
               <skeleton-loader />
             </h2>
@@ -55,8 +55,8 @@
         </b-col>
         <b-col sm="12" md="3" class="text-center">
           <b-card class="text-center">
-            Rank
-            <h2 class="text-center m-0">{{ index + 1 }}</h2>
+            Weekly Rank
+            <h2 class="text-center m-0">{{ getRank(user.weekly_points) }}</h2>
           </b-card>
         </b-col>
         <b-col sm="12" md="3">
@@ -217,8 +217,11 @@
                 title="Are you beating Tony?"
               >Better than tony?</b-td>
               <b-td class="text-left w-50">
-                <h2 v-if="user.better_than_tony" class="m-0">🏆</h2>
-                <h2 v-else class="m-0">💩</h2>
+                <div v-if="user.name !== 'Tony Vetter'">
+                  <h2 v-if="user.better_than_tony" class="m-0">🏆</h2>
+                  <h2 v-else class="m-0">💩</h2>
+                </div>
+                <h2 v-else class="m-0" v-b-tooltip.right title="Tony #1 in our hearts">❤️</h2>
               </b-td>
             </b-tr>
           </b-tbody>
@@ -267,6 +270,12 @@ export default {
         poor: this.getMax('loan_wolf'),
         einstein: this.getMax('200_iq')
       }
+    },
+    scores() {
+      return this.users
+        .map((u) => u.weekly_points)
+        .sort()
+        .reverse()
     }
   },
   methods: {
@@ -281,6 +290,9 @@ export default {
       return this.users.filter((user) => {
         return user[property] === max
       })[0]
+    },
+    getRank(weeklyScore) {
+      return this.scores.indexOf(weeklyScore) + 1
     }
   }
 }
