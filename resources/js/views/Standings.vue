@@ -78,7 +78,7 @@
           <b-tbody>
             <b-tr>
               <b-td class="text-right w-50 align-middle">Winnings:</b-td>
-              <b-td class="text-left w-50">${{ user.winnings / 100 }}</b-td>
+              <b-td class="text-left w-50">{{ winnings(user.winnings) }}</b-td>
             </b-tr>
             <b-tr>
               <b-td
@@ -283,6 +283,13 @@ export default {
     }
   },
   methods: {
+    winnings(cents) {
+      let money = cents / 100
+      return money.toLocaleString('en-US', {
+        style: 'currency',
+        currency: 'USD'
+      })
+    },
     points(value) {
       if (value > 0) {
         return '+' + value
