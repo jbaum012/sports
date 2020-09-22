@@ -80,6 +80,9 @@ class User extends Authenticatable
         $total = 0;
         $games = $this->bets->pluck('game');
         $games = $games->where('week', $week)->pluck('id');
+        if (empty($games)) {
+            return null;
+        }
         foreach ($this->bets as $bet) {
             if (!$games->contains($bet->game_id) || is_null($bet->won)) {
                 continue;

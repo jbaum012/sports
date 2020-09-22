@@ -31,7 +31,7 @@
         </b-col>
         <b-col sm="12" md="3" class="text-center">
           <b-card class="text-center">
-            Weekly
+            Overall
             <h2 class="text-center m-0">
               <skeleton-loader />
             </h2>
@@ -76,6 +76,10 @@
       <b-collapse :id="'user-stats-' + user.id" class="mt-2">
         <b-table-simple responsive striped>
           <b-tbody>
+            <b-tr>
+              <b-td class="text-right w-50 align-middle">Winnings:</b-td>
+              <b-td class="text-left w-50">${{ user.winnings / 100 }}</b-td>
+            </b-tr>
             <b-tr>
               <b-td
                 class="text-right w-50 align-middle"

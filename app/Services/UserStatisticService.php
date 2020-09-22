@@ -14,12 +14,15 @@ class UserStatisticService
     protected $user;
     protected $week;
     protected $games;
+    protected $winnings;
 
     public function __construct(User $user)
     {
+        $season = Season::find(env('BETTING_SEASON', 1));
         $this->user = $user;
         $this->games = Game::all();
-        $this->week = Season::find(env('BETTING_SEASON', 1))->currentWeek();
+        $this->week = $season->currentWeek();
+        $this->winnings = $season->winnings();
     }
 
     public function getUserStats()
@@ -41,6 +44,7 @@ class UserStatisticService
             'double_do' => $this->doubleDo(),
             'double_dont' => $this->doubleDont(),
             '200_iq' => $this->twoHundredIq(),
+            'winnings' => $this->winnings[$this->user->id]
         ];
     }
 
