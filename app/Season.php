@@ -48,7 +48,7 @@ class Season extends Model
                 }
                 $won = array_search($user->weeklyPoints($week), $scores) === 0;
                 if ($won) {
-                    $score = floor((count($scores) * $this->score_card_cost - $this->score_card_cost) / $winners);
+                    $score = floor((count($scores) * $this->score_card_cost / $winners) - $this->score_card_cost);
                 } else {
                     $score  = -$this->score_card_cost;
                 }
