@@ -112,6 +112,11 @@ class Game extends Model
         return $this->belongsTo('App\Season');
     }
 
+    public function week()
+    {
+        return $this->belongsTo('App\Week');
+    }
+
     public function bets()
     {
         return $this->hasMany('App\Bet');

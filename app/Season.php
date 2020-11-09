@@ -23,7 +23,7 @@ class Season extends Model
 
     public function winnings()
     {
-        $users = User::all();
+        $users = User::with('bets')->with('bets.game')->get();
         $weeklyScores = [];
         $winnings = [];
         foreach (range(1, $this->currentWeek()) as $week) {

@@ -8,6 +8,7 @@ use App\User;
 use App\Season;
 use App\Http\Resources\TeamResource;
 use Illuminate\Support\Facades\Auth;
+use PDO;
 
 class UserStatisticService
 {
@@ -16,13 +17,17 @@ class UserStatisticService
     protected $games;
     protected $winnings;
 
-    public function __construct(User $user)
+    public function __construct()
     {
         $season = Season::find(env('BETTING_SEASON', 1));
-        $this->user = $user;
-        $this->games = Game::all();
+        $this->games = Game::with('bets')->get();
         $this->week = $season->currentWeek();
         $this->winnings = $season->winnings();
+    }
+
+    public function setUser($user)
+    {
+        $this->user = $user;
     }
 
     public function getUserStats()

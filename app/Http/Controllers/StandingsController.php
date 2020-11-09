@@ -11,10 +11,11 @@ class StandingsController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::with('bets')->with('bets.game')->get();
         $data = [];
+        $statService = new UserStatisticService();
         foreach ($users as $user) {
-            $statService = new UserStatisticService($user);
+            $statService->setUser($user);
             $data[] = ($statService->getUserStats());
         }
         return response()->json($data);

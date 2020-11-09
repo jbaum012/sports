@@ -77,14 +77,10 @@ class User extends Authenticatable
 
     public function weeklyPoints($week)
     {
+        $bets = $this->bets->where('week_id', $week);
         $total = 0;
-        $games = $this->bets->pluck('game');
-        $games = $games->where('week', $week)->pluck('id');
-        if (empty($games)) {
-            return null;
-        }
-        foreach ($this->bets as $bet) {
-            if (!$games->contains($bet->game_id) || is_null($bet->won)) {
+        foreach ($bets as $bet) {
+            if (is_null($bet->won)) {
                 continue;
             }
             $multiplier = $bet->double_down ? 2 : 1;

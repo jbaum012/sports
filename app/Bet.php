@@ -28,6 +28,11 @@ class Bet extends Model
         return $this->belongsTo('App\Game');
     }
 
+    public function week()
+    {
+        return $this->belongsTo('App\Week');
+    }
+
     public function team()
     {
         return $this->belongsTo('App\Team');

@@ -45,12 +45,12 @@
         <b-col sm="12" md="3" class="d-flex justify-content-center align-items-center flex-column">
           <user-card :user="user" size="lg" variant="icon"></user-card>
           <div class="d-flex justify-content-around w-100 mt-2">
-            <user-achievement variant="golden_dick" :active="user === achievements.golden_dick" />
+            <!-- <user-achievement variant="golden_dick" :active="user === achievements.golden_dick" />
             <user-achievement variant="double_dude" :active="user === achievements.double_dude" />
             <user-achievement variant="this_is_fine" :active="user === achievements.this_is_fine" />
             <user-achievement variant="party_wolf" :active="user === achievements.party_wolf" />
             <user-achievement variant="poor" :active="user === achievements.poor" />
-            <user-achievement variant="einstein" :active="user === achievements.einstein" />
+            <user-achievement variant="einstein" :active="user === achievements.einstein" /> -->
           </div>
         </b-col>
         <b-col sm="12" md="3" class="text-center">
