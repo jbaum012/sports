@@ -43,10 +43,10 @@ class CreateWeekTable extends Migration
             $gameWeek->save();
 
             foreach ($games as $game) {
-                $game->week_id = $game->week;
+                $game->week_id = $game->findWeek();
                 $game->save();
                 foreach ($game->bets as $bet) {
-                    $bet->week_id = $game->week;
+                    $bet->week_id = $game->week_id;
                     $bet->save();
                 }
             }

@@ -37,6 +37,7 @@ class BetController extends Controller
             $bet->game_id = $args['game_id'];
             $bet->user_id = Auth::id();
             $bet->double_down = false;
+            $bet->week_id = $game->week_id;
             $bet->save();
         }
         return new BetResource($bet);

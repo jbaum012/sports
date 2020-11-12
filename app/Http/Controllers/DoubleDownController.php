@@ -10,7 +10,7 @@ class DoubleDownController extends Controller
 {
     public function store(Bet $bet)
     {
-        if ($bet->user->doubleDownCount($bet->game->week) <= 1) {
+        if ($bet->user->doubleDownCount($bet->game->week->number) <= 1) {
             $bet->double_down = true;
             $bet->save();
         }

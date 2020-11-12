@@ -36,7 +36,7 @@ class Game extends Model
         return $this->bets()->where('user_id', Auth::id())->first();
     }
 
-    public function getWeekAttribute()
+    public function findWeek()
     {
         return $this->season->starts_at->diffInWeeks($this->starts_at) + 1;
     }

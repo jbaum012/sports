@@ -11,6 +11,7 @@ $factory->define(Bet::class, function (Faker $faker) {
         'game_id' => $game->id,
         'user_id' => fn () => factory('App\User')->create()->id,
         'team_id' => $game->home_team_id,
-        'double_down' => $faker->boolean()
+        'double_down' => $faker->boolean(),
+        'week_id' => $game->week_id
     ];
 });

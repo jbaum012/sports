@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Game;
+use App\Week;
+use App\Season;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Resources\GameResource;
@@ -18,7 +20,7 @@ class GameController extends Controller
     {
         $games = Game::all();
         $collection = GameResource::collection($games);
-        return $collection->groupBy('week')->reverse();
+        return $collection->groupBy('week_id');
     }
 
     /**
@@ -43,6 +45,21 @@ class GameController extends Controller
         $game->away_team_score = $args['away_team_score'];
         $game->spread = $args['spread'];
         $game->spread_team_id = $args['spread_team_id'];
+
+        $gameWeek = $game->findWeek();
+        $week = Week::find($gameWeek);
+
+        if (is_null($week)) {
+            $season = Season::find(env('BETTING_SEASON', 1));
+            $week = new Week();
+            $week->starts = $season->starts_at->addWeeks($gameWeek);
+            $week->number = $gameWeek;
+            $week->save();
+            $game->week_id = $week->id;
+        } else {
+            $game->week_id = $week;
+        }
+
         $game->save();
 
         return new GameResource($game);

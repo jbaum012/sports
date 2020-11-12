@@ -20,22 +20,25 @@ class GamesTest extends TestCase
 
         $game1 = factory('App\Game')->create([
             'season_id' => $season->id,
-            'starts_at' => Carbon::create('2020', '10', '08', '19', '30', 0)
+            'starts_at' => Carbon::create('2020', '10', '08', '19', '30', 0),
+            'week_id' => fn () => factory('App\Week')->create(['number' => 5])->id
         ]);
 
         $game2 = factory('App\Game')->create([
             'season_id' => $season->id,
-            'starts_at' => Carbon::create('2020', '09', '10', '19', '30', 0)
+            'starts_at' => Carbon::create('2020', '09', '10', '19', '30', 0),
+            'week_id' => fn () => factory('App\Week')->create(['number' => 1])->id
         ]);
 
         $game3 = factory('App\Game')->create([
             'season_id' => $season->id,
-            'starts_at' => Carbon::create('2020', '11', '19', '19', '30', 0)
+            'starts_at' => Carbon::create('2020', '11', '19', '19', '30', 0),
+            'week_id' => fn () => factory('App\Week')->create(['number' => 11])->id
         ]);
 
-        $this->assertEquals(5, $game1->week);
-        $this->assertEquals(1, $game2->week);
-        $this->assertEquals(11, $game3->week);
+        $this->assertEquals(5, $game1->week->number);
+        $this->assertEquals(1, $game2->week->number);
+        $this->assertEquals(11, $game3->week->number);
     }
 
     /** @test **/

@@ -48,6 +48,7 @@ export default {
     fetchBets() {
       axios.get('/api/games').then(r => {
         this.betsByWeek = r.data
+        console.log(typeof this.betsByWeek)
         this.busy = false
       })
     }

@@ -21,7 +21,7 @@ class GameResource extends JsonResource
             'home_team_id' => $this->home_team_id,
             'away_team_id' => $this->away_team_id,
             'spread_team_id' => $this->spread_team_id,
-            'week' => $this->week,
+            'week' => $this->week->number,
             'date' => $this->starts_at->toJSON(),
             'time' => $this->starts_at->format('H:i:s'),
             'home_team_score' => $this->home_team_score,

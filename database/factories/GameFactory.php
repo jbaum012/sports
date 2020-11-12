@@ -11,5 +11,6 @@ $factory->define(Game::class, function (Faker $faker) {
         'starts_at' => $faker->dateTime(),
         'home_team_id' => fn () => factory('App\Team')->create()->id,
         'away_team_id' => fn () => factory('App\Team')->create()->id,
+        'week_id' => fn () => factory('App\Week')->create()->id
     ];
 });

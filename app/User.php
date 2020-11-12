@@ -52,7 +52,7 @@ class User extends Authenticatable
             if (is_null($game->user_bet)) {
                 return false;
             }
-            return $game->week == $week && $game->user_bet->double_down;
+            return $game->week->number == $week && $game->user_bet->double_down;
         });
         return $filtered->count();
     }

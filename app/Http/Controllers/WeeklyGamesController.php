@@ -13,7 +13,7 @@ class WeeklyGamesController extends Controller
     {
         $games = Game::where('season_id', env('BETTING_SEASON', 1))
             ->orderBy('starts_at')->get()
-            ->where('week', $week_id);
+            ->where('week.number', $week_id);
 
         return GameResource::collection($games);
     }
