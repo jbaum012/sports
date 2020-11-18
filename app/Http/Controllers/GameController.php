@@ -57,7 +57,7 @@ class GameController extends Controller
             $week->save();
             $game->week_id = $week->id;
         } else {
-            $game->week_id = $week;
+            $game->week_id = $week->id;
         }
 
         $game->save();
