@@ -23,7 +23,7 @@
     </b-navbar>
     <b-container fluid class="p-0">
       <b-row :no-gutters="true">
-        <b-col class="mt-3 ml-sm-3">
+        <b-col class="mt-3 ml-sm-3" v-if="currentWeek !== null">
           <router-view></router-view>
         </b-col>
       </b-row>
@@ -35,7 +35,7 @@
 import axios from 'axios'
 import { mapMutations, mapState } from 'vuex'
 export default {
-  beforeMount() {
+  beforeCreate() {
     axios.get('/api/current-week').then(r => this.setCurrentWeek(r.data))
   },
   methods: {
