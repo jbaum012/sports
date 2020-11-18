@@ -3,12 +3,9 @@
     <h1>Picks</h1>
     <div v-if="!busy">
       <weekly-picks
-        v-for="(week, index) in betsByWeek"
-        :key="index"
-        :picks="week"
-        :variant="index == currentWeek ? 'primary' : 'secondary'"
-        :open="index == currentWeek"
-        :week="index"
+        :picks="betsForWeek"
+        :open="true"
+        :week="currentWeek"
       >
       </weekly-picks>
     </div>
@@ -32,6 +29,7 @@ export default {
   data() {
     return {
       betsByWeek: [],
+      betsForWeek: [],
       busy: true
     }
   },
@@ -46,9 +44,9 @@ export default {
   },
   methods: {
     fetchBets() {
-      axios.get('/api/games').then(r => {
-        this.betsByWeek = r.data
-        console.log(typeof this.betsByWeek)
+      axios.get('/api/week/9/games').then(r => {
+        this.betsForWeek = r.data
+        console.log(typeof this.betsForWeek)
         this.busy = false
       })
     }
