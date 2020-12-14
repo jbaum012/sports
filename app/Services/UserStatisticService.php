@@ -32,6 +32,9 @@ class UserStatisticService
 
     public function getUserStats()
     {
+        if (!$this->user->bets) {
+            return [];
+        }
         return [
             'id' => $this->user->id,
             'name' => $this->user->name,

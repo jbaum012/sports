@@ -47,7 +47,7 @@ class User extends Authenticatable
 
     public function doubleDownCount($week)
     {
-        $games = Game::all();
+        $games = Week::firstOrFail('number', $week)->games;
         $filtered = $games->filter(function ($game) use ($week) {
             if (is_null($game->user_bet)) {
                 return false;
