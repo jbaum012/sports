@@ -7,8 +7,6 @@ use App\Team;
 use App\User;
 use App\Season;
 use App\Http\Resources\TeamResource;
-use Illuminate\Support\Facades\Auth;
-use PDO;
 
 class UserStatisticService
 {
@@ -181,13 +179,13 @@ class UserStatisticService
     // Most picked team
     public function favoriteTeam()
     {
-        if (empty($this->user->bets)) {
-            return null;
-        }
         $picks = [];
         foreach ($this->user->bets as $bet) {
             $currentFrequency = isset($picks[$bet->team->id]) ? $picks[$bet->team->id] : 0;
             $picks[$bet->team->id] = $currentFrequency + 1;
+        }
+        if (empty($picks)) {
+            return null;
         }
         $team = array_keys($picks, max($picks));
         return count($team) === 0 ? null : [
@@ -208,6 +206,9 @@ class UserStatisticService
             $otherTeam = $bet->game->opponent($pickedTeam->id);
             $currentFrequency = isset($betAgainst[$otherTeam->id]) ? $betAgainst[$otherTeam->id] : 0;
             $betAgainst[$otherTeam->id] = $currentFrequency + 1;
+        }
+        if (empty($betAgainst)) {
+            return null;
         }
         $teams = array_keys($betAgainst, max($betAgainst));
         return count($teams) === 0 ? null : [
