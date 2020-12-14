@@ -32,8 +32,8 @@ class UserStatisticService
 
     public function getUserStats()
     {
-        if (!$this->user->bets) {
-            return [];
+        if (empty($this->user->bets)) {
+            return null;
         }
         return [
             'id' => $this->user->id,
@@ -181,6 +181,9 @@ class UserStatisticService
     // Most picked team
     public function favoriteTeam()
     {
+        if (empty($this->user->bets)) {
+            return null;
+        }
         $picks = [];
         foreach ($this->user->bets as $bet) {
             $currentFrequency = isset($picks[$bet->team->id]) ? $picks[$bet->team->id] : 0;
@@ -196,6 +199,9 @@ class UserStatisticService
     // Most picked against team
     public function rejected()
     {
+        if (empty($this->user->bets)) {
+            return null;
+        }
         $betAgainst = [];
         foreach ($this->user->bets as $bet) {
             $pickedTeam = $bet->team;
