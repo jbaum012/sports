@@ -15,7 +15,7 @@ class StandingsController extends Controller
         $data = [];
         $statService = new UserStatisticService();
         foreach ($users as $user) {
-            if (empty($user->bets)) {
+            if (count($user->bets) === 0) {
                 continue;
             }
             $statService->setUser($user);
