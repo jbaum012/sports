@@ -32,6 +32,11 @@ const router = new Router({
           path: '/standings',
           name: 'standings',
           component: () => import('../views/Standings.vue')
+        },
+        {
+          path: '/points',
+          name: 'points',
+          component: () => import('../views/Points.vue')
         }
       ]
     }

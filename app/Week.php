@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Http\Resources\BetResource;
 use Illuminate\Database\Eloquent\Model;
 
 class Week extends Model
@@ -23,5 +24,11 @@ class Week extends Model
     public function bets()
     {
         return $this->hasMany('App\Bet');
+    }
+
+    public function userBets()
+    {
+        $bets = BetResource::collection($this->bets);
+        return $bets->groupBy('user_id');
     }
 }

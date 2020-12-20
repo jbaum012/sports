@@ -35,6 +35,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::put('/game/{game}', 'GameController@update');
     Route::delete('/game/{game}', 'GameController@destroy');
 
+    Route::get('/user/{user}', 'UserController@show');
+
     Route::get('/standings', 'StandingsController@index');
 
     Route::apiResources([

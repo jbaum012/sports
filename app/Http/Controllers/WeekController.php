@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\WeekResource;
+use App\Week;
 use Illuminate\Http\Request;
 
 class WeekController extends Controller
@@ -13,7 +15,8 @@ class WeekController extends Controller
      */
     public function index()
     {
-        //
+        $weeks = Week::all()->sortBy('number');
+        return WeekResource::collection($weeks);
     }
 
     /**
