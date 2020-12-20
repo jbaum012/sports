@@ -7,7 +7,9 @@
       class="img-fluid rounded-circle avatar"
       :src="user.avatar"
     />
-    <b-tooltip :target="() => $refs['avatar']" triggers="hover">{{ user.name }}</b-tooltip>
+    <b-tooltip :target="() => $refs['avatar']" triggers="hover">{{
+      user.name
+    }}</b-tooltip>
     <span v-if="variant !== 'icon'" :style="nameStyles">{{ user.name }}</span>
     <slot v-if="variant !== 'icon'"></slot>
   </div>
@@ -18,7 +20,7 @@ export default {
   props: {
     user: {
       type: Object,
-      required: true
+      required: false
     },
     highlight: {
       type: Boolean,
@@ -76,6 +78,9 @@ export default {
         'max-width': this.avatarSize
       }
     }
+  },
+  methods: {
+    fetchUser() {}
   }
 }
 </script>
