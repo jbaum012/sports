@@ -5,7 +5,7 @@
       in. $10.00 winnings is $8.00 total winnings
     </div>
     <div class="row">
-      <div class="col-md-3" v-for="week in weeks" :key="week.id">
+      <div class="col-md-3" v-for="week in weeks.reverse()" :key="week.id">
         <b-card :title="'Week: ' + week.number" class="mb-2">
           <b-table-simple>
             <b-thead>
