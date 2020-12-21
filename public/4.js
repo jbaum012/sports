@@ -169,6 +169,8 @@ __webpack_require__.r(__webpack_exports__);
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('api/week').then(function (r) {
       _this.weeks = r.data;
 
+      _this.weeks.reverse();
+
       _this.weeks.forEach(function (week) {
         week.user_scores = [];
 
@@ -370,7 +372,7 @@ var render = function() {
     _c(
       "div",
       { staticClass: "row" },
-      _vm._l(_vm.weeks.reverse(), function(week) {
+      _vm._l(_vm.weeks, function(week) {
         return _c(
           "div",
           { key: week.id, staticClass: "col-md-3" },
