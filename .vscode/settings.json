@@ -1,0 +1,7 @@
+{
+    "better-phpunit.docker.enable": true,
+    "better-phpunit.docker.command": "docker exec -it sports_laravel.test_1",
+    "better-phpunit.docker.paths": {
+        "/Users/johnlieb-bauman/projects/personal/sports": "/var/www/html/"
+    },
+}
