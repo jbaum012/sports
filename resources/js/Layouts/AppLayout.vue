@@ -253,6 +253,10 @@
             }
         },
 
+        mounted() {
+            console.log(this.$routes('dashboard'))
+        },
+
         methods: {
             switchToTeam(team) {
                 this.$inertia.put(route('current-team.update'), {
