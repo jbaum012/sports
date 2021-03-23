@@ -15,7 +15,7 @@ class SportsTeamController extends Controller
     public function index()
     {
         $teams = SportsTeam::orderBy('abbreviation')->get();
-        return view('team.index')->with('teams', $teams);
+        return view('teams')->with('teams', $teams);
     }
 
     /**

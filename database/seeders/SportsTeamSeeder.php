@@ -35,7 +35,7 @@ class SportsTeamSeeder extends Seeder
         $teams['Los Angeles Rams'] = ['#003594', '#FFA300', 'Rams', 'Los Angeles', 'LAR'];
         $teams['Miami Dolphins'] = ['#008E97', '#FC4C02', 'Dolphins', 'Miami', 'MIA'];
         $teams['Minnesota Vikings'] = ['#4F2683', '#FFC62F', 'Vikings', 'Minnesota', 'MIN'];
-        $teams['New England Patriots'] = ['#002244', '#002244', 'Patriots', 'New England', 'NE'];
+        $teams['New England Patriots'] = ['#002244', '#C60C30', 'Patriots', 'New England', 'NE'];
         $teams['New Orleans Saints'] = ['#D3BC8D', '#101820', 'Saints', 'New Orleans', "NO"];
         $teams['New York Giants'] = ['#0B2265', '#A71930', 'Giants', 'New York', 'NYG'];
         $teams['New York Jets'] = ['#125740', '#FFFFFF', 'Jets', 'New York', 'NYJ'];
