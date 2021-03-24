@@ -25,6 +25,16 @@ class SportsTeamFactory extends Factory
             'name' => $this->faker->name(),
             'location' => $this->faker->city(),
             'abbreviation' => $this->faker->lexify('???'),
+            'division' => $this->faker->randomElement([
+                'NFC North',
+                'NFC South',
+                'NFC East',
+                'NFC West',
+                'AFC North',
+                'AFC South',
+                'AFC East',
+                'AFC West'
+            ]),
             'primary_color' => '#' . $this->faker->numerify('######'),
             'secondary_color' => '#' . $this->faker->numerify('######')
         ];

@@ -31,6 +31,7 @@ class CreateSportsTeamsTable extends Migration
             $table->string('primary_color');
             $table->string('secondary_color');
             $table->timestamps();
+            $table->index('division');
         });
     }
 
