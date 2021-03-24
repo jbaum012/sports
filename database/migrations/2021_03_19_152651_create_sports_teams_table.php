@@ -16,6 +16,16 @@ class CreateSportsTeamsTable extends Migration
         Schema::create('sports_teams', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->enum('division', [
+                'NFC West',
+                'NFC South',
+                'NFC East',
+                'NFC North',
+                'AFC West',
+                'AFC South',
+                'AFC East',
+                'AFC North',
+            ]);
             $table->string('location');
             $table->string('abbreviation');
             $table->string('primary_color');

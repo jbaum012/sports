@@ -29,8 +29,15 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
 
-Route::middleware(['auth:sanctum'])->get('/teams', function () {
-    return inertia('SportsTeams/SportsTeamsIndex', [
-        'teams' => SportsTeam::all()->toArray()
-    ]);
-})->name('teams');
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('/teams', function () {
+        return inertia('SportsTeams/SportsTeamsIndex', [
+            'teams' => SportsTeam::all()->toArray()
+        ]);
+    })->name('teams');
+    Route::get('/team/{team}', function (SportsTeam $team) {
+        return inertia('SportsTeams/SportsTeamsIndex', [
+            'team' => SportsTeam::find($team)
+        ]);
+    })->name('team');
+});
