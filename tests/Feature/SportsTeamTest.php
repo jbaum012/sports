@@ -24,6 +24,7 @@ class SportsTeamTest extends TestCase
     public function show_success()
     {
         $team = SportsTeam::factory()->create();
+        $t = new SportsTeam();
         $response = $this->asUser()->get("/team/{$team->id}");
         $response->assertOk()
             ->assertSee($team->name);

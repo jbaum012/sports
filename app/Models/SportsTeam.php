@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Enums\NflDivisions;
 use App\Models\SportsGame;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Model;
@@ -13,6 +14,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string $name
  * @property string $location
  * @property string $abbreviation
+ * @property NflDivision $division
  * @property string $primary_color
  * @property string $secondary_color
  * @property Carbon $created_at
@@ -27,6 +29,8 @@ class SportsTeam extends Model
 
     public function fullName()
     {
+        $t = $this->division;
+        $this->division = NflDivisions::AFC_NORTH;
         return $this->location . ' ' . $this->name;
     }
 
