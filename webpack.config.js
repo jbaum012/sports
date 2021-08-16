@@ -1,25 +1,9 @@
-const path = require('path')
+const path = require('path');
 
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.tsx?$/,
-        loader: 'ts-loader',
-        options: {
-          appendTsSuffixTo: [/\.vue$/],
+    resolve: {
+        alias: {
+            '@': path.resolve('resources/js'),
         },
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-      },
-    ],
-  },
-  resolve: {
-    alias: {
-      '@': path.resolve('resources/js'),
     },
-  },
-}
+};
