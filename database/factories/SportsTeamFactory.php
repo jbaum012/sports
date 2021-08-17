@@ -22,7 +22,7 @@ class SportsTeamFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
+            'name' => $this->faker->firstName(),
             'location' => $this->faker->city(),
             'abbreviation' => $this->faker->lexify('???'),
             'division' => $this->faker->randomElement([
