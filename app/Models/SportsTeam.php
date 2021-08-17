@@ -26,6 +26,15 @@ class SportsTeam extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'location',
+        'abbreviation',
+        'division',
+        'primary_color',
+        'secondary_color'
+    ];
+
     public function slug()
     {
         return Str::slug($this->name, '-');
