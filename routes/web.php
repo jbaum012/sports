@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Models\SportsTeam;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,23 @@ Route::get('/', function () {
     ]);
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/dashboard', function () {
+        return Inertia::render('Dashboard');
+    })->name('dashboard');
+    Route::prefix('teams')->name('teams.')->group(function () {
+        Route::get('/', function () {
+            return Inertia::render('SportsTeams/SportsTeamsIndex', [
+            'divisions' => SportsTeam::all()
+                ->sortBy('division')
+                ->groupBy('division')
+            ]);
+        })->name('index');
+
+        Route::get('/{team}', function (SportsTeam $team) {
+            return Inertia::render('SportsTeams/SportsTeamDetails', [
+                'team' => $team
+            ]);
+        })->name('show');
+    });
+});
