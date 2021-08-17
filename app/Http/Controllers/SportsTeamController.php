@@ -19,9 +19,9 @@ class SportsTeamController extends Controller
     public function index()
     {
         return Inertia::render('SportsTeams/SportsTeamsIndex', [
-        'divisions' => $this->repo->search()
-            ->sortBy('division')
-            ->groupBy('division')
+            'divisions' => $this->repo->search()
+                ->sortBy('division')
+                ->groupBy('division')
         ]);
     }
 
