@@ -21105,35 +21105,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  viewBox: "0 0 317 48",
-  fill: "none",
-  xmlns: "http://www.w3.org/2000/svg"
+  version: "1.1",
+  id: "Layer_2",
+  xmlns: "http://www.w3.org/2000/svg",
+  "xmlns:xlink": "http://www.w3.org/1999/xlink",
+  x: "0px",
+  y: "0px",
+  width: "576px",
+  height: "576px",
+  viewBox: "0 0 576 576",
+  style: {
+    "enable-background": "new 0 0 576 576"
+  },
+  "xml:space": "preserve"
 };
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
-  d: "M74.09 30.04V13h-4.14v21H82.1v-3.96h-8.01zM95.379 19v1.77c-1.08-1.35-2.7-2.19-4.89-2.19-3.99 0-7.29 3.45-7.29 7.92s3.3 7.92 7.29 7.92c2.19 0 3.81-.84 4.89-2.19V34h3.87V19h-3.87zm-4.17 11.73c-2.37 0-4.14-1.71-4.14-4.23 0-2.52 1.77-4.23 4.14-4.23 2.4 0 4.17 1.71 4.17 4.23 0 2.52-1.77 4.23-4.17 4.23zM106.628 21.58V19h-3.87v15h3.87v-7.17c0-3.15 2.55-4.05 4.56-3.81V18.7c-1.89 0-3.78.84-4.56 2.88zM124.295 19v1.77c-1.08-1.35-2.7-2.19-4.89-2.19-3.99 0-7.29 3.45-7.29 7.92s3.3 7.92 7.29 7.92c2.19 0 3.81-.84 4.89-2.19V34h3.87V19h-3.87zm-4.17 11.73c-2.37 0-4.14-1.71-4.14-4.23 0-2.52 1.77-4.23 4.14-4.23 2.4 0 4.17 1.71 4.17 4.23 0 2.52-1.77 4.23-4.17 4.23zM141.544 19l-3.66 10.5-3.63-10.5h-4.26l5.7 15h4.41l5.7-15h-4.26zM150.354 28.09h11.31c.09-.51.15-1.02.15-1.59 0-4.41-3.15-7.92-7.59-7.92-4.71 0-7.92 3.45-7.92 7.92s3.18 7.92 8.22 7.92c2.88 0 5.13-1.17 6.54-3.21l-3.12-1.8c-.66.87-1.86 1.5-3.36 1.5-2.04 0-3.69-.84-4.23-2.82zm-.06-3c.45-1.92 1.86-3.03 3.93-3.03 1.62 0 3.24.87 3.72 3.03h-7.65zM164.516 34h3.87V12.1h-3.87V34zM185.248 34.36c3.69 0 6.9-2.01 6.9-6.3V13h-2.1v15.06c0 3.03-2.07 4.26-4.8 4.26-2.19 0-3.93-.78-4.62-2.61l-1.77 1.05c1.05 2.43 3.57 3.6 6.39 3.6zM203.124 18.64c-4.65 0-7.83 3.45-7.83 7.86 0 4.53 3.24 7.86 7.98 7.86 3.03 0 5.34-1.41 6.6-3.45l-1.74-1.02c-.81 1.44-2.46 2.55-4.83 2.55-3.18 0-5.55-1.89-5.97-4.95h13.17c.03-.3.06-.63.06-.93 0-4.11-2.85-7.92-7.44-7.92zm0 1.92c2.58 0 4.98 1.71 5.4 5.01h-11.19c.39-2.94 2.64-5.01 5.79-5.01zM221.224 20.92V19h-4.32v-4.2l-1.98.6V19h-3.15v1.92h3.15v9.09c0 3.6 2.25 4.59 6.3 3.99v-1.74c-2.91.12-4.32.33-4.32-2.25v-9.09h4.32zM225.176 22.93c0-1.62 1.59-2.37 3.15-2.37 1.44 0 2.97.57 3.6 2.1l1.65-.96c-.87-1.86-2.79-3.06-5.25-3.06-3 0-5.13 1.89-5.13 4.29 0 5.52 8.76 3.39 8.76 7.11 0 1.77-1.68 2.4-3.45 2.4-2.01 0-3.57-.99-4.11-2.52l-1.68.99c.75 1.92 2.79 3.45 5.79 3.45 3.21 0 5.43-1.77 5.43-4.32 0-5.52-8.76-3.39-8.76-7.11zM244.603 20.92V19h-4.32v-4.2l-1.98.6V19h-3.15v1.92h3.15v9.09c0 3.6 2.25 4.59 6.3 3.99v-1.74c-2.91.12-4.32.33-4.32-2.25v-9.09h4.32zM249.883 21.49V19h-1.98v15h1.98v-8.34c0-3.72 2.34-4.98 4.74-4.98v-1.92c-1.92 0-3.69.63-4.74 2.73zM263.358 18.64c-4.65 0-7.83 3.45-7.83 7.86 0 4.53 3.24 7.86 7.98 7.86 3.03 0 5.34-1.41 6.6-3.45l-1.74-1.02c-.81 1.44-2.46 2.55-4.83 2.55-3.18 0-5.55-1.89-5.97-4.95h13.17c.03-.3.06-.63.06-.93 0-4.11-2.85-7.92-7.44-7.92zm0 1.92c2.58 0 4.98 1.71 5.4 5.01h-11.19c.39-2.94 2.64-5.01 5.79-5.01zM286.848 19v2.94c-1.26-2.01-3.39-3.3-6.06-3.3-4.23 0-7.74 3.42-7.74 7.86s3.51 7.86 7.74 7.86c2.67 0 4.8-1.29 6.06-3.3V34h1.98V19h-1.98zm-5.91 13.44c-3.33 0-5.91-2.61-5.91-5.94 0-3.33 2.58-5.94 5.91-5.94s5.91 2.61 5.91 5.94c0 3.33-2.58 5.94-5.91 5.94zM309.01 18.64c-1.92 0-3.75.87-4.86 2.73-.84-1.74-2.46-2.73-4.56-2.73-1.8 0-3.42.72-4.59 2.55V19h-1.98v15H295v-8.31c0-3.72 2.16-5.13 4.32-5.13 2.13 0 3.51 1.41 3.51 4.08V34h1.98v-8.31c0-3.72 1.86-5.13 4.17-5.13 2.13 0 3.66 1.41 3.66 4.08V34h1.98v-9.36c0-3.75-2.31-6-5.61-6z",
-  fill: "#000"
-}, null, -1
-/* HOISTED */
-);
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<path style=\"fill:#501b00;\" d=\"M321.773,79.617c-1.57-1.575-2.772-3.373-3.646-5.283c-47.707,13.867-100.651,40.39-147.997,84.422\n\tc-49.931,46.438-79.893,102.966-95.356,154.938c3.024,0.795,5.887,2.36,8.254,4.734l172.589,173.025\n\tc2.187,2.191,3.694,4.802,4.532,7.573c47.509-14.421,99.637-41.067,146.25-84.416c56.237-52.304,81.97-114.872,93.665-158.108\n\tc-2.071-0.89-4.015-2.167-5.702-3.86L321.773,79.617z\"></path><path style=\"fill:#501b00;\" d=\"M61.521,392.518c-1.151,40.956,8.204,74.871,25.667,93.047c16.931,17.62,47.674,27.326,86.563,27.329\n\tc14.254,0,30.246-1.416,47.354-4.459L65.624,352.562C63.192,366.703,61.868,380.142,61.521,392.518z\"></path><path style=\"fill:#501b00;\" d=\"M490.773,94.376c-17.613-20.886-50.466-32.388-92.505-32.388c-11.995,0-25.262,1.036-39.4,3.233\n\tL508.52,215.252C515.701,163.271,509.04,116.038,490.773,94.376z\"></path><path style=\"fill:white;\" d=\"M495.414,90.463c-18.785-22.278-53.287-34.547-97.146-34.547c-14.628,0-29.642,1.325-44.813,3.88\n\tc-12.246,2.062-24.595,4.936-36.925,8.546c-53.865,15.776-107.39,45.84-150.535,85.967\n\tc-51.166,47.587-81.738,105.612-97.382,158.838c-3.435,11.686-6.141,23.133-8.195,34.194c-2.967,15.979-4.578,31.152-4.967,45.007\n\tc-1.215,43.196,8.501,77.795,27.358,97.422c18.086,18.824,50.383,29.193,90.94,29.194c0.004,0,0.002,0,0.006,0\n\tc15.718,0,33.493-1.662,52.551-5.314c11.14-2.136,22.725-4.967,34.589-8.531c48.597-14.603,101.981-41.739,149.638-86.062\n\tc50.564-47.029,80.803-105.725,95.61-161.117c3.383-12.648,5.97-25.124,7.8-37.249C522.674,162.842,514.398,112.976,495.414,90.463z\n\t M173.75,512.894c-38.889-0.003-69.632-9.709-86.563-27.329c-17.463-18.176-26.818-52.091-25.667-93.047\n\tc0.347-12.376,1.671-25.814,4.103-39.956l155.48,155.873C203.997,511.478,188.004,512.894,173.75,512.894z M406.399,414.611\n\tc-46.613,43.349-98.741,69.995-146.25,84.416c-0.838-2.771-2.345-5.382-4.532-7.573L83.028,318.429\n\tc-2.367-2.374-5.23-3.939-8.254-4.734c15.464-51.973,45.426-108.5,95.356-154.938c47.346-44.032,100.291-70.555,147.997-84.422\n\tc0.874,1.91,2.076,3.708,3.646,5.283l172.589,173.026c1.688,1.693,3.631,2.971,5.702,3.86\n\tC488.369,299.739,462.637,362.308,406.399,414.611z M358.868,65.221c14.139-2.197,27.405-3.233,39.4-3.233\n\tc42.039,0,74.892,11.502,92.505,32.388c18.267,21.662,24.928,68.895,17.746,120.876L358.868,65.221z\"></path><path style=\"fill:white;\" d=\"M291.35,152.464c6.658-4.135,13.55-8.226,20.706-12.25c1.951-1.096,2.643-3.563,1.546-5.512\n\tc-1.097-1.948-3.56-2.639-5.512-1.545c-7.882,4.43-15.453,8.942-22.743,13.506l-23.528-22.738c-1.606-1.553-4.169-1.512-5.723,0.097\n\tc-1.553,1.607-1.509,4.169,0.098,5.723l22.13,21.386c-8.425,5.457-16.432,10.979-24.053,16.524l-22.148-21.405\n\tc-1.606-1.554-4.169-1.512-5.723,0.097c-1.554,1.607-1.51,4.17,0.098,5.723l21.169,20.458c-8.757,6.582-16.956,13.178-24.637,19.721\n\tl-21.279-20.563c-1.604-1.554-4.168-1.51-5.722,0.098c-1.554,1.606-1.51,4.169,0.098,5.723l20.759,20.062\n\tc-7.452,6.558-14.375,13.04-20.79,19.377l-20.442-19.755c-1.604-1.552-4.17-1.509-5.722,0.098c-1.554,1.606-1.51,4.168,0.098,5.722\n\tl20.356,19.671c-6.859,7.008-13.091,13.806-18.72,20.291l-21.208-20.496c-1.604-1.553-4.167-1.512-5.722,0.099\n\tc-1.554,1.606-1.51,4.168,0.098,5.722l21.573,20.849c-7.118,8.509-13.142,16.375-18.171,23.362l-18.474-17.855\n\tc-1.606-1.553-4.167-1.509-5.723,0.098c-1.553,1.607-1.51,4.169,0.098,5.723l19.387,18.737\n\tc-10.639,15.51-15.474,25.256-15.621,25.562c-0.974,2.011-0.133,4.43,1.876,5.403c0.569,0.277,1.17,0.408,1.763,0.408\n\tc1.502,0,2.945-0.84,3.645-2.28c0.14-0.287,4.55-9.156,14.228-23.401l25.564,24.707c0.786,0.76,1.799,1.138,2.812,1.138\n\tc1.058,0,2.116-0.414,2.91-1.235c1.554-1.608,1.51-4.171-0.098-5.725l-26.5-25.609c4.962-6.947,10.972-14.837,18.121-23.41\n\tl23.453,22.664c0.786,0.76,1.8,1.137,2.812,1.137c1.059,0,2.117-0.413,2.911-1.235c1.554-1.606,1.51-4.169-0.098-5.722\n\tl-23.823-23.023c5.611-6.476,11.834-13.275,18.71-20.298l24.685,23.856c0.786,0.76,1.8,1.137,2.812,1.137\n\tc1.059,0,2.117-0.413,2.91-1.235c1.554-1.606,1.51-4.169-0.097-5.722l-24.594-23.768c6.411-6.327,13.341-12.803,20.811-19.356\n\tl24.254,23.439c0.786,0.76,1.8,1.138,2.812,1.138c1.059,0,2.117-0.413,2.91-1.236c1.554-1.606,1.51-4.168-0.097-5.722\n\tl-23.727-22.929c7.687-6.525,15.91-13.104,24.692-19.668l23.779,22.98c0.786,0.76,1.8,1.138,2.812,1.138\n\tc1.058,0,2.117-0.413,2.911-1.236c1.552-1.606,1.51-4.168-0.098-5.722l-22.786-22.021c7.636-5.523,15.671-11.021,24.125-16.454\n\tl22.732,21.969c0.784,0.76,1.798,1.138,2.812,1.138c1.06,0,2.116-0.414,2.911-1.236c1.554-1.606,1.51-4.168-0.099-5.722\n\tL291.35,152.464z\"></path>", 5);
 
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
-  d: "M11.395 44.428C4.557 40.198 0 32.632 0 24 0 10.745 10.745 0 24 0a23.891 23.891 0 0113.997 4.502c-.2 17.907-11.097 33.245-26.602 39.926z",
-  fill: "#6875F5"
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
-  d: "M14.134 45.885A23.914 23.914 0 0024 48c13.255 0 24-10.745 24-24 0-3.516-.756-6.856-2.115-9.866-4.659 15.143-16.608 27.092-31.75 31.751z",
-  fill: "#6875F5"
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_5 = [_hoisted_2, _hoisted_3, _hoisted_4];
+var _hoisted_7 = [_hoisted_2];
 function render(_ctx, _cache) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", _hoisted_1, _hoisted_5);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", _hoisted_1, _hoisted_7);
 }
 
 /***/ }),
@@ -21152,28 +21143,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  viewBox: "0 0 48 48",
-  fill: "none",
-  xmlns: "http://www.w3.org/2000/svg"
+  version: "1.1",
+  id: "Layer_2",
+  xmlns: "http://www.w3.org/2000/svg",
+  "xmlns:xlink": "http://www.w3.org/1999/xlink",
+  x: "0px",
+  y: "0px",
+  width: "576px",
+  height: "576px",
+  viewBox: "0 0 576 576",
+  style: {
+    "enable-background": "new 0 0 576 576"
+  },
+  "xml:space": "preserve"
 };
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
-  d: "M11.395 44.428C4.557 40.198 0 32.632 0 24 0 10.745 10.745 0 24 0a23.891 23.891 0 0113.997 4.502c-.2 17.907-11.097 33.245-26.602 39.926z",
-  fill: "#6875F5"
-}, null, -1
-/* HOISTED */
-);
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<path style=\"fill:#501b00;\" d=\"M321.773,79.617c-1.57-1.575-2.772-3.373-3.646-5.283c-47.707,13.867-100.651,40.39-147.997,84.422\n\tc-49.931,46.438-79.893,102.966-95.356,154.938c3.024,0.795,5.887,2.36,8.254,4.734l172.589,173.025\n\tc2.187,2.191,3.694,4.802,4.532,7.573c47.509-14.421,99.637-41.067,146.25-84.416c56.237-52.304,81.97-114.872,93.665-158.108\n\tc-2.071-0.89-4.015-2.167-5.702-3.86L321.773,79.617z\"></path><path style=\"fill:#501b00;\" d=\"M61.521,392.518c-1.151,40.956,8.204,74.871,25.667,93.047c16.931,17.62,47.674,27.326,86.563,27.329\n\tc14.254,0,30.246-1.416,47.354-4.459L65.624,352.562C63.192,366.703,61.868,380.142,61.521,392.518z\"></path><path style=\"fill:#501b00;\" d=\"M490.773,94.376c-17.613-20.886-50.466-32.388-92.505-32.388c-11.995,0-25.262,1.036-39.4,3.233\n\tL508.52,215.252C515.701,163.271,509.04,116.038,490.773,94.376z\"></path><path style=\"fill:white;\" d=\"M495.414,90.463c-18.785-22.278-53.287-34.547-97.146-34.547c-14.628,0-29.642,1.325-44.813,3.88\n\tc-12.246,2.062-24.595,4.936-36.925,8.546c-53.865,15.776-107.39,45.84-150.535,85.967\n\tc-51.166,47.587-81.738,105.612-97.382,158.838c-3.435,11.686-6.141,23.133-8.195,34.194c-2.967,15.979-4.578,31.152-4.967,45.007\n\tc-1.215,43.196,8.501,77.795,27.358,97.422c18.086,18.824,50.383,29.193,90.94,29.194c0.004,0,0.002,0,0.006,0\n\tc15.718,0,33.493-1.662,52.551-5.314c11.14-2.136,22.725-4.967,34.589-8.531c48.597-14.603,101.981-41.739,149.638-86.062\n\tc50.564-47.029,80.803-105.725,95.61-161.117c3.383-12.648,5.97-25.124,7.8-37.249C522.674,162.842,514.398,112.976,495.414,90.463z\n\t M173.75,512.894c-38.889-0.003-69.632-9.709-86.563-27.329c-17.463-18.176-26.818-52.091-25.667-93.047\n\tc0.347-12.376,1.671-25.814,4.103-39.956l155.48,155.873C203.997,511.478,188.004,512.894,173.75,512.894z M406.399,414.611\n\tc-46.613,43.349-98.741,69.995-146.25,84.416c-0.838-2.771-2.345-5.382-4.532-7.573L83.028,318.429\n\tc-2.367-2.374-5.23-3.939-8.254-4.734c15.464-51.973,45.426-108.5,95.356-154.938c47.346-44.032,100.291-70.555,147.997-84.422\n\tc0.874,1.91,2.076,3.708,3.646,5.283l172.589,173.026c1.688,1.693,3.631,2.971,5.702,3.86\n\tC488.369,299.739,462.637,362.308,406.399,414.611z M358.868,65.221c14.139-2.197,27.405-3.233,39.4-3.233\n\tc42.039,0,74.892,11.502,92.505,32.388c18.267,21.662,24.928,68.895,17.746,120.876L358.868,65.221z\"></path><path style=\"fill:white;\" d=\"M291.35,152.464c6.658-4.135,13.55-8.226,20.706-12.25c1.951-1.096,2.643-3.563,1.546-5.512\n\tc-1.097-1.948-3.56-2.639-5.512-1.545c-7.882,4.43-15.453,8.942-22.743,13.506l-23.528-22.738c-1.606-1.553-4.169-1.512-5.723,0.097\n\tc-1.553,1.607-1.509,4.169,0.098,5.723l22.13,21.386c-8.425,5.457-16.432,10.979-24.053,16.524l-22.148-21.405\n\tc-1.606-1.554-4.169-1.512-5.723,0.097c-1.554,1.607-1.51,4.17,0.098,5.723l21.169,20.458c-8.757,6.582-16.956,13.178-24.637,19.721\n\tl-21.279-20.563c-1.604-1.554-4.168-1.51-5.722,0.098c-1.554,1.606-1.51,4.169,0.098,5.723l20.759,20.062\n\tc-7.452,6.558-14.375,13.04-20.79,19.377l-20.442-19.755c-1.604-1.552-4.17-1.509-5.722,0.098c-1.554,1.606-1.51,4.168,0.098,5.722\n\tl20.356,19.671c-6.859,7.008-13.091,13.806-18.72,20.291l-21.208-20.496c-1.604-1.553-4.167-1.512-5.722,0.099\n\tc-1.554,1.606-1.51,4.168,0.098,5.722l21.573,20.849c-7.118,8.509-13.142,16.375-18.171,23.362l-18.474-17.855\n\tc-1.606-1.553-4.167-1.509-5.723,0.098c-1.553,1.607-1.51,4.169,0.098,5.723l19.387,18.737\n\tc-10.639,15.51-15.474,25.256-15.621,25.562c-0.974,2.011-0.133,4.43,1.876,5.403c0.569,0.277,1.17,0.408,1.763,0.408\n\tc1.502,0,2.945-0.84,3.645-2.28c0.14-0.287,4.55-9.156,14.228-23.401l25.564,24.707c0.786,0.76,1.799,1.138,2.812,1.138\n\tc1.058,0,2.116-0.414,2.91-1.235c1.554-1.608,1.51-4.171-0.098-5.725l-26.5-25.609c4.962-6.947,10.972-14.837,18.121-23.41\n\tl23.453,22.664c0.786,0.76,1.8,1.137,2.812,1.137c1.059,0,2.117-0.413,2.911-1.235c1.554-1.606,1.51-4.169-0.098-5.722\n\tl-23.823-23.023c5.611-6.476,11.834-13.275,18.71-20.298l24.685,23.856c0.786,0.76,1.8,1.137,2.812,1.137\n\tc1.059,0,2.117-0.413,2.91-1.235c1.554-1.606,1.51-4.169-0.097-5.722l-24.594-23.768c6.411-6.327,13.341-12.803,20.811-19.356\n\tl24.254,23.439c0.786,0.76,1.8,1.138,2.812,1.138c1.059,0,2.117-0.413,2.91-1.236c1.554-1.606,1.51-4.168-0.097-5.722\n\tl-23.727-22.929c7.687-6.525,15.91-13.104,24.692-19.668l23.779,22.98c0.786,0.76,1.8,1.138,2.812,1.138\n\tc1.058,0,2.117-0.413,2.911-1.236c1.552-1.606,1.51-4.168-0.098-5.722l-22.786-22.021c7.636-5.523,15.671-11.021,24.125-16.454\n\tl22.732,21.969c0.784,0.76,1.798,1.138,2.812,1.138c1.06,0,2.116-0.414,2.911-1.236c1.554-1.606,1.51-4.168-0.099-5.722\n\tL291.35,152.464z\"></path>", 5);
 
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
-  d: "M14.134 45.885A23.914 23.914 0 0024 48c13.255 0 24-10.745 24-24 0-3.516-.756-6.856-2.115-9.866-4.659 15.143-16.608 27.092-31.75 31.751z",
-  fill: "#6875F5"
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_4 = [_hoisted_2, _hoisted_3];
+var _hoisted_7 = [_hoisted_2];
 function render(_ctx, _cache) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", _hoisted_1, _hoisted_4);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", _hoisted_1, _hoisted_7);
 }
 
 /***/ }),
@@ -22421,66 +22410,68 @@ var _hoisted_39 = {
 
 var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Dashboard ");
 
-var _hoisted_41 = {
+var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Teams ");
+
+var _hoisted_42 = {
   "class": "pt-4 pb-1 border-t border-gray-200"
 };
-var _hoisted_42 = {
+var _hoisted_43 = {
   "class": "flex items-center px-4"
 };
-var _hoisted_43 = {
+var _hoisted_44 = {
   key: 0,
   "class": "flex-shrink-0 mr-3"
 };
-var _hoisted_44 = ["src", "alt"];
-var _hoisted_45 = {
+var _hoisted_45 = ["src", "alt"];
+var _hoisted_46 = {
   "class": "font-medium text-base text-gray-800"
 };
-var _hoisted_46 = {
+var _hoisted_47 = {
   "class": "font-medium text-sm text-gray-500"
 };
-var _hoisted_47 = {
+var _hoisted_48 = {
   "class": "mt-3 space-y-1"
 };
 
-var _hoisted_48 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Profile ");
+var _hoisted_49 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Profile ");
 
-var _hoisted_49 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" API Tokens ");
+var _hoisted_50 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" API Tokens ");
 
-var _hoisted_50 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Log Out ");
+var _hoisted_51 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Log Out ");
 
-var _hoisted_51 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_52 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "border-t border-gray-200"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_52 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_53 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "block px-4 py-2 text-xs text-gray-400"
 }, " Manage Team ", -1
 /* HOISTED */
 );
 
-var _hoisted_53 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Team Settings ");
+var _hoisted_54 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Team Settings ");
 
-var _hoisted_54 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Create New Team ");
+var _hoisted_55 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Create New Team ");
 
-var _hoisted_55 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_56 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "border-t border-gray-200"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_56 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_57 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "block px-4 py-2 text-xs text-gray-400"
 }, " Switch Teams ", -1
 /* HOISTED */
 );
 
-var _hoisted_57 = ["onSubmit"];
-var _hoisted_58 = {
+var _hoisted_58 = ["onSubmit"];
+var _hoisted_59 = {
   "class": "flex items-center"
 };
-var _hoisted_59 = {
+var _hoisted_60 = {
   key: 0,
   "class": "mr-2 h-5 w-5 text-green-400",
   fill: "none",
@@ -22491,18 +22482,18 @@ var _hoisted_59 = {
   viewBox: "0 0 24 24"
 };
 
-var _hoisted_60 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+var _hoisted_61 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
   d: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_61 = [_hoisted_60];
-var _hoisted_62 = {
+var _hoisted_62 = [_hoisted_61];
+var _hoisted_63 = {
   key: 0,
   "class": "bg-white shadow"
 };
-var _hoisted_63 = {
+var _hoisted_64 = {
   "class": "max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -22733,22 +22724,34 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["href", "active"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Responsive Settings Options "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_41, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_42, [_ctx.$page.props.jetstream.managesProfilePhotos ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_43, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  , ["href", "active"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_responsive_nav_link, {
+    href: _ctx.route('teams.index'),
+    active: _ctx.route().current('teams.index')
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_41];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 8
+  /* PROPS */
+  , ["href", "active"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Responsive Settings Options "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_42, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_43, [_ctx.$page.props.jetstream.managesProfilePhotos ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_44, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     "class": "h-10 w-10 rounded-full object-cover",
     src: _ctx.$page.props.user.profile_photo_url,
     alt: _ctx.$page.props.user.name
   }, null, 8
   /* PROPS */
-  , _hoisted_44)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_45, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$page.props.user.name), 1
+  , _hoisted_45)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_46, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$page.props.user.name), 1
   /* TEXT */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_46, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$page.props.user.email), 1
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_47, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$page.props.user.email), 1
   /* TEXT */
-  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_47, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_responsive_nav_link, {
+  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_48, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_responsive_nav_link, {
     href: _ctx.route('profile.show'),
     active: _ctx.route().current('profile.show')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_48];
+      return [_hoisted_49];
     }),
     _: 1
     /* STABLE */
@@ -22761,7 +22764,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     active: _ctx.route().current('api-tokens.index')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_49];
+      return [_hoisted_50];
     }),
     _: 1
     /* STABLE */
@@ -22777,7 +22780,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     as: "button"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_50];
+      return [_hoisted_51];
     }),
     _: 1
     /* STABLE */
@@ -22786,12 +22789,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* HYDRATE_EVENTS */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Team Management "), _ctx.$page.props.jetstream.hasTeamFeatures ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 1
-  }, [_hoisted_51, _hoisted_52, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Team Settings "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_responsive_nav_link, {
+  }, [_hoisted_52, _hoisted_53, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Team Settings "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_responsive_nav_link, {
     href: _ctx.route('teams.show', _ctx.$page.props.user.current_team),
     active: _ctx.route().current('teams.show')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_53];
+      return [_hoisted_54];
     }),
     _: 1
     /* STABLE */
@@ -22804,14 +22807,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     active: _ctx.route().current('teams.create')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_54];
+      return [_hoisted_55];
     }),
     _: 1
     /* STABLE */
 
   }, 8
   /* PROPS */
-  , ["href", "active"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_55, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Team Switcher "), _hoisted_56, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.$page.props.user.all_teams, function (team) {
+  , ["href", "active"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_56, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Team Switcher "), _hoisted_57, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.$page.props.user.all_teams, function (team) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("form", {
       key: team.id,
       onSubmit: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
@@ -22821,7 +22824,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       as: "button"
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_58, [team.id == _ctx.$page.props.user.current_team_id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", _hoisted_59, _hoisted_61)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(team.name), 1
+        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_59, [team.id == _ctx.$page.props.user.current_team_id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", _hoisted_60, _hoisted_62)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(team.name), 1
         /* TEXT */
         )])];
       }),
@@ -22832,14 +22835,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* DYNAMIC_SLOTS */
     )], 40
     /* PROPS, HYDRATE_EVENTS */
-    , _hoisted_57);
+    , _hoisted_58);
   }), 128
   /* KEYED_FRAGMENT */
   ))], 64
   /* STABLE_FRAGMENT */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])], 2
   /* CLASS */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Page Heading "), _ctx.$slots.header ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("header", _hoisted_62, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_63, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "header")])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Page Content "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")])])]);
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Page Heading "), _ctx.$slots.header ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("header", _hoisted_63, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_64, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "header")])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Page Content "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")])])]);
 }
 
 /***/ }),
@@ -25689,7 +25692,10 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-var appName = ((_window$document$getE = window.document.getElementsByTagName('title')[0]) === null || _window$document$getE === void 0 ? void 0 : _window$document$getE.innerText) || 'Laravel';
+
+var basicElements = __webpack_require__("./resources/js/Elements sync recursive \\w+\\.(vue|js)$");
+
+var appName = ((_window$document$getE = window.document.getElementsByTagName('title')[0]) === null || _window$document$getE === void 0 ? void 0 : _window$document$getE.innerText) || 'Sports';
 (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.createInertiaApp)({
   title: function title(_title) {
     return "".concat(_title, " - ").concat(appName);
@@ -52967,6 +52973,38 @@ function compileToFunction(template, options) {
 
 
 
+
+/***/ }),
+
+/***/ "./resources/js/Elements sync recursive \\w+\\.(vue|js)$":
+/*!****************************************************!*\
+  !*** ./resources/js/Elements/ sync \w+\.(vue|js)$ ***!
+  \****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var map = {
+	"./PageHeader.vue": "./resources/js/Elements/PageHeader.vue"
+};
+
+
+function webpackContext(req) {
+	var id = webpackContextResolve(req);
+	return __webpack_require__(id);
+}
+function webpackContextResolve(req) {
+	if(!__webpack_require__.o(map, req)) {
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	}
+	return map[req];
+}
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = "./resources/js/Elements sync recursive \\w+\\.(vue|js)$";
 
 /***/ }),
 

@@ -148,6 +148,9 @@
                         <jet-responsive-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                             Dashboard
                         </jet-responsive-nav-link>
+                        <jet-responsive-nav-link :href="route('teams.index')" :active="route().current('teams.index')">
+                            Teams
+                        </jet-responsive-nav-link>
                     </div>
 
                     <!-- Responsive Settings Options -->
