@@ -21,8 +21,9 @@ class GameGroupFactory extends Factory
      */
     public function definition()
     {
+        $one = 1;
         return [
-            'label' => "Week {$this->faker->numerify('##')}"
+            'label' => "Week {$one}"
         ];
     }
 }
