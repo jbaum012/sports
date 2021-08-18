@@ -1,10 +1,9 @@
 <?php
 
-use App\Http\Controllers\SportsTeamController;
 use Inertia\Inertia;
-use App\Models\SportsTeam;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Redirect;
+use App\Http\Controllers\SportsTeamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,14 +15,8 @@ use Illuminate\Foundation\Application;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    return Redirect::route('login');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
