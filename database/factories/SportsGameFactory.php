@@ -24,10 +24,40 @@ class SportsGameFactory extends Factory
     public function definition()
     {
         return [
-            'game_group_id' => GameGroup::factory()->create()->id,
-            'home_team_id' => SportsTeam::factory()->create()->id,
-            'away_team_id' => SportsTeam::factory()->create()->id,
+            'game_group_id' => GameGroup::factory(),
+            'home_team_id' => SportsTeam::factory(),
+            'away_team_id' => SportsTeam::factory(),
             'starts_at' => $this->faker->dateTimeThisYear($max = '2022-02-01', $timezone = 'America/Chicago'),
         ];
+    }
+
+    public function isTied()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'home_team_score' => 7,
+                'away_team_score' => 7
+            ];
+        });
+    }
+
+    public function homeWins()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'home_team_score' => 10,
+                'away_team_score' => 7
+            ];
+        });
+    }
+
+    public function awayWins()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'home_team_score' => 7,
+                'away_team_score' => 10
+            ];
+        });
     }
 }

@@ -47,12 +47,12 @@ class SportsTeam extends Model
 
     public function homeGames()
     {
-        return $this->hasMany(SportsGames::class, 'home_team_id');
+        return $this->hasMany(SportsGames::class, 'home_team_id', 'id');
     }
 
     public function awayGames()
     {
-        return $this->hasMany(SportsGames::class, 'away_team_id');
+        return $this->hasMany(SportsGames::class, 'away_team_id', 'id');
     }
 
     public function games()
