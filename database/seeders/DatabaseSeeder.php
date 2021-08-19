@@ -17,14 +17,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call([
+            SportsTeamsSeeder::class
+        ]);
+
         if (App::environment(['local'])) {
             User::factory()->create([
                 'name'=>'John Lieb-Bauman',
                 'email'=>'jbaum012@gmail.com',
             ]);
+
+            $this->call([
+                SportsGameSeeder::class
+            ]);
         }
-        $this->call([
-            SportsTeamsSeeder::class
-        ]);
     }
 }
