@@ -22,7 +22,7 @@ class CreateSportsGamesTable extends Migration
             $table->double('away_team_spread', 5, 2)->nullable();
             $table->integer('home_team_score')->nullable();
             $table->integer('away_team_score')->nullable();
-            $table->dateTimeTz('starts_at');
+            $table->dateTime('starts_at');
             $table->timestamps();
         });
     }

@@ -27,9 +27,10 @@ class DatabaseSeeder extends Seeder
                 'name'=>'John Lieb-Bauman',
                 'email'=>'jbaum012@gmail.com',
             ]);
+
+            $this->call([
+                SportsGameSeeder::class
+            ]);
         }
-        $this->call([
-            SportsTeamsSeeder::class
-        ]);
     }
 }

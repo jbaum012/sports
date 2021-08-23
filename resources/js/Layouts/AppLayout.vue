@@ -25,6 +25,9 @@
                                 <jet-nav-link :href="route('teams.index')" :active="route().current('teams.index')">
                                     Teams
                                 </jet-nav-link>
+                                <jet-nav-link :href="route('games.index')" :active="route().current('games.index')">
+                                    Games
+                                </jet-nav-link>
                             </div>
                         </div>
 
@@ -150,6 +153,9 @@
                         </jet-responsive-nav-link>
                         <jet-responsive-nav-link :href="route('teams.index')" :active="route().current('teams.index')">
                             Teams
+                        </jet-responsive-nav-link>
+                        <jet-responsive-nav-link :href="route('games.index')" :active="route().current('games.index')">
+                            Games
                         </jet-responsive-nav-link>
                     </div>
 
