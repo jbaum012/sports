@@ -49,7 +49,7 @@ class SportsTeamTest extends TestCase
         $response->assertOK()
             ->assertInertia(
                 fn (Assert $page) => $page
-                ->component('SportsTeams/SportsTeamDetails')
+                ->component('SportsTeams/SportsTeamShow')
                 ->has(
                     'team',
                     fn (Assert $page) => $page
@@ -75,7 +75,7 @@ class SportsTeamTest extends TestCase
         $response->assertOK()
             ->assertInertia(
                 fn (Assert $page) => $page
-                ->component('SportsTeams/SportsTeamDetails')
+                ->component('SportsTeams/SportsTeamShow')
                 ->has(
                     'team',
                     fn (Assert $page) => $page

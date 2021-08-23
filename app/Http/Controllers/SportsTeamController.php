@@ -68,7 +68,7 @@ class SportsTeamController extends Controller
     public function update(Request $request, SportsTeam $sportsTeam)
     {
         $team = $this->repo->update($sportsTeam, $request->all());
-        return Inertia::render('SportsTeams/SportsTeamDetails', [
+        return Inertia::render('SportsTeams/SportsTeamShow', [
             'team' => $team->only(
                 'id',
                 ...$sportsTeam->getFillable(),
