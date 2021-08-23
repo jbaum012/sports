@@ -17,6 +17,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call([
+            SportsTeamsSeeder::class,
+            GameGroupSeeder::class
+        ]);
+
         if (App::environment(['local'])) {
             User::factory()->create([
                 'name'=>'John Lieb-Bauman',
