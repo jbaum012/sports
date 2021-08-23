@@ -124,7 +124,7 @@ import JetInputError from '@/Jetstream/InputError.vue'
 import JetLabel from '@/Jetstream/Label.vue'
 import VueMultiselect from 'vue-multiselect'
 import { DateTime } from 'luxon'
-import { localize } from '@/helpers.js'
+import { localizeForInput } from '@/helpers.js'
 
 export default {
   components: {
@@ -145,9 +145,9 @@ export default {
   },
   data() {
     return {
-      selectedWeek: this.game.week,
-      homeTeam: this.game.homeTeam,
-      awayTeam: this.game.awayTeam,
+      selectedWeek: this.weeks.find(w => w.label === this.game.group),
+      homeTeam: this.game.home_team,
+      awayTeam: this.game.away_team,
       form: this.$inertia.form({
         game_group_id: this.game.game_group_id,
         home_team_id: this.game.home_team_id,
@@ -156,7 +156,7 @@ export default {
         away_team_score: this.game.away_team_score,
         home_team_spread: this.game.home_team_spread,
         away_team_spread: this.game.away_team_spread,
-        starts_at: localize(this.game.starts_at),
+        starts_at: localizeForInput(this.game.starts_at),
       })
     }
   },
@@ -182,9 +182,6 @@ export default {
           errorBag: 'saveGame',
           preserveScroll: true,
           onError: () => {
-          // if (this.form.errors.name) {
-          //   this.$refs.name.focus()
-          // }
           }
         })
       }
@@ -192,11 +189,6 @@ export default {
         this.form.post(route('games.store'), {
           errorBag: 'saveGame',
           preserveScroll: true,
-          onError: () => {
-          // if (this.form.errors.name) {
-          //   this.$refs.name.focus()
-          // }
-          }
         })
       }
     },

@@ -55,6 +55,11 @@ class SportsGame extends Model
         if (! $this->hasScores()) {
             return null;
         }
+
+        if (! $this->hasSpread()) {
+            return $this->winner();
+        }
+
         if ($this->isSplit()) {
             return null;
         }
@@ -72,7 +77,7 @@ class SportsGame extends Model
 
     public function homeCovered() : ?bool
     {
-        if (!$this->hasScores()) {
+        if (!$this->hasScores() || !$this->hasSpread()) {
             return null;
         }
 
@@ -81,7 +86,7 @@ class SportsGame extends Model
 
     public function awayCovered() : ?bool
     {
-        if (!$this->hasScores()) {
+        if (!$this->hasScores() || !$this->hasSpread()) {
             return null;
         }
 
@@ -91,6 +96,11 @@ class SportsGame extends Model
     private function calculateSpread(int $score, int $otherTeamScore, int $spread) : bool
     {
         return $score - $otherTeamScore + $spread > 0;
+    }
+
+    public function hasSpread() : bool
+    {
+        return !is_null($this->home_team_spread) && !is_null($this->away_team_spread);
     }
 
     public function hasScores() : bool

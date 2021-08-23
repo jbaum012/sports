@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use App\Http\Resources\SportsTeam;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class SportsGameListItem extends JsonResource
+class SportsGame extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -24,7 +24,7 @@ class SportsGameListItem extends JsonResource
             'away_team_score' => $this->away_team_score,
             'home_team_spread' => $this->home_team_spread,
             'away_team_spread' => $this->away_team_spread,
-            'starts_at' => $this->starts_at->format('c')
+            'starts_at' => $this->starts_at->format(DATE_ATOM)
         ];
     }
 }

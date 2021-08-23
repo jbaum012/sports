@@ -9,9 +9,10 @@ use App\Models\SportsTeam;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redirect;
-use App\Http\Resources\SportsGameListItem;
+use App\Http\Resources\SportsGame as SportsGameResource;
 use App\Repositories\SportsGameRepository;
 use App\Http\Requests\SportsGames\StoreSportsGame;
+use App\Http\Requests\SportsGames\UpdateSportsGame;
 
 class SportsGameController extends Controller
 {
@@ -22,7 +23,7 @@ class SportsGameController extends Controller
         // 1 day
         $cacheTime = 60 * 60 * 24;
         $games = Cache::remember('sports_games', $cacheTime, function () {
-            $collection = SportsGameListItem::collection($this->repo->search());
+            $collection = SportsGameResource::collection($this->repo->search());
             $groups = $collection->collection->groupBy('game_group_id');
             $reversed = array_reverse($groups->toArray());
             return $reversed;
@@ -37,10 +38,10 @@ class SportsGameController extends Controller
         return $this->show(new SportsGame());
     }
 
-    public function show(SportsGame $sportsGame)
+    public function show(SportsGame $game)
     {
         return Inertia::render('SportsGames/SportsGameShow', [
-            'game' => $sportsGame,
+            'game' => new SportsGameResource($game),
             'groups' => GameGroup::all(),
             'teams' => SportsTeam::all()
         ]);
@@ -52,8 +53,10 @@ class SportsGameController extends Controller
         return Redirect::route('games.show', $game->id);
     }
 
-    public function update(Request $request, SportsGame $sportsGame)
+    public function update(UpdateSportsGame $request, SportsGame $sportsGame)
     {
+        $game = $this->repo->update($sportsGame, $request->all());
+        return Redirect::route('games.show', $game->id);
     }
 
     public function destroy(SportsGame $sportsGame)

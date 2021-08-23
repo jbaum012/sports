@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\SportsGameController;
 use App\Http\Controllers\SportsTeamController;
+use App\Http\Controllers\UpdateScores;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +28,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::apiResource('teams', SportsTeamController::class);
     Route::apiResource('games', SportsGameController::class);
     Route::get('/games/create', [SportsGameController::class, 'create'])->name('games.create');
+    Route::put('games/{game}/scores', UpdateScores::class)->name('scores.update');
 });
