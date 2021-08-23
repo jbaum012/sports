@@ -38,7 +38,7 @@ class SportsTeamController extends Controller
     public function store(Request $request)
     {
         return Inertia::render('SportsTeams/SportsTeamShow', [
-            'game' => $this->repo->create($request->all())
+            'team' => $this->repo->create($request->all())
         ]);
     }
 
