@@ -40,24 +40,19 @@ class SportsTeam extends Model
         return Str::slug($this->name, '-');
     }
 
-    public function cacheKey()
-    {
-        return "sports_team.{$this->id}";
-    }
-
     public function homeGames()
     {
-        return $this->hasMany(SportsGames::class, 'home_team_id', 'id');
+        return $this->hasMany(SportsGames::class);
     }
 
     public function awayGames()
     {
-        return $this->hasMany(SportsGames::class, 'away_team_id', 'id');
+        return $this->hasMany(SportsGames::class);
     }
 
     public function games()
     {
-        $key = "{$this->cacheKey()}.games";
+        $key = "sports_team.{$this->id}.games";
         $cacheTime = 60 * 100; // 60 minutes
         return Cache::remember($key, $cacheTime, function () {
             return SportsGame::where('home_team_id', $this->id)

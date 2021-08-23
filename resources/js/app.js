@@ -3,23 +3,24 @@ require('./bootstrap');
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
+
 const basicElements = require.context(
-    './Elements',
-    true,
-    /\w+\.(vue|js)$/
+  './Elements',
+  true,
+  /\w+\.(vue|js)$/
 )
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Sports';
 
 createInertiaApp({
-    title: (title) => `${title} - ${appName}`,
-    resolve: (name) => require(`./Pages/${name}.vue`),
-    setup({ el, app, props, plugin }) {
-        return createApp({ render: () => h(app, props) })
-            .use(plugin)
-            .mixin({ methods: { route } })
-            .mount(el);
-    },
+  title: (title) => `${title} - ${appName}`,
+  resolve: (name) => require(`./Pages/${name}.vue`),
+  setup({ el, app, props, plugin }) {
+    return createApp({ render: () => h(app, props) })
+      .use(plugin)
+      .mixin({ methods: { route } })
+      .mount(el);
+  },
 });
 
-InertiaProgress.init({ color: '#4B5563' });
+InertiaProgress.init({ color: 'SkyBlue' });

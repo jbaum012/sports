@@ -4,10 +4,8 @@ namespace App\Models;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasOne;
-use Monolog\Processor\HostnameProcessor;
-use phpDocumentor\Reflection\Types\Boolean;
 
 /**
  * @property int $id
@@ -25,6 +23,21 @@ use phpDocumentor\Reflection\Types\Boolean;
 class SportsGame extends Model
 {
     use HasFactory;
+
+    protected $casts = [
+        'starts_at' => 'datetime'
+    ];
+
+    protected $fillable = [
+        'game_group_id',
+        'home_team_id',
+        'away_team_id',
+        'home_team_spread',
+        'away_team_spread',
+        'home_team_score',
+        'away_team_score',
+        'starts_at'
+    ];
 
     public function winner() : ?SportsTeam
     {
@@ -97,19 +110,19 @@ class SportsGame extends Model
      * Relationships
      */
 
-    public function group()
+    public function group() : BelongsTo
     {
-        return $this->hasOne(GameGroup::class, 'id');
+        return $this->belongsTo(GameGroup::class, 'game_group_id');
     }
 
-    public function homeTeam() : HasOne
+    public function homeTeam() : BelongsTo
     {
-        return $this->hasOne(SportsTeam::class, 'id');
+        return $this->belongsTo(SportsTeam::class, 'home_team_id');
     }
 
-    public function awayTeam() : HasOne
+    public function awayTeam() : BelongsTo
     {
-        return $this->hasOne(SportsTeam::class, 'id');
+        return $this->belongsTo(SportsTeam::class, 'away_team_id');
     }
 
     /**
@@ -118,12 +131,12 @@ class SportsGame extends Model
     protected static function booted()
     {
         static::created(function (SportsGame $game) {
-            Cache::forget("{$game->homeTeam->cacheKey()}.games");
-            Cache::forget("{$game->awayTeam->cacheKey()}.games");
+            Cache::forget("sports_team.{$game->home_team_id}.games");
+            Cache::forget("sports_team.{$game->away_team_id}.games");
         });
         static::updated(function ($game) {
-            Cache::forget("{$game->homeTeam->cacheKey()}.games");
-            Cache::forget("{$game->awayTeam->cacheKey()}.games");
+            Cache::forget("sports_team.{$game->home_team_id}.games");
+            Cache::forget("sports_team.{$game->away_team_id}.games");
         });
     }
 }

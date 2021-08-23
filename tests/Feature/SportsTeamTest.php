@@ -5,18 +5,22 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use App\Models\SportsTeam;
 use Inertia\Testing\Assert;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class SportsTeamTest extends TestCase
 {
     use RefreshDatabase;
 
+    public function setUp(): void
+    {
+        parent::setup();
+        $this->asUser();
+    }
+
     /** @test */
     public function index_success()
     {
         $team = SportsTeam::factory()->create();
-        $this->asUser();
         $response = $this->get('/teams');
         $response->assertOK()
             ->assertSee($team->name);
@@ -26,7 +30,6 @@ class SportsTeamTest extends TestCase
     public function show_success()
     {
         $team = SportsTeam::factory()->create();
-        $this->asUser();
         $response = $this->get("/teams/{$team->name}");
         $response->assertOk()
             ->assertSee($team->id)
@@ -42,13 +45,11 @@ class SportsTeamTest extends TestCase
     public function store_success()
     {
         $teamData = SportsTeam::factory()->raw();
-
-        $this->asUser();
         $response = $this->post("/teams", $teamData);
         $response->assertOK()
             ->assertInertia(
                 fn (Assert $page) => $page
-                ->component('SportsTeams/SportsTeamDetails')
+                ->component('SportsTeams/SportsTeamShow')
                 ->has(
                     'team',
                     fn (Assert $page) => $page
@@ -70,12 +71,11 @@ class SportsTeamTest extends TestCase
         $teamData = SportsTeam::factory()->create();
         $newData = SportsTeam::factory()->raw();
 
-        $this->asUser();
         $response = $this->put("/teams/{$teamData->name}", $newData);
         $response->assertOK()
             ->assertInertia(
                 fn (Assert $page) => $page
-                ->component('SportsTeams/SportsTeamDetails')
+                ->component('SportsTeams/SportsTeamShow')
                 ->has(
                     'team',
                     fn (Assert $page) => $page

@@ -8,7 +8,7 @@ class SportsTeamRepository
 {
     public function search(): Collection
     {
-        return SportsTeam::all();
+        return SportsTeam::select('name', 'location', 'abbreviation', 'division')->get();
     }
 
     public function create(array $args): SportsTeam

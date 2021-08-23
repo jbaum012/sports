@@ -3,6 +3,7 @@
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
+use App\Http\Controllers\SportsGameController;
 use App\Http\Controllers\SportsTeamController;
 
 /*
@@ -24,4 +25,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
     Route::apiResource('teams', SportsTeamController::class);
+    Route::apiResource('games', SportsGameController::class);
+    Route::get('/games/create', [SportsGameController::class, 'create'])->name('games.create');
 });
