@@ -56,6 +56,7 @@ class SportsGameTest extends TestCase
                 'home_team_score' => $homeScore,
                 'away_team_score' => $awayScore,
                 'home_team_spread' => $homeSpread,
+                'away_team_spread' => $homeSpread * -1,
             ]);
             $this->assertEquals(
                 $expectedValue,
@@ -88,6 +89,7 @@ class SportsGameTest extends TestCase
                 'away_team_score' => $awayScore,
                 'home_team_score' => $homeScore,
                 'away_team_spread' => $awaySpread,
+                'home_team_spread' => $awaySpread * -1,
             ]);
             $this->assertEquals(
                 $expectedValue,
