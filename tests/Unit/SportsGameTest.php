@@ -11,6 +11,22 @@ class SportsGameTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
+    public function homeCovered_returns_winner_if_spread_is_null()
+    {
+        $game = SportsGame::factory()->homeWins()->make();
+        $this->assertNull($game->homeCovered());
+        $this->assertSame($game->winner(), $game->spreadWinner());
+    }
+
+    /** @test */
+    public function awayCovered_returns_winner_if_spread_is_null()
+    {
+        $game = SportsGame::factory()->awayWins()->make();
+        $this->assertNull($game->awayCovered());
+        $this->assertSame($game->winner(), $game->spreadWinner());
+    }
+
+    /** @test */
     public function homeCovered_returns_null_if_no_scores()
     {
         $game = SportsGame::factory()->make();
@@ -40,6 +56,7 @@ class SportsGameTest extends TestCase
                 'home_team_score' => $homeScore,
                 'away_team_score' => $awayScore,
                 'home_team_spread' => $homeSpread,
+                'away_team_spread' => $homeSpread * -1,
             ]);
             $this->assertEquals(
                 $expectedValue,
@@ -72,6 +89,7 @@ class SportsGameTest extends TestCase
                 'away_team_score' => $awayScore,
                 'home_team_score' => $homeScore,
                 'away_team_spread' => $awaySpread,
+                'home_team_spread' => $awaySpread * -1,
             ]);
             $this->assertEquals(
                 $expectedValue,
