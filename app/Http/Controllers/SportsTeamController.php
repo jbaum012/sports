@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Inertia\Inertia;
 use App\Models\SportsTeam;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use App\Repositories\SportsTeamRepository;
 
 class SportsTeamController extends Controller
@@ -18,10 +19,13 @@ class SportsTeamController extends Controller
      */
     public function index()
     {
-        return Inertia::render('SportsTeams/SportsTeamsIndex', [
-            'divisions' => $this->repo->search()
+        $teams = Cache::rememberForever('teams', function () {
+            return $this->repo->search()
                 ->sortBy('division')
-                ->groupBy('division')
+                ->groupBy('division');
+        });
+        return Inertia::render('SportsTeams/SportsTeamsIndex', [
+            'divisions' => $teams
         ]);
     }
 
@@ -34,7 +38,7 @@ class SportsTeamController extends Controller
     public function store(Request $request)
     {
         return Inertia::render('SportsTeams/SportsTeamShow', [
-            'team' => $this->repo->create($request->all())
+            'game' => $this->repo->create($request->all())
         ]);
     }
 
