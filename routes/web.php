@@ -26,7 +26,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
     Route::apiResource('teams', SportsTeamController::class);
-    Route::apiResource('games', SportsGameController::class);
     Route::get('/games/create', [SportsGameController::class, 'create'])->name('games.create');
+    Route::apiResource('games', SportsGameController::class);
     Route::put('games/{game}/scores', UpdateScores::class)->name('scores.update');
 });

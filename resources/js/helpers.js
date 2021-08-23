@@ -11,6 +11,10 @@ export function localize(dateTime) {
 }
 
 export function localizeForInput(dateTime) {
+  if (dateTime == null) {
+    return null
+  }
+
   const localized = localize(dateTime);
   return localized.toISO().substring(0, 16)
 }

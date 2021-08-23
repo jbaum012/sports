@@ -40,8 +40,12 @@ class SportsGameController extends Controller
 
     public function show(SportsGame $game)
     {
+        $sportsGame = is_null($game->id)
+            ? $game
+            : new SportsGameResource($game);
+
         return Inertia::render('SportsGames/SportsGameShow', [
-            'game' => new SportsGameResource($game),
+            'game' => $sportsGame,
             'groups' => GameGroup::all(),
             'teams' => SportsTeam::all()
         ]);

@@ -16,7 +16,10 @@
     <div>
       <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
         <div>
-          <scores-form :game="game" />
+          <scores-form
+            v-if="game.id"
+            :game="game"
+          />
           <jet-section-border />
         </div>
         <sports-game-form
