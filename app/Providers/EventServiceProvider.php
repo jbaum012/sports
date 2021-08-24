@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Events\SportsGames\SportsGameCreated;
 use App\Listeners\CreateBetForEachUser;
+use App\Listeners\CreateBetsForNewUser;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -19,6 +20,9 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
+        ],
+        UserCreated::class => [
+            CreateBetsForNewUser::class
         ],
         SportsGameCreated::class => [
             CreateBetForEachUser::class

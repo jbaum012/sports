@@ -43,13 +43,15 @@ class SportsGame extends Model
 
     public function winner() : ?SportsTeam
     {
-        if (!$this->hasScores() || $this->isTie()) {
-            return null;
-        }
+        return Cache::rememberForever("sports_game.{$this->id}.winner", function () {
+            if (!$this->hasScores() || $this->isTie()) {
+                return null;
+            }
 
-        return $this->home_team_score > $this->away_team_score
-            ? $this->homeTeam
-            : $this->awayTeam;
+            return $this->home_team_score > $this->away_team_score
+                ? $this->homeTeam
+                : $this->awayTeam;
+        });
     }
 
     public function spreadWinner() : ?SportsTeam
@@ -158,6 +160,7 @@ class SportsGame extends Model
         static::updated(function ($game) {
             Cache::forget("sports_team.{$game->home_team_id}.games");
             Cache::forget("sports_team.{$game->away_team_id}.games");
+            Cache::forget("sports_game.{$this->id}.winner");
         });
     }
 }

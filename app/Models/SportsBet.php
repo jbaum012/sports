@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use phpDocumentor\Reflection\Types\Boolean;
 
 class SportsBet extends Model
 {
@@ -18,6 +19,16 @@ class SportsBet extends Model
     ];
 
     const BASE_VALUE = 2;
+
+    public function won(): ?Boolean
+    {
+        $winningTeam = $this->game->winner();
+        if (is_null($winningTeam)) {
+            return null;
+        }
+
+        return $winningTeam === $this->team;
+    }
 
     public function game()
     {
