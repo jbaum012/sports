@@ -4,6 +4,7 @@ namespace App\Repositories;
 use App\Models\SportsGame;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
+use App\Http\Resources\SportsGame as SportsGameResource;
 
 class SportsGameRepository
 {
@@ -14,6 +15,17 @@ class SportsGameRepository
             ->orderBy('game_group_id')
             ->orderBy('starts_at')
             ->get();
+    }
+
+    public function fullGamesList()
+    {
+        $cacheTime = 60 * 60 * 24;
+        return Cache::remember('sports_games', $cacheTime, function () {
+            $collection = SportsGameResource::collection($this->search());
+            $groups = $collection->collection->groupBy('game_group_id');
+            $reversed = array_reverse($groups->toArray());
+            return $reversed;
+        });
     }
 
     public function create(array $args): SportsGame
@@ -32,7 +44,6 @@ class SportsGameRepository
         $game->starts_at = $args['starts_at'];
         $game->save();
 
-        Cache::forget('sports_games');
         return $game;
     }
 }
