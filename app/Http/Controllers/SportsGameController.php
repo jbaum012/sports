@@ -54,7 +54,7 @@ class SportsGameController extends Controller
     public function store(StoreSportsGame $request)
     {
         $game = $this->repo->create($request->all());
-        return Redirect::route('games.show', $game->id);
+        return $this->show($game);
     }
 
     public function update(UpdateSportsGame $request, SportsGame $sportsGame)

@@ -50,6 +50,11 @@ class SportsTeam extends Model
         return $this->hasMany(SportsGames::class);
     }
 
+    public function bets()
+    {
+        return $this->hasMany(SportsBet::class);
+    }
+
     public function games()
     {
         $key = "sports_team.{$this->id}.games";
