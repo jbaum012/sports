@@ -20,14 +20,7 @@ class SportsGameController extends Controller
 
     public function index()
     {
-        // 1 day
-        $cacheTime = 60 * 60 * 24;
-        $games = Cache::remember('sports_games', $cacheTime, function () {
-            $collection = SportsGameResource::collection($this->repo->search());
-            $groups = $collection->collection->groupBy('game_group_id');
-            $reversed = array_reverse($groups->toArray());
-            return $reversed;
-        });
+        $games = $this->repo->fullGamesList();
         return Inertia::render('SportsGames/SportsGamesIndex', [
             'gamesByWeek' => $games
         ]);

@@ -18,6 +18,8 @@ class SportsGame extends JsonResource
         return [
             'id' => $this->id,
             'group' => $this->group->label,
+            'winner' => new SportsTeam($this->winner()),
+            'spread_winner' => new SportsTeam($this->spreadWinner()),
             'home_team' => new SportsTeam($this->homeTeam),
             'away_team' => new SportsTeam($this->awayTeam),
             'home_team_score' => $this->home_team_score,
