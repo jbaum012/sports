@@ -21,15 +21,5 @@ class SportsBetRepository
         $bet->save();
 
         return $bet;
-        // $game->game_group_id = $args['game_group_id'];
-        // $game->home_team_id = $args['home_team_id'];
-        // $game->away_team_id = $args['away_team_id'];
-        // $game->home_team_spread = $args['home_team_spread'] ?? null;
-        // $game->away_team_spread = $args['away_team_spread'] ?? null;
-        // $game->starts_at = $args['starts_at'];
-        // $game->save();
-
-        // Cache::forget('sports_games');
-        // return $game;
     }
 }

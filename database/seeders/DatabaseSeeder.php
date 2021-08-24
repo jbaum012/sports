@@ -19,14 +19,17 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             SportsTeamsSeeder::class,
-            GameGroupSeeder::class
+            GameGroupSeeder::class,
+            SportsBetSeeder::class,
         ]);
 
         if (App::environment(['local'])) {
-            User::factory()->create([
-                'name'=>'John Lieb-Bauman',
-                'email'=>'jbaum012@gmail.com',
-            ]);
+            if (! User::where('name', 'John Lieb-Bauman')->get()) {
+                User::factory()->create([
+                    'name'=>'John Lieb-Bauman',
+                    'email'=>'jbaum012@gmail.com',
+                ]);
+            }
 
             $this->call([
                 SportsGameSeeder::class
