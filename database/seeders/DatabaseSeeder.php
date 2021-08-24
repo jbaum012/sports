@@ -24,12 +24,11 @@ class DatabaseSeeder extends Seeder
         ]);
 
         if (App::environment(['local'])) {
-            if (! User::where('name', 'John Lieb-Bauman')->get()) {
-                User::factory()->create([
-                    'name'=>'John Lieb-Bauman',
-                    'email'=>'jbaum012@gmail.com',
-                ]);
-            }
+            $localUser = User::firstOrCreate([
+                'name'=>'John Lieb-Bauman',
+                'email'=>'jbaum012@gmail.com',
+                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            ]);
 
             $this->call([
                 SportsGameSeeder::class

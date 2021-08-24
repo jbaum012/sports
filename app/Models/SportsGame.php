@@ -160,7 +160,7 @@ class SportsGame extends Model
         static::updated(function ($game) {
             Cache::forget("sports_team.{$game->home_team_id}.games");
             Cache::forget("sports_team.{$game->away_team_id}.games");
-            Cache::forget("sports_game.{$this->id}.winner");
+            Cache::forget("sports_game.{$game->id}.winner");
         });
     }
 }
