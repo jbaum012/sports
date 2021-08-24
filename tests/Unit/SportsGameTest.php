@@ -36,17 +36,7 @@ class SportsGameTest extends TestCase
     /** @test */
     public function homeCovered_returns_correctResult()
     {
-        $scores = [
-            // [ homeScore, awayScore, homeSpread, expectedValue ]
-            [ 10, 7, 3, true ],
-            [ 13, 7, 3, true ],
-            [ 13, 7, -3, true ],
-            [ 7, 10, 3, false ],
-            [ 7, 13, 3, false ],
-            [ 10, 7, -3, false ],
-            [ 7, 10, -3, false ],
-            [ 7, 13, -3, false ],
-        ];
+        $scores = $this->testSpreads();
         foreach ($scores as $score) {
             $homeScore = $score[0];
             $awayScore = $score[1];
@@ -69,17 +59,7 @@ class SportsGameTest extends TestCase
     /** @test */
     public function awayCovered_returns_correct_result()
     {
-        $scores = [
-            // [ awayScore, homeScore, awaySpread, expectedValue ]
-            [ 10, 7, 3, true ],
-            [ 13, 7, 3, true ],
-            [ 13, 7, -3, true ],
-            [ 7, 10, 3, false ],
-            [ 7, 13, 3, false ],
-            [ 10, 7, -3, false ],
-            [ 7, 10, -3, false ],
-            [ 7, 13, -3, false ],
-        ];
+        $scores = $this->testSpreads();
         foreach ($scores as $score) {
             $awayScore = $score[0];
             $homeScore = $score[1];
@@ -188,5 +168,24 @@ class SportsGameTest extends TestCase
     {
         $game = SportsGame::factory()->awayWins()->make();
         $this->assertFalse($game->isTie());
+    }
+
+    private function testSpreads() : array
+    {
+        return [
+            // [ team A score, team B score, team A spread, expected Result ]
+            [ 10, 7, 3, true ],
+            [ 13, 7, 3, true ],
+            [ 13, 7, -3, true ],
+            [ 7, 10, 3, false ],
+            [ 7, 13, 3, false ],
+            [ 10, 7, -3, false ],
+            [ 7, 10, -3, false ],
+            [ 7, 13, -3, false ],
+            // tie games are 'split', so no on has won the spread
+            [ 7, 7, 0, false ],
+            [ 10, 7, 3.5, true ],
+            [ 10, 7, -3.5, false ],
+        ];
     }
 }
