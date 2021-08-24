@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Models\SportsGame;
+use App\Events\UserCreated;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Queue\InteractsWithQueue;
 use App\Repositories\SportsBetRepository;
@@ -15,10 +16,7 @@ class CreateBetsForNewUser
      *
      * @return void
      */
-    public function __construct(public SportsBetRepository $repo)
-    {
-        //
-    }
+    public function __construct(public SportsBetRepository $repo) { }
 
     /**
      * Handle the event.
@@ -26,7 +24,7 @@ class CreateBetsForNewUser
      * @param  object  $event
      * @return void
      */
-    public function handle(Registered $event)
+    public function handle(UserCreated $event)
     {
         $user = $event->user;
         $games = SportsGame::all();

@@ -14,6 +14,9 @@ class GameGroupSeeder extends Seeder
      */
     public function run()
     {
+        if (GameGroup::count() > 0) {
+            return;
+        }
         $weeks = 18;
         for ($i = 1; $i <= $weeks; $i++) {
             GameGroup::factory()->create([

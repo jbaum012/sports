@@ -16,6 +16,10 @@ class SportsGameSeeder extends Seeder
      */
     public function run()
     {
+        if (SportsGame::count() > 0) {
+            return;
+        }
+
         $weeks = GameGroup::all();
         $gamesPerWeek = 10;
         $teams = SportsTeam::all();

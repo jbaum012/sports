@@ -22,6 +22,9 @@ class SportsTeamsSeeder extends Seeder
      */
     public function run()
     {
+        if (SportsTeam::count() > 0) {
+            return;
+        }
         $teams = [];
         $teams['Arizona Cardinals'] = ['#97233F', '#FFB612', 'Cardinals', 'Arizona', 'ARZ', $this::NFC_WEST];
         $teams['Atlanta Falcons'] = ['#A71930', '#000000', 'Falcons', 'Atlanta', 'ATL', $this::NFC_SOUTH];
