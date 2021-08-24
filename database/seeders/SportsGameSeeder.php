@@ -24,11 +24,12 @@ class SportsGameSeeder extends Seeder
             for ($j = 0; $j < $gamesPerWeek; $j++) {
                 $home = $gameTeams->pop();
                 $away = $gameTeams->pop();
-                SportsGame::factory()->create([
+                $game = SportsGame::factory()->create([
                     'game_group_id' => $week->id,
                     'home_team_id' => $home->id,
                     'away_team_id' => $away->id,
                 ]);
+                event('eloquent.created: App\SportsGame', $game);
             }
         }
     }

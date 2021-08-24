@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Events\SportsGames\SportsGameCreated;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $id
@@ -135,9 +137,18 @@ class SportsGame extends Model
         return $this->belongsTo(SportsTeam::class, 'away_team_id');
     }
 
+    public function bets() : HasMany
+    {
+        return $this->hasMany(SportsBet::class);
+    }
+
     /**
      * Events
      */
+    protected $dispatchesEvents = [
+        'created' => SportsGameCreated::class,
+    ];
+
     protected static function booted()
     {
         static::created(function (SportsGame $game) {

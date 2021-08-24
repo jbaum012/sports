@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property int $id
@@ -12,4 +13,14 @@ use Illuminate\Database\Eloquent\Model;
 class GameGroup extends Model
 {
     use HasFactory;
+
+    public function games() : HasMany
+    {
+        return $this->hasMany(Game::class);
+    }
+
+    public function bets() : HasMany
+    {
+        return $this->hasMany(SportsBet::class);
+    }
 }
