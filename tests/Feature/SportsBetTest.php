@@ -23,36 +23,38 @@ class SportsBetTest extends TestCase
         $repo = new SportsBetRepository();
         $user = User::factory()->create();
         $games = SportsGame::factory()->count(5)->create([
-            'starts_at' => Carbon::create(9999, 1, 1)
+            'starts_at' => Carbon::create(9999, 1, 1),
+            'created_by' => $user->id
         ]);
-        SportsGame::factory()->count(5)->homeWins()->create();
+        SportsGame::factory()->count(5)->homeWins()->create([
+            'created_by' => $user->id
+        ]);
         $this->assertDatabaseCount(SportsBet::class, 10);
         $result = $repo->getUnplacedBets($user->id);
         $this->assertCount($games->count(), $result);
     }
 
     /** @test */
-    public function create_bet_for_all_users_on_game_created()
+    public function bets_are_created_on_game_created()
     {
         $users = User::factory()->count(5)->create();
-        $this->actingAs($users[0]);
-        $this->storeGame();
+        SportsGame::factory()->create([
+            'created_by' => $users[0]->id
+        ]);
         $this->assertDatabaseCount(SportsBet::class, 5);
     }
 
     /** @test */
-    public function bets_are_created_when_user_is_created()
+    public function bets_are_created_on_user_created()
     {
-        $games = SportsGame::factory()->count(5)->create();
         $user = User::factory()->create();
-        event('eloquent.created: App\User', $user);
-        $this->assertDatabaseCount(SportsBet::class, 5);
-    }
-
-    private function storeGame() : TestResponse
-    {
-        $game = SportsGame::factory()->raw();
-        return $this->post('/games', $game)
-            ->assertOk();
+        $newGames = 5;
+        $expectedUsers = 2;
+        $expectedBets = $newGames * $expectedUsers;
+        $games = SportsGame::factory()->count($newGames)->create([
+            'created_by' => $user->id
+        ]);
+        $newUser = User::factory()->create();
+        $this->assertDatabaseCount(SportsBet::class, $expectedBets);
     }
 }

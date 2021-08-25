@@ -18,6 +18,7 @@ class CreateSportsGamesTable extends Migration
             $table->foreignId('game_group_id')->constrained();
             $table->foreignId('home_team_id')->constrained('sports_teams');
             $table->foreignId('away_team_id')->constrained('sports_teams');
+            $table->foreignId('created_by')->constrained('users');
             $table->double('home_team_spread', 5, 2)->nullable();
             $table->double('away_team_spread', 5, 2)->nullable();
             $table->integer('home_team_score')->nullable();

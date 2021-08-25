@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use App\Models\GameGroup;
 use App\Models\SportsGame;
 use App\Models\SportsTeam;
@@ -23,6 +24,7 @@ class SportsGameSeeder extends Seeder
         $weeks = GameGroup::all();
         $gamesPerWeek = 10;
         $teams = SportsTeam::all();
+        $user = User::find(1);
         foreach ($weeks as $week) {
             $gameTeams = clone $teams->shuffle();
             for ($j = 0; $j < $gamesPerWeek; $j++) {
@@ -32,6 +34,7 @@ class SportsGameSeeder extends Seeder
                     'game_group_id' => $week->id,
                     'home_team_id' => $home->id,
                     'away_team_id' => $away->id,
+                    'created_by' => $user->id
                 ]);
                 event('eloquent.created: App\SportsGame', $game);
             }
