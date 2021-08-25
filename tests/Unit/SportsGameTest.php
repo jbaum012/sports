@@ -11,6 +11,13 @@ class SportsGameTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
+    public function can_access_created_by()
+    {
+        $game = SportsGame::factory()->create();
+        $this->assertNotNull($game->createdBy);
+    }
+
+    /** @test */
     public function homeCovered_returns_winner_if_spread_is_null()
     {
         $game = SportsGame::factory()->homeWins()->make();

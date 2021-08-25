@@ -70,4 +70,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(SportsBet::class);
     }
+
+    public function createGames()
+    {
+        return $this->hasMany(SportsGame::class);
+    }
 }

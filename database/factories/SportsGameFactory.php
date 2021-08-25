@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use App\Models\GameGroup;
 use App\Models\SportsGame;
 use App\Models\SportsTeam;
@@ -27,6 +28,7 @@ class SportsGameFactory extends Factory
             'game_group_id' => GameGroup::factory(),
             'home_team_id' => SportsTeam::factory(),
             'away_team_id' => SportsTeam::factory(),
+            'created_by' => User::factory(),
             'starts_at' => $this->faker->dateTimeThisYear($max = '2022-02-01', $timezone = 'America/Chicago'),
         ];
     }

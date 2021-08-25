@@ -3,6 +3,7 @@ namespace App\Repositories;
 
 use App\Models\SportsGame;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use App\Http\Resources\SportsGame as SportsGameResource;
 
@@ -31,6 +32,7 @@ class SportsGameRepository
     public function create(array $args): SportsGame
     {
         $game = new SportsGame();
+        $game->created_by = Auth::user()->id;
         return $this->update($game, $args);
     }
 
