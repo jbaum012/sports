@@ -28,6 +28,7 @@ class SportsBetFactory extends Factory
             'game_group_id' => GameGroup::factory(),
             'sports_game_id' => SportsGame::factory(),
             'user_id' => User::factory(),
+            'doubled' => false
         ];
     }
 }

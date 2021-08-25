@@ -1,10 +1,33 @@
 <?php
 namespace App\Repositories;
 
+use Carbon\Carbon;
 use App\Models\SportsBet;
+use Illuminate\Support\Facades\Cache;
 
 class SportsBetRepository
 {
+    /**
+     * Returns a collection of bets where the provided user
+     * has not made a pick, and the games do not have scores
+     */
+    public function getUnplacedBets($userId)
+    {
+        return Cache::rememberForever("bets.{$userId}.unplaced", function () use ($userId) {
+            return SportsBet::with([
+                    'game'
+                ])
+                ->where('user_id', $userId)
+                ->whereNull('sports_team_id')
+                ->whereHas('game', function ($query) {
+                    return $query->whereNull('home_team_score')
+                        ->whereNull('away_team_score')
+                        ->where('starts_at', '>', Carbon::Now());
+                })
+                ->get();
+        });
+    }
+
     public function create(array $args): SportsBet
     {
         $bet = new SportsBet();

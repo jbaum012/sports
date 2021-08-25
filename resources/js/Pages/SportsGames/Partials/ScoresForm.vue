@@ -43,6 +43,15 @@
 
       <jet-button
         :class="{ 'opacity-25': form.processing }"
+        class="mr-2 bg-gray-200 text-black hover:text-white"
+        :disabled="form.processing"
+        @click="clearScores"
+      >
+        Clear scores
+      </jet-button>
+
+      <jet-button
+        :class="{ 'opacity-25': form.processing }"
         :disabled="form.processing"
       >
         Save
@@ -84,6 +93,16 @@ export default {
       this.form.put(route('scores.update', {id: this.game.id}), {
         errorBag: 'saveScores',
         preserveScroll: true,
+      })
+    },
+    clearScores() {
+      this.form.delete(route('scores.destroy', {id: this.game.id}), {
+        errorBag: 'saveScores',
+        preserveScroll: true,
+        onSuccess: () => {
+          this.form.home_team_score = null;
+          this.form.away_team_score = null;
+        }
       })
     }
   }
