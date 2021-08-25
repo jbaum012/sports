@@ -29,7 +29,7 @@ class SportsGameFactory extends Factory
             'home_team_id' => SportsTeam::factory(),
             'away_team_id' => SportsTeam::factory(),
             'created_by' => User::factory(),
-            'starts_at' => $this->faker->dateTimeThisYear($max = '2022-02-01', $timezone = 'America/Chicago'),
+            'starts_at' => $this->faker->dateTimeThisYear($max = '2022-02-01', $timezone = 'UTC'),
         ];
     }
 

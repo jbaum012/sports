@@ -53,7 +53,7 @@ class SportsGameController extends Controller
     public function update(UpdateSportsGame $request, SportsGame $sportsGame)
     {
         $game = $this->repo->update($sportsGame, $request->all());
-        return Redirect::route('games.show', $game->id);
+        return $this->show($game);
     }
 
     public function destroy(SportsGame $sportsGame)

@@ -46,7 +46,7 @@ class SportsTeamTest extends TestCase
     {
         $teamData = SportsTeam::factory()->raw();
         $response = $this->post("/teams", $teamData);
-        $response->assertOK()
+        $response->assertOk()
             ->assertInertia(
                 fn (Assert $page) => $page
                 ->component('SportsTeams/SportsTeamShow')
