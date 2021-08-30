@@ -7,9 +7,11 @@ use App\Models\GameGroup;
 use App\Models\SportsGame;
 use App\Models\SportsTeam;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Foundation\Testing\WithFaker;
 
 class SportsGameFactory extends Factory
 {
+    use WithFaker;
     /**
      * The name of the factory's corresponding model.
      *

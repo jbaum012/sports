@@ -11,6 +11,19 @@ class SportsGameTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
+    public function spread_winner_is_null_if_split()
+    {
+        $game = SportsGame::factory()->make([
+            'home_team_score' => 18,
+            'away_team_score' => 23,
+            'home_team_spread' => 5,
+            'away_team_spread' => -5,
+        ]);
+
+        $this->assertNull($game->spreadWinner());
+    }
+
+    /** @test */
     public function can_access_created_by()
     {
         $game = SportsGame::factory()->create();
@@ -18,7 +31,21 @@ class SportsGameTest extends TestCase
     }
 
     /** @test */
-    public function homeCovered_returns_winner_if_spread_is_null()
+    public function decimal_spread_returns_correct_winner()
+    {
+        $game = SportsGame::factory()->make([
+            'home_team_score' => 7,
+            'away_team_score' => 8,
+            'home_team_spread' => 1.5,
+            'away_team_spread' => -1.5,
+        ]);
+
+        $this->assertTrue($game->homeCovered());
+        $this->assertEquals($game->spreadWinner(), $game->homeTeam);
+    }
+
+    /** @test */
+    public function homeCovered_is_spread_winner_if_spread_is_null()
     {
         $game = SportsGame::factory()->homeWins()->make();
         $this->assertNull($game->homeCovered());
@@ -26,7 +53,7 @@ class SportsGameTest extends TestCase
     }
 
     /** @test */
-    public function awayCovered_returns_winner_if_spread_is_null()
+    public function awayCovered_is_spread_winner_if_spread_is_null()
     {
         $game = SportsGame::factory()->awayWins()->make();
         $this->assertNull($game->awayCovered());
@@ -189,10 +216,11 @@ class SportsGameTest extends TestCase
             [ 10, 7, -3, false ],
             [ 7, 10, -3, false ],
             [ 7, 13, -3, false ],
-            // tie games are 'split', so no on has won the spread
-            [ 7, 7, 0, false ],
             [ 10, 7, 3.5, true ],
             [ 10, 7, -3.5, false ],
+            [ 7, 8, 1.5, true ],
+            [ 7, 7, 0, false ],
+            [ 17, 17, 3, true ],
         ];
     }
 }

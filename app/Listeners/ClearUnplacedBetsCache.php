@@ -2,11 +2,12 @@
 
 namespace App\Listeners;
 
+use App\Models\User;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ClearSportsTeamGameCache
+class ClearUnplacedBetsCache
 {
     /**
      * Create the event listener.
@@ -26,8 +27,11 @@ class ClearSportsTeamGameCache
      */
     public function handle($event)
     {
-        $game = $event->sportsGame;
-        Cache::forget("sports_team.{$game->home_team_id}.games");
-        Cache::forget("sports_team.{$game->away_team_id}.games");
+        //
+        $users = User::all();
+        foreach ($users as $user) {
+            # code...
+            Cache::forget("bets.{$user->id}.unplaced");
+        }
     }
 }

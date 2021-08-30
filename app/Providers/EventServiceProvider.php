@@ -3,15 +3,19 @@
 namespace App\Providers;
 
 use App\Events\UserCreated;
+use App\Events\SportsBetUpdated;
+use App\Listeners\ClearUserBetCache;
+use App\Listeners\ClearGameListCache;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
+use App\Listeners\ClearGameWinnerCache;
 use App\Listeners\CreateBetForEachUser;
 use App\Listeners\CreateBetsForNewUser;
-use App\Events\SportsGames\SportsGameCreated;
-use App\Events\SportsGames\SportsGameScoresUpdated;
-use App\Listeners\ClearGameListCache;
-use App\Listeners\ClearGameWinnerCache;
+use App\Listeners\ClearUnplacedBetsCache;
 use App\Listeners\ClearSportsTeamGameCache;
+use App\Events\SportsGames\SportsGameCreated;
+use App\Events\SportsGames\SportsGameUpdated;
+use App\Events\SportsGames\SportsGameScoresUpdated;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -35,8 +39,12 @@ class EventServiceProvider extends ServiceProvider
             ClearGameListCache::class,
         ],
         SportsGameUpdated::class => [
-            ClearSportsTeamGameCache::class,
             ClearGameListCache::class,
+            ClearSportsTeamGameCache::class,
+            ClearUnplacedBetsCache::class,
+        ],
+        SportsBetUpdated::class => [
+            ClearUserBetCache::class,
         ],
         SportsGameScoresUpdated::class => [
             ClearGameWinnerCache::class,
