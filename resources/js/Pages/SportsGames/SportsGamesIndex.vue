@@ -24,11 +24,22 @@
               {{ week[0].group }}
             </h1>
             <div class="px-4 py-5 bg-white sm:p-6 shadow sm:rounded-md grid grid-flow-row grid-cols-1 gap-4 md:grid-cols-2">
-              <sports-game-list-item
+              <Link
                 v-for="game in week"
                 :key="game.id"
-                :game="game"
-              />
+                class="block w-full"
+                :href="route('games.show', {game: game.id})"
+              >
+                <div class="grid grid-cols-2">
+                  <sports-game-list-item :game="game" />
+                  <div class="flex h-full flex-col align-middle justify-items-center">
+                    <div class="m-auto">
+                      <div>{{ gameDay(game.starts_at) }}</div>
+                      <div>{{ gameTime(game.starts_at) }}</div>
+                    </div>
+                  </div>
+                </div>
+              </Link>
             </div>
           </div>
         </div>
@@ -42,6 +53,7 @@ import { defineComponent, ref } from 'vue'
 import SportsGameListItem from './Partials/SportsGameListItem.vue'
 import JetButton from '@/Jetstream/Button.vue'
 import { Link } from '@inertiajs/inertia-vue3'
+import { localize } from '@/helpers.js'
 
 export default defineComponent({
   components: {
@@ -51,8 +63,17 @@ export default defineComponent({
     Link
   },
   props:['gamesByWeek'],
-  // setup(props) {
-  //   props.gamesByWeek.reverse()
-  // }
+  setup() {
+    const gameDay = (dateTime) => {
+      return localize(dateTime).toFormat('cccc LLL d');
+    }
+    const gameTime = (dateTime) => {
+      return localize(dateTime).toFormat('t');
+    }
+    return {
+      gameDay,
+      gameTime
+    };
+  }
 })
 </script>

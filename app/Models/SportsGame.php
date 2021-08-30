@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
-use App\Events\SportsGames\SportsGameCreated;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Database\Eloquent\Model;
+use App\Events\SportsGames\SportsGameCreated;
+use App\Events\SportsGames\SportsGameUpdated;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $id
@@ -21,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon $starts_at
  * @property SportsTeam $homeTeam
  * @property SportsTeam $awayTeam
+ * @property Collection<SportsBet> $bets
  */
 class SportsGame extends Model
 {
@@ -97,9 +99,9 @@ class SportsGame extends Model
         return $this->calculateSpread($this->away_team_score, $this->home_team_score, $this->away_team_spread);
     }
 
-    private function calculateSpread(int $score, int $otherTeamScore, int $spread) : bool
+    private function calculateSpread(int $score, int $otherTeamScore, float $spread) : bool
     {
-        return $score - $otherTeamScore + $spread > 0;
+        return ($score - $otherTeamScore + $spread) > 0;
     }
 
     public function hasSpread() : bool
@@ -154,5 +156,6 @@ class SportsGame extends Model
      */
     protected $dispatchesEvents = [
         'created' => SportsGameCreated::class,
+        'updated' => SportsGameUpdated::class,
     ];
 }
