@@ -14,14 +14,13 @@ class SportsTeamTest extends TestCase
     public function setUp(): void
     {
         parent::setup();
-        $this->asUser();
     }
 
     /** @test */
     public function index_success()
     {
         $team = SportsTeam::factory()->create();
-        $response = $this->get('/teams');
+        $response = $this->asUser()->get('/teams');
         $response->assertOK()
             ->assertSee($team->name);
     }
@@ -30,8 +29,9 @@ class SportsTeamTest extends TestCase
     public function show_success()
     {
         $team = SportsTeam::factory()->create();
-        $response = $this->get("/teams/{$team->name}");
-        $response->assertOk()
+        $this->asUser()
+            ->get("/teams/{$team->name}")
+            ->assertOk()
             ->assertSee($team->id)
             ->assertSee($team->name)
             ->assertSee($team->location)
@@ -45,8 +45,8 @@ class SportsTeamTest extends TestCase
     public function store_success()
     {
         $teamData = SportsTeam::factory()->raw();
-        $response = $this->post("/teams", $teamData);
-        $response->assertOk()
+        $this->asUser()->post("/teams", $teamData)
+            ->assertOk()
             ->assertInertia(
                 fn (Assert $page) => $page
                 ->component('SportsTeams/SportsTeamShow')
@@ -71,8 +71,8 @@ class SportsTeamTest extends TestCase
         $teamData = SportsTeam::factory()->create();
         $newData = SportsTeam::factory()->raw();
 
-        $response = $this->put("/teams/{$teamData->name}", $newData);
-        $response->assertOK()
+        $this->asUser()->put("/teams/{$teamData->name}", $newData)
+            ->assertOK()
             ->assertInertia(
                 fn (Assert $page) => $page
                 ->component('SportsTeams/SportsTeamShow')

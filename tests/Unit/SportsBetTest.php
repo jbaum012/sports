@@ -76,4 +76,28 @@ class SportsBetTest extends TestCase
         ]);
         $this->assertTrue($bet->won());
     }
+
+    /** @test */
+    public function bets_are_created_on_game_created()
+    {
+        $users = User::factory()->count(5)->create();
+        SportsGame::factory()->create([
+            'created_by' => $users[0]->id
+        ]);
+        $this->assertDatabaseCount(SportsBet::class, 5);
+    }
+
+    /** @test */
+    public function bets_are_created_on_user_created()
+    {
+        $user = User::factory()->create();
+        $newGames = 5;
+        $expectedUsers = 2;
+        $expectedBets = $newGames * $expectedUsers;
+        $games = SportsGame::factory()->count($newGames)->create([
+            'created_by' => $user->id
+        ]);
+        $newUser = User::factory()->create();
+        $this->assertDatabaseCount(SportsBet::class, $expectedBets);
+    }
 }

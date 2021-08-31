@@ -21,8 +21,8 @@ class SportsGameScoresTest extends TestCase
             'home_team_score' => 1,
             'away_team_score' => 1
         ];
-        $this->asUser();
-        $this->put("games/{$game->id}/scores", $data)
+        $this->asUser()
+            ->put("games/{$game->id}/scores", $data)
             ->assertStatus(302); // redirect back to show page
         $updatedGame = SportsGame::find($game->id);
         $this->assertEquals($data['home_team_score'], $updatedGame->home_team_score);
@@ -33,8 +33,8 @@ class SportsGameScoresTest extends TestCase
     public function clear_scores_success()
     {
         $game = SportsGame::factory()->homeWins()->create();
-        $this->asUser();
-        $this->delete("games/{$game->id}/scores")
+        $this->asUser()
+            ->delete("games/{$game->id}/scores")
             ->assertStatus(302); // redirect back to show page
         $updatedGame = SportsGame::find($game->id);
         $this->assertNull($updatedGame->home_team_score);
