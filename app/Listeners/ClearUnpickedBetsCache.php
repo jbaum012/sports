@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ClearUnplacedBetsCache
+class ClearUnpickedBetsCache
 {
     /**
      * Create the event listener.
@@ -31,7 +31,7 @@ class ClearUnplacedBetsCache
         $users = User::all();
         foreach ($users as $user) {
             # code...
-            Cache::forget("bets.{$user->id}.unplaced");
+            Cache::forget("bets.{$user->id}.unpicked");
         }
     }
 }

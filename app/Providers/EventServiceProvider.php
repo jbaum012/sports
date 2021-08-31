@@ -11,7 +11,7 @@ use Illuminate\Auth\Events\Registered;
 use App\Listeners\ClearGameWinnerCache;
 use App\Listeners\CreateBetForEachUser;
 use App\Listeners\CreateBetsForNewUser;
-use App\Listeners\ClearUnplacedBetsCache;
+use App\Listeners\ClearUnpickedBetsCache;
 use App\Listeners\ClearSportsTeamGameCache;
 use App\Events\SportsGames\SportsGameCreated;
 use App\Events\SportsGames\SportsGameUpdated;
@@ -41,7 +41,7 @@ class EventServiceProvider extends ServiceProvider
         SportsGameUpdated::class => [
             ClearGameListCache::class,
             ClearSportsTeamGameCache::class,
-            ClearUnplacedBetsCache::class,
+            ClearUnpickedBetsCache::class,
         ],
         SportsBetUpdated::class => [
             ClearUserBetCache::class,

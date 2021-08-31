@@ -5,9 +5,26 @@ use App\Exceptions\DuplicateBetException;
 use Carbon\Carbon;
 use App\Models\SportsBet;
 use Illuminate\Support\Facades\Cache;
+use App\Http\Resources\SportsBet as SportsBetResource;
 
 class SportsBetRepository
 {
+    public function betsForUser(int $userId)
+    {
+        $cacheTime = 60 * 60 * 24;
+        return Cache::remember("bets.{$userId}", $cacheTime, function () use ($userId) {
+            $bets = SportsBet::with([
+                    'game'
+                ])
+                ->where('user_id', $userId)
+                ->get();
+            $collection = SportsBetResource::collection($bets);
+            $groups = $collection->collection->groupBy('game_group_id');
+            $reversed = array_reverse($groups->toArray());
+            return $reversed;
+        });
+    }
+
     public function findByUserAndGame(int $userId, int $gameId): SportsBet
     {
         return SportsBet::where('user_id', $userId)
@@ -19,9 +36,9 @@ class SportsBetRepository
      * Returns a collection of bets where the provided user
      * has not made a pick and the games do not have scores
      */
-    public function getUnplacedBets($userId)
+    public function getUnpickedBets($userId)
     {
-        return Cache::rememberForever("bets.{$userId}.unplaced", function () use ($userId) {
+        return Cache::rememberForever("bets.{$userId}.unpicked", function () use ($userId) {
             return SportsBet::with([
                     'game'
                 ])

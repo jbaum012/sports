@@ -43,18 +43,27 @@ class SportsBetRepositoryTest extends TestCase
     }
 
     /** @test */
-    public function unplaced_bets_returns_correct_number_of_bets()
+    public function unpicked_bets_returns_correct_number_of_bets()
     {
+        $hasScores = 3;
+        $unplayedAndUnpicked = 2;
+        $unplayedHasPicks = 1;
         $user = User::factory()->create();
-        $games = SportsGame::factory()->count(5)->create([
+        SportsGame::factory()->count($hasScores)->homeWins()->create([
+            'created_by' => $user->id
+        ]);
+
+        $hasPicks = SportsBet::factory()
+            ->hasPick($user->id)
+            ->count($unplayedHasPicks)
+            ->create();
+
+        $games = SportsGame::factory()->count($unplayedAndUnpicked)->create([
             'starts_at' => Carbon::create(9999, 1, 1),
             'created_by' => $user->id
         ]);
-        SportsGame::factory()->count(5)->homeWins()->create([
-            'created_by' => $user->id
-        ]);
-        $this->assertDatabaseCount(SportsBet::class, 10);
-        $result = $this->repo->getUnplacedBets($user->id);
+
+        $result = $this->repo->getUnpickedBets($user->id);
         $this->assertCount($games->count(), $result);
     }
 }

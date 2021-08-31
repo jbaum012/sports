@@ -7,6 +7,7 @@ use Tests\TestCase;
 use App\Models\User;
 use App\Models\SportsBet;
 use App\Models\SportsGame;
+use App\Models\SportsTeam;
 use Illuminate\Testing\TestResponse;
 use App\Repositories\SportsBetRepository;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -38,5 +39,25 @@ class SportsBetTest extends TestCase
             ->assertOk();
         $bet = SportsBet::find($bet->id);
         $this->assertEquals($pick['sports_team_id'], $bet->sports_team_id);
+    }
+
+    /** @test */
+    public function can_get_unpicked_games()
+    {
+        $unpicked = 5;
+        $missed = 3;
+        $old = 2;
+        $user = User::factory()->create();
+        $missedGame = SportsGame::factory()->count($missed)->create([
+            'starts_at' => Carbon::now()->addWeeks(-2)
+        ]);
+        $pick = SportsBet::factory()->hasPick($user->id)->count($old)->create();
+        $unpickedGames = SportsGame::factory()->count($unpicked)->create([
+            'starts_at' => Carbon::now()->addWeek()
+        ]);
+        $reponse = $this->asUser()
+            ->get('api/bets/unpicked')
+            ->assertOk()
+            ->assertJsonCount($unpicked);
     }
 }

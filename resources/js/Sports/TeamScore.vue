@@ -12,7 +12,7 @@ export default defineComponent({
   props: {
     score: Number,
     team: Object,
-    results: Object
+    results: Object,
   },
   computed: {
     style() {
