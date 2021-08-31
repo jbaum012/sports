@@ -12,7 +12,7 @@
             v-for="(week, index) in bets"
             :key="index"
           >
-            <h1 class="text-4xl fong-medium text-gray-900 mb-3">
+            <h1 class="text-4xl fong-medium text-gray-900 my-3">
               {{ week[0].group }}
             </h1>
             <div class="px-4 py-5 bg-white sm:p-6 shadow sm:rounded-md grid grid-flow-row grid-cols-1 md:grid-cols-2 md:gap-10 gap-6">
@@ -53,7 +53,10 @@
                     />
                   </div>
                   <div class="text-center text-xl">
-                    <sports-bet-results :bet="bet" />
+                    <sports-bet-results
+                      :bet="bet"
+                      @doubled="(e)=> bet.doubled = e"
+                    />
                   </div>
                 </div>
               </div>
@@ -78,7 +81,7 @@ export default{
   props:['bets'],
   setup(props) {
     const submitPick = async (bet, team) => {
-      await axios.post(route('submit-pick', {
+      await axios.put(route('submit-pick', {
         bet: bet.id,
         sports_team_id: team.id
       }));

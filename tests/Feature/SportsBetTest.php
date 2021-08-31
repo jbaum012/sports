@@ -2,6 +2,8 @@
 
 namespace Tests\Feature;
 
+use App\Exceptions\DoubleDownLimitReachedException;
+use App\Models\GameGroup;
 use Carbon\Carbon;
 use Tests\TestCase;
 use App\Models\User;
@@ -10,6 +12,7 @@ use App\Models\SportsGame;
 use App\Models\SportsTeam;
 use Illuminate\Testing\TestResponse;
 use App\Repositories\SportsBetRepository;
+use App\Repositories\SportsGameRepository;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -26,6 +29,18 @@ class SportsBetTest extends TestCase
     }
 
     /** @test */
+    public function can_double_down()
+    {
+        $user = User::factory()->create();
+        $bet = SportsBet::factory()->hasPick($user->id)->create();
+        $this->asUser()
+            ->post("api/bets/{$bet->id}/double")
+            ->assertOk();
+        $dbBet = SportsBet::find($bet->id);
+        $this->assertTrue($dbBet->doubled);
+    }
+
+    /** @test */
     public function can_submit_pick()
     {
         $user = User::factory()->create();
@@ -35,7 +50,7 @@ class SportsBetTest extends TestCase
             'sports_team_id' => $game->home_team_id,
         ];
         $this->asUser()
-            ->post("api/bets/{$bet->id}/pick", $pick)
+            ->put("api/bets/{$bet->id}/pick", $pick)
             ->assertOk();
         $bet = SportsBet::find($bet->id);
         $this->assertEquals($pick['sports_team_id'], $bet->sports_team_id);

@@ -41,5 +41,9 @@ class Handler extends ExceptionHandler
         $this->reportable(function (DuplicateBetException $e) {
             //
         });
+
+        $this->reportable(function (DoubleDownLimitReachedException $e) {
+            //
+        });
     }
 }

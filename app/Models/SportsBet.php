@@ -16,6 +16,10 @@ class SportsBet extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'doubled' => 'bool'
+    ];
+
     protected $fillable = [
         'game_group_id',
         'sports_game_id',

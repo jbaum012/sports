@@ -252,6 +252,12 @@
               Dashboard
             </jet-responsive-nav-link>
             <jet-responsive-nav-link
+              :href="route('bets.index')"
+              :active="route().current('bets.index')"
+            >
+              Bets
+            </jet-responsive-nav-link>
+            <jet-responsive-nav-link
               :href="route('teams.index')"
               :active="route().current('teams.index')"
             >

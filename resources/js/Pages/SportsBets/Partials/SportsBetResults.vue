@@ -28,9 +28,18 @@
       :team="bet.team"
     />
     <button
-      class="block m-auto bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded-lg"
+      v-if="!bet.doubled"
+      class="block m-auto bg-gray-300 hover:bg-gray-500 text-white font-bold py-1 px-2 rounded-lg"
+      @click="doubleDown"
     >
       double
+    </button>
+    <button
+      v-else
+      class="block m-auto bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded-lg"
+      @click="undoubleDown"
+    >
+      doubled
     </button>
   </div>
 </template>
@@ -44,7 +53,30 @@ export default {
   props: {
     bet: Object
   },
-  setup(props) {
+  emits: ['doubled'],
+  setup(props, { emit }) {
+    const doubleDown = async (event) => {
+      try {
+        await axios.post(route('double-down', {
+          bet: props.bet.id,
+        }));
+        emit('doubled', true);
+      } catch(e) {
+        event.target.classList.add('animate-shake');
+        setTimeout(()=> {
+          event.target.classList.remove('animate-shake')
+        }, 500)
+      }
+    };
+    const undoubleDown = async () => {
+      try{
+        await axios.delete(route('double-down.destroy', {
+          bet: props.bet.id
+        }));
+        emit('doubled', false);
+      } catch (e) {
+      }
+    };
     const pointsDisplay = (points) => {
       return points >= 0
         ? '+' + points
@@ -52,6 +84,8 @@ export default {
     }
     return {
       pointsDisplay,
+      doubleDown,
+      undoubleDown,
     }
   }
 }

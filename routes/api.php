@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\SubmitPick;
 use App\Http\Controllers\Api\UnpickedBets;
+use App\Http\Controllers\Api\DoubleDownController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,9 @@ use App\Http\Controllers\Api\UnpickedBets;
 */
 
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::post('bets/{bet}/pick', SubmitPick::class)->name('submit-pick');
+    Route::put('bets/{bet}/pick', SubmitPick::class)->name('submit-pick');
+    Route::post('bets/{bet}/double', [DoubleDownController::class, 'store'])->name('double-down');
+    Route::delete('bets/{bet}/double', [DoubleDownController::class, 'destroy'])->name('double-down.destroy');
     Route::get('bets/unpicked', UnpickedBets::class)->name('unpicked-bets');
 });
 

@@ -1,14 +1,23 @@
 <?php
 namespace App\Repositories;
 
-use App\Exceptions\DuplicateBetException;
 use Carbon\Carbon;
 use App\Models\SportsBet;
 use Illuminate\Support\Facades\Cache;
+use App\Exceptions\DuplicateBetException;
+use App\Exceptions\DoubleDownLimitReachedException;
 use App\Http\Resources\SportsBet as SportsBetResource;
 
 class SportsBetRepository
 {
+    public function userDoubledForGroup(int $userId, int $gameGroupId)
+    {
+        return SportsBet::where('user_id', $userId)
+            ->where('game_group_id', $gameGroupId)
+            ->where('doubled', true)
+            ->count();
+    }
+
     public function betsForUser(int $userId)
     {
         $cacheTime = 60 * 60 * 24;
@@ -25,11 +34,11 @@ class SportsBetRepository
         });
     }
 
-    public function findByUserAndGame(int $userId, int $gameId): SportsBet
+    public function findByUserAndGame(int $userId, int $gameId): ?SportsBet
     {
         return SportsBet::where('user_id', $userId)
             ->where('sports_game_id', $gameId)
-            ->firstOrFail();
+            ->first();
     }
 
     /**
@@ -56,9 +65,7 @@ class SportsBetRepository
     public function create(array $args): SportsBet
     {
         $bet = new SportsBet();
-        $existing = SportsBet::where('user_id', $args['user_id'])
-            ->where('sports_game_id', $args)
-            ->first();
+        $existing = $this->findByUserAndGame($args['user_id'], $args['sports_game_id']);
         if (!is_null($existing)) {
             throw new DuplicateBetException("User id: {$existing->user_id} already has a bet for game: {$existing->sports_game_id}");
         }
@@ -80,6 +87,21 @@ class SportsBetRepository
     public function updatePick(SportsBet $bet, int $sportsTeamId)
     {
         $bet->sports_team_id = $sportsTeamId;
+        $bet->save();
+
+        return $bet;
+    }
+
+    public function updateDoubled(SportsBet $bet, bool $doubled)
+    {
+        if ($doubled === true) {
+            $count = $this->userDoubledForGroup($bet->user_id, $bet->game_group_id);
+            if ($count > 1) {
+                throw new DoubleDownLimitReachedException("The maximum number of games that can be doubled for this group has already been reached");
+            }
+        }
+
+        $bet->doubled = $doubled;
         $bet->save();
 
         return $bet;

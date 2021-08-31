@@ -2,15 +2,17 @@
 
 namespace Tests\Unit;
 
-use App\Exceptions\DuplicateBetException;
 use Carbon\Carbon;
 use Tests\TestCase;
 use App\Models\User;
+use App\Models\GameGroup;
 use App\Models\SportsBet;
 use App\Models\SportsGame;
+use App\Exceptions\DuplicateBetException;
 use App\Repositories\SportsBetRepository;
 use Database\Factories\SportsGameFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Exceptions\DoubleDownLimitReachedException;
 
 class SportsBetRepositoryTest extends TestCase
 {
@@ -22,6 +24,23 @@ class SportsBetRepositoryTest extends TestCase
     {
         parent::setup();
         $this->repo = new SportsBetRepository();
+    }
+
+    /** @test */
+    public function double_down_on_more_than_two_games_per_group_throws_exception()
+    {
+        $this->expectException(DoubleDownLimitReachedException::class);
+        $user = User::factory()->create();
+        $group = GameGroup::factory()->create();
+        $bets = SportsBet::factory()->hasPick($user->id)->count(2)->create([
+            'game_group_id' => $group->id,
+            'doubled' => true
+        ]);
+        $bet = SportsBet::factory()->hasPick($user->id)->create([
+            'game_group_id' => $group->id,
+            'doubled' => false
+        ]);
+        $this->repo->updateDoubled($bet, true);
     }
 
     /** @test */
