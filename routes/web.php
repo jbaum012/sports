@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SportsBetController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -26,7 +27,7 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
         $temp = new SportsBetRepository();
-        $bets = $temp->getUnplacedBets(Auth::user()->id);
+        $bets = $temp->getUnpickedBets(Auth::user()->id);
         $groupedByWeek = $bets->groupBy('game_group_id');
         return Inertia::render('Dashboard', [
             'bets' => $groupedByWeek
@@ -37,4 +38,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::apiResource('games', SportsGameController::class);
     Route::put('games/{game}/scores', [SportsGameScoresController::class, 'update'])->name('scores.update');
     Route::delete('games/{game}/scores', [SportsGameScoresController::class, 'destroy'])->name('scores.destroy');
+    Route::get('bets', [SportsBetController::class, 'index'])->name('bets.index');
 });

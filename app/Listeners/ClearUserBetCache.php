@@ -29,7 +29,7 @@ class ClearUserBetCache
     public function handle(SportsBetUpdated $event)
     {
         $bet = $event->sportsBet;
-        Cache::forget("bets.{$bet->user_id}.unplaced");
-        Log::warning("bet cache cleared for {$bet->user_id}");
+        Cache::forget("bets.{$bet->user_id}");
+        Cache::forget("bets.{$bet->user_id}.unpicked");
     }
 }

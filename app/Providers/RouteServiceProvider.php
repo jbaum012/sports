@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\SportsBet;
 use App\Models\SportsGame;
 use App\Models\SportsTeam;
 use Illuminate\Http\Request;
@@ -41,7 +42,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->routes(function () {
             Route::prefix('api')
-                ->middleware('api')
+                ->middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/api.php'));
 
@@ -56,6 +57,10 @@ class RouteServiceProvider extends ServiceProvider
 
         Route::bind('game', function ($value) {
             return SportsGame::where('id', $value)->first()?? abort(404);
+        });
+
+        Route::bind('bet', function ($value) {
+            return SportsBet::where('id', $value)->first()?? abort(404);
         });
     }
 

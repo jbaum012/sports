@@ -5,6 +5,7 @@
       class="flex mb-1"
     >
       <team-score
+        v-if="showScores"
         :results="game.results"
         :team="game.home_team"
         :score="game.home_team_score"
@@ -19,6 +20,7 @@
       class="flex"
     >
       <team-score
+        v-if="showScores"
         :results="game.results"
         :team="game.away_team"
         :score="game.away_team_score"
@@ -44,7 +46,11 @@ export default defineComponent({
     TeamScore,
   },
   props: {
-    game: Object
+    game: Object,
+    showScores: {
+      type: Boolean,
+      default: true
+    },
   },
   setup(props) {
     const gameTime = localize(props.game.starts_at)

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\SportsBetUpdated;
 use App\Models\User;
 use App\Models\GameGroup;
 use App\Models\SportsGame;
@@ -15,6 +16,10 @@ class SportsBet extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'doubled' => 'bool'
+    ];
+
     protected $fillable = [
         'game_group_id',
         'sports_game_id',
@@ -26,9 +31,17 @@ class SportsBet extends Model
     const BASE_VALUE = 2.0;
     const CREATOR_BONUS = 0.1;
 
+    public function locked(): bool
+    {
+        return $this->game->hasScores() || !is_null($this->won());
+    }
+
     public function points(): ?float
     {
         if (is_null($this->won())) {
+            if ($this->game->isSplit()) {
+                return 0;
+            }
             return null;
         }
         $base = $this->won() === true
@@ -40,12 +53,13 @@ class SportsBet extends Model
         $bonus = $this->user_id === $authUser
             ? self::CREATOR_BONUS
             : 0;
-        return $base + $bonus;
+        $multiplyer = $this->doubled ? 2 : 1;
+        return ($base * $multiplyer) + $bonus;
     }
 
     public function won(): ?bool
     {
-        $winningTeam = $this->game->winner();
+        $winningTeam = $this->game->spreadWinner();
         if (is_null($winningTeam)) {
             return null;
         }
@@ -72,4 +86,11 @@ class SportsBet extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    /**
+     * Events
+     */
+    protected $dispatchesEvents = [
+        'updated' => SportsBetUpdated::class,
+    ];
 }

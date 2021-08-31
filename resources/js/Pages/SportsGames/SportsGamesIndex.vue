@@ -53,7 +53,7 @@ import { defineComponent, ref } from 'vue'
 import SportsGameListItem from './Partials/SportsGameListItem.vue'
 import JetButton from '@/Jetstream/Button.vue'
 import { Link } from '@inertiajs/inertia-vue3'
-import { localize } from '@/helpers.js'
+import { gameDay, gameTime } from '@/helpers.js'
 
 export default defineComponent({
   components: {
@@ -64,12 +64,6 @@ export default defineComponent({
   },
   props:['gamesByWeek'],
   setup() {
-    const gameDay = (dateTime) => {
-      return localize(dateTime).toFormat('cccc LLL d');
-    }
-    const gameTime = (dateTime) => {
-      return localize(dateTime).toFormat('t');
-    }
     return {
       gameDay,
       gameTime

@@ -31,4 +31,18 @@ class SportsBetFactory extends Factory
             'doubled' => false
         ];
     }
+
+    public function hasPick($userId)
+    {
+        $game = SportsGame::factory()->homeWins()->create();
+
+        return $this->state(function (array $attributes) use ($userId, $game) {
+            return [
+                'user_id' => $userId,
+                'game_group_id' => $game->game_group_id,
+                'sports_game_id' => $game->id,
+                'sports_team_id' => $game->home_team_id
+            ];
+        });
+    }
 }

@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\SubmitPick;
+use App\Http\Controllers\Api\UnpickedBets;
+use App\Http\Controllers\Api\DoubleDownController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,13 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::put('bets/{bet}/pick', SubmitPick::class)->name('submit-pick');
+    Route::post('bets/{bet}/double', [DoubleDownController::class, 'store'])->name('double-down');
+    Route::delete('bets/{bet}/double', [DoubleDownController::class, 'destroy'])->name('double-down.destroy');
+    Route::get('bets/unpicked', UnpickedBets::class)->name('unpicked-bets');
+});
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

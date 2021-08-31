@@ -10,6 +10,21 @@ export function localize(dateTime) {
   return converted.toLocal()
 }
 
+export function localizedParts(dateTime) {
+  localized = localize(dateTime)
+  return {
+    gameDay: localized.toFormat('cccc LLL d'),
+    gameTime: localized.toFormat('t')
+  }
+}
+
+export const gameDay = (dateTime) => {
+  return localize(dateTime).toFormat('ccc LLL d');
+}
+export const gameTime = (dateTime) => {
+  return localize(dateTime).toFormat('t');
+}
+
 export function localizeForInput(dateTime) {
   if (dateTime == null) {
     return null

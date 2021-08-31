@@ -26,9 +26,5 @@ export default {
     Welcome,
   },
   props:['bets'],
-  created(){
-    console.log(this.bets[1])
-
-  }
 }
 </script>

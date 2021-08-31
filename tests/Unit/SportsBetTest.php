@@ -13,6 +13,40 @@ class SportsBetTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
+    public function doubled_bet_doubls_points()
+    {
+        $user = User::factory()->create();
+        $game = SportsGame::factory()->homeWins()->create();
+        $bet = SportsBet::factory()->create([
+            'sports_game_id' => $game->id,
+            'sports_team_id' => $game->home_team_id,
+            'user_id' => $user->id,
+            'doubled' => true
+        ]);
+
+        $this->assertEquals(4, $bet->points());
+    }
+
+    /** @test */
+    public function split_bet_returns_0_points()
+    {
+        $user = User::factory()->create();
+        $game = SportsGame::factory()->create([
+            'home_team_score' => 11,
+            'away_team_score' => 14,
+            'home_team_spread' => 3,
+            'away_team_spread' => -3
+        ]);
+        $bet = SportsBet::factory()->create([
+            'sports_game_id' => $game->id,
+            'sports_team_id' => $game->home_team_id,
+            'user_id' => $user->id
+        ]);
+
+        $this->assertEquals(0, $bet->points());
+    }
+
+    /** @test */
     public function bonus_points_applied_to_creators_won_bet()
     {
         $user = User::factory()->create();
@@ -75,5 +109,29 @@ class SportsBetTest extends TestCase
             'sports_team_id' => $game->home_team_id,
         ]);
         $this->assertTrue($bet->won());
+    }
+
+    /** @test */
+    public function bets_are_created_on_game_created()
+    {
+        $users = User::factory()->count(5)->create();
+        SportsGame::factory()->create([
+            'created_by' => $users[0]->id
+        ]);
+        $this->assertDatabaseCount(SportsBet::class, 5);
+    }
+
+    /** @test */
+    public function bets_are_created_on_user_created()
+    {
+        $user = User::factory()->create();
+        $newGames = 5;
+        $expectedUsers = 2;
+        $expectedBets = $newGames * $expectedUsers;
+        $games = SportsGame::factory()->count($newGames)->create([
+            'created_by' => $user->id
+        ]);
+        $newUser = User::factory()->create();
+        $this->assertDatabaseCount(SportsBet::class, $expectedBets);
     }
 }

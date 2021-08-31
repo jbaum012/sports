@@ -2,59 +2,77 @@
 
 namespace Tests\Feature;
 
+use App\Exceptions\DoubleDownLimitReachedException;
+use App\Models\GameGroup;
 use Carbon\Carbon;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\SportsBet;
 use App\Models\SportsGame;
+use App\Models\SportsTeam;
 use Illuminate\Testing\TestResponse;
 use App\Repositories\SportsBetRepository;
+use App\Repositories\SportsGameRepository;
 use Illuminate\Foundation\Testing\WithFaker;
-use App\Events\SportsGames\SportsGameCreated;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class SportsBetTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
-    public function unplaced_bets_returns_correct_number_of_bets()
+    private SportsBetRepository $repo;
+
+    public function setUp(): void
     {
-        $repo = new SportsBetRepository();
-        $user = User::factory()->create();
-        $games = SportsGame::factory()->count(5)->create([
-            'starts_at' => Carbon::create(9999, 1, 1),
-            'created_by' => $user->id
-        ]);
-        SportsGame::factory()->count(5)->homeWins()->create([
-            'created_by' => $user->id
-        ]);
-        $this->assertDatabaseCount(SportsBet::class, 10);
-        $result = $repo->getUnplacedBets($user->id);
-        $this->assertCount($games->count(), $result);
+        parent::setUp();
+        $this->repo = new SportsBetRepository();
     }
 
     /** @test */
-    public function bets_are_created_on_game_created()
+    public function can_double_down()
     {
-        $users = User::factory()->count(5)->create();
-        SportsGame::factory()->create([
-            'created_by' => $users[0]->id
-        ]);
-        $this->assertDatabaseCount(SportsBet::class, 5);
+        $user = User::factory()->create();
+        $bet = SportsBet::factory()->hasPick($user->id)->create();
+        $this->asUser()
+            ->post("api/bets/{$bet->id}/double")
+            ->assertOk();
+        $dbBet = SportsBet::find($bet->id);
+        $this->assertTrue($dbBet->doubled);
     }
 
     /** @test */
-    public function bets_are_created_on_user_created()
+    public function can_submit_pick()
     {
         $user = User::factory()->create();
-        $newGames = 5;
-        $expectedUsers = 2;
-        $expectedBets = $newGames * $expectedUsers;
-        $games = SportsGame::factory()->count($newGames)->create([
-            'created_by' => $user->id
+        $game = SportsGame::factory()->create();
+        $bet = $this->repo->findByUserAndGame($user->id, $game->id);
+        $pick = [
+            'sports_team_id' => $game->home_team_id,
+        ];
+        $this->asUser()
+            ->put("api/bets/{$bet->id}/pick", $pick)
+            ->assertOk();
+        $bet = SportsBet::find($bet->id);
+        $this->assertEquals($pick['sports_team_id'], $bet->sports_team_id);
+    }
+
+    /** @test */
+    public function can_get_unpicked_games()
+    {
+        $unpicked = 5;
+        $missed = 3;
+        $old = 2;
+        $user = User::factory()->create();
+        $missedGame = SportsGame::factory()->count($missed)->create([
+            'starts_at' => Carbon::now()->addWeeks(-2)
         ]);
-        $newUser = User::factory()->create();
-        $this->assertDatabaseCount(SportsBet::class, $expectedBets);
+        $pick = SportsBet::factory()->hasPick($user->id)->count($old)->create();
+        $unpickedGames = SportsGame::factory()->count($unpicked)->create([
+            'starts_at' => Carbon::now()->addWeek()
+        ]);
+        $reponse = $this->asUser()
+            ->get('api/bets/unpicked')
+            ->assertOk()
+            ->assertJsonCount($unpicked);
     }
 }

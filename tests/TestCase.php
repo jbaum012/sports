@@ -22,6 +22,7 @@ abstract class TestCase extends BaseTestCase
         if (empty($this->user)) {
             $this->user = User::factory()->create();
         }
-        return Sanctum::actingAs($this->user, ['*']);
+        Sanctum::actingAs($this->user, ['*']);
+        return $this;
     }
 }
