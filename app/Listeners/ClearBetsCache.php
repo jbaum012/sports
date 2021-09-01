@@ -2,13 +2,12 @@
 
 namespace App\Listeners;
 
-use App\Events\SportsBetUpdated;
-use Illuminate\Support\Facades\Log;
+use App\Models\User;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ClearUserBetCache
+class ClearBetsCache
 {
     /**
      * Create the event listener.
@@ -26,9 +25,12 @@ class ClearUserBetCache
      * @param  object  $event
      * @return void
      */
-    public function handle(SportsBetUpdated $event)
+    public function handle($event)
     {
-        $bet = $event->sportsBet;
-        Cache::forget("bets.{$bet->user_id}");
+        $users = User::all();
+        foreach ($users as $user) {
+            # code...
+            Cache::forget("bets.{$user->id}");
+        }
     }
 }

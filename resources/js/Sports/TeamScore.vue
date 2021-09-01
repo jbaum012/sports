@@ -1,7 +1,7 @@
 <template>
   <div
     :style="style"
-    class="flex justify-evenly items-center flex-none h-11 w-10 text-2xl p-5 font-bold"
+    class="flex justify-evenly items-center flex-none h-11 w-10 text-lg p-5 font-bold"
   >
     {{ scoreDisplay }}
   </div>
@@ -10,7 +10,7 @@
 import { defineComponent } from 'vue'
 export default defineComponent({
   props: {
-    score: Number,
+    number: Number,
     team: Object,
     results: Object,
   },
@@ -34,9 +34,9 @@ export default defineComponent({
       return this.results?.split
     },
     scoreDisplay() {
-      return this.score === 0
-        ? this.score
-        : this.score || '-';
+      return !!this.number
+        ? this.number
+        : '-';
     }
   }
 })

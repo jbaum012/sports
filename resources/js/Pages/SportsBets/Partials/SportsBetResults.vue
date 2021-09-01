@@ -65,7 +65,7 @@ export default {
         event.target.classList.add('animate-shake');
         setTimeout(()=> {
           event.target.classList.remove('animate-shake')
-        }, 500)
+        }, 1000)
       }
     };
     const undoubleDown = async () => {

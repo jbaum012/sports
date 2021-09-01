@@ -255,7 +255,7 @@
               :href="route('bets.index')"
               :active="route().current('bets.index')"
             >
-              Bets
+              Picks
             </jet-responsive-nav-link>
             <jet-responsive-nav-link
               :href="route('teams.index')"

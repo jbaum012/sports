@@ -24,7 +24,7 @@
                 :key="bet.id"
               >
                 <div class="grid grid-cols-2 pb-6 border-b-2 border-black-200">
-                  <div class="text-center text-xl flex">
+                  <div class="text-center text-lg flex">
                     <div
                       v-if="!bet.game.results"
                       class="h-full"
@@ -49,10 +49,10 @@
                     <sports-game-list-item
                       class="flex-grow"
                       :game="bet.game"
-                      :show-scores="!!bet.game.results"
+                      :display-type="!!bet.game.results ? 'score' : 'spread'"
                     />
                   </div>
-                  <div class="text-center text-xl">
+                  <div class="text-center text-md">
                     <sports-bet-results
                       :bet="bet"
                       @doubled="(e)=> bet.doubled = e"
