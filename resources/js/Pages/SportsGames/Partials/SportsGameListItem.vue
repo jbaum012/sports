@@ -5,10 +5,9 @@
       class="flex mb-1"
     >
       <team-score
-        v-if="showScores"
         :results="game.results"
         :team="game.home_team"
-        :score="game.home_team_score"
+        :number="homeTeamNumber"
       />
       <team-name
         class="flex-grow"
@@ -20,10 +19,9 @@
       class="flex"
     >
       <team-score
-        v-if="showScores"
         :results="game.results"
         :team="game.away_team"
-        :score="game.away_team_score"
+        :number="awayTeamNumber"
       />
       <team-name
         class="flex-grow"
@@ -34,30 +32,34 @@
   </div>
 </template>
 <script>
-import { defineComponent } from 'vue'
 import TeamName from '@/Sports/TeamName.vue'
 import TeamScore from '@/Sports/TeamScore.vue'
-import { DateTime } from 'luxon'
-import { localize } from '@/helpers.js'
+import { computed } from 'vue'
 
-export default defineComponent({
+export default {
   components: {
     TeamName,
     TeamScore,
   },
   props: {
     game: Object,
-    showScores: {
-      type: Boolean,
-      default: true
-    },
+    displayType: String
   },
   setup(props) {
-    const gameTime = localize(props.game.starts_at)
-      .toLocaleString(DateTime.DATETIME_MED)
+    const homeTeamNumber = computed(()=>{
+      return props.displayType === 'spread'
+        ? props.game.home_team_spread
+        : props.game.home_team_score
+    });
+    const awayTeamNumber = computed(()=>{
+      return props.displayType === 'spread'
+        ? props.game.away_team_spread
+        : props.game.away_team_score
+    });
     return {
-      gameTime
+      homeTeamNumber,
+      awayTeamNumber
     }
   }
-})
+}
 </script>
