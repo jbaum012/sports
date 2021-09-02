@@ -14,6 +14,11 @@ class GameGroup extends Model
 {
     use HasFactory;
 
+    public function userBets()
+    {
+        return $this->bets->groupBy('user_id');
+    }
+
     public function games() : HasMany
     {
         return $this->hasMany(Game::class);

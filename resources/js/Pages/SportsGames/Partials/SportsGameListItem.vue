@@ -43,18 +43,17 @@ export default {
   },
   props: {
     game: Object,
-    displayType: String
   },
   setup(props) {
-    const homeTeamNumber = computed(()=>{
-      return props.displayType === 'spread'
-        ? props.game.home_team_spread
-        : props.game.home_team_score
+    const homeTeamNumber = computed(()=> {
+      return props.game.home_team_score !== null
+        ? props.game.home_team_score
+        : props.game.home_team_spread
     });
     const awayTeamNumber = computed(()=>{
-      return props.displayType === 'spread'
-        ? props.game.away_team_spread
-        : props.game.away_team_score
+      return props.game.away_team_score !== null
+        ? props.game.away_team_score
+        : props.game.away_team_spread
     });
     return {
       homeTeamNumber,

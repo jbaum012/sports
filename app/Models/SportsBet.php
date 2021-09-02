@@ -28,8 +28,8 @@ class SportsBet extends Model
         'doubled'
     ];
 
-    const BASE_VALUE = 2.0;
-    const CREATOR_BONUS = 0.1;
+    const BASE_VALUE = 1.0;
+    const CREATOR_BONUS = 0.05;
 
     public function locked(): bool
     {

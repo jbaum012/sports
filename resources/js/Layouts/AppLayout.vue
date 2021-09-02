@@ -32,6 +32,12 @@
                   Picks
                 </jet-nav-link>
                 <jet-nav-link
+                  :href="route('results.index')"
+                  :active="route().current('results.index')"
+                >
+                  Results
+                </jet-nav-link>
+                <jet-nav-link
                   :href="route('teams.index')"
                   :active="route().current('teams.index')"
                 >
@@ -256,6 +262,12 @@
               :active="route().current('bets.index')"
             >
               Picks
+            </jet-responsive-nav-link>
+            <jet-responsive-nav-link
+              :href="route('results.index')"
+              :active="route().current('results.index')"
+            >
+              Results
             </jet-responsive-nav-link>
             <jet-responsive-nav-link
               :href="route('teams.index')"

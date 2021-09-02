@@ -18,6 +18,26 @@ class SportsBetRepository
             ->count();
     }
 
+    public function resultsForUser(int $userId)
+    {
+        $cacheTime = 60 * 60 * 24;
+        return Cache::remember("bets.{$userId}.results", $cacheTime, function () use ($userId) {
+            $bets = SportsBet::with([
+                    'game'
+                ])
+                ->where('user_id', $userId)
+                ->whereHas('game', function ($query) {
+                    return $query->whereNotNull('home_team_score')
+                        ->whereNotNull('away_team_score');
+                })
+                ->get();
+            $collection = SportsBetResource::collection($bets);
+            $groups = $collection->collection->groupBy('game_group_id');
+            $reversed = array_reverse($groups->toArray());
+            return $reversed;
+        });
+    }
+
     public function betsForUser(int $userId)
     {
         $cacheTime = 60 * 60 * 24;
@@ -26,6 +46,11 @@ class SportsBetRepository
                     'game'
                 ])
                 ->where('user_id', $userId)
+                ->whereHas('game', function ($query) {
+                    return $query->whereNull('home_team_score')
+                        ->whereNull('away_team_score')
+                        ->where('starts_at', '>', Carbon::Now());
+                })
                 ->get();
             $collection = SportsBetResource::collection($bets);
             $groups = $collection->collection->groupBy('game_group_id');
