@@ -24,7 +24,7 @@ class SportsBetTest extends TestCase
             'doubled' => true
         ]);
 
-        $this->assertEquals(4, $bet->points());
+        $this->assertEquals(SportsBet::BASE_VALUE * 2, $bet->points());
     }
 
     /** @test */

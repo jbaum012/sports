@@ -32,9 +32,14 @@ class SportsBetFactory extends Factory
         ];
     }
 
-    public function hasPick($userId)
+    public function hasPick(int $userId, bool $wins = true)
     {
-        $game = SportsGame::factory()->homeWins()->create();
+        $game = SportsGame::factory();
+        if ($wins === true) {
+            $game = $game->homeWins()->create();
+        } else {
+            $game = $game->awayWins()->create();
+        }
 
         return $this->state(function (array $attributes) use ($userId, $game) {
             return [

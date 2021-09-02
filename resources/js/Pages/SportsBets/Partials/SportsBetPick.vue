@@ -1,26 +1,5 @@
 <template>
-  <div v-if="bet.locked">
-    <div v-if="bet.game?.results?.split">
-      Split!
-    </div>
-    <div v-else>
-      Your pick
-      <team-name
-        v-if="bet.team?.abbreviation"
-        class="mb-2"
-        :title="bet.game.home_team.abbreviation"
-        :team="bet.game.home_team"
-      />
-      <span v-else>
-        [unpicked]
-      </span>
-      {{ bet.won ? 'won' : 'lost' }}
-    </div>
-    <div>{{ pointsDisplay(bet.points) }}</div>
-  </div>
-  <div
-    v-else-if="!!bet.team"
-  >
+  <div>
     Pick:
     <team-name
       class="mb-2"
@@ -77,13 +56,7 @@ export default {
       } catch (e) {
       }
     };
-    const pointsDisplay = (points) => {
-      return points >= 0
-        ? '+' + points
-        : points
-    }
     return {
-      pointsDisplay,
       doubleDown,
       undoubleDown,
     }

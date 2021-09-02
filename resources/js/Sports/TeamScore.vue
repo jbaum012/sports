@@ -28,21 +28,16 @@ export default defineComponent({
       }
     },
     won() {
-      return this.team.id === this.results?.winner?.id
+      return this.team.id === this.results?.spread_winner?.id
     },
     split() {
       return this.results?.split
     },
     scoreDisplay() {
-      return !!this.number
-        ? this.number
-        : '-';
+      return this.number === null
+        ? '-'
+        : this.number;
     }
   }
 })
 </script>
-<style scoped>
-  .outline {
-    outline: 3px solid limegreen;
-  }
-</style>

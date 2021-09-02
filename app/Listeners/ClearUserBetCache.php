@@ -30,5 +30,6 @@ class ClearUserBetCache
     {
         $bet = $event->sportsBet;
         Cache::forget("bets.{$bet->user_id}");
+        Cache::forget("bets.{$bet->user_id}.results");
     }
 }

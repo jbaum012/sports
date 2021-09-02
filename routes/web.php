@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ResultsController;
 use App\Http\Controllers\SportsBetController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
@@ -39,4 +40,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::put('games/{game}/scores', [SportsGameScoresController::class, 'update'])->name('scores.update');
     Route::delete('games/{game}/scores', [SportsGameScoresController::class, 'destroy'])->name('scores.destroy');
     Route::get('bets', [SportsBetController::class, 'index'])->name('bets.index');
+    Route::get('results', [ResultsController::class, 'index'])->name('results.index');
 });

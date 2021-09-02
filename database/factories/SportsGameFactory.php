@@ -49,7 +49,7 @@ class SportsGameFactory extends Factory
     {
         return $this->state(function (array $attributes) {
             return [
-                'home_team_score' => 10,
+                'home_team_score' => 14,
                 'away_team_score' => 7
             ];
         });
@@ -60,7 +60,7 @@ class SportsGameFactory extends Factory
         return $this->state(function (array $attributes) {
             return [
                 'home_team_score' => 7,
-                'away_team_score' => 10
+                'away_team_score' => 14
             ];
         });
     }
