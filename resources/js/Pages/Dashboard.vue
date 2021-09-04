@@ -1,8 +1,9 @@
 <template>
   <app-layout title="Dashboard">
     <template #header>
-      <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+      <h2 class="font-semibold text-xl bg-green-300 text-gray-800 leading-tight">
         Dashboard
+        <span> &#129411;</span>
       </h2>
     </template>
 
