@@ -29,4 +29,14 @@ class SportsTeamRepository
 
         return $team;
     }
+
+    public function getBirdTeamIds(): Collection
+    {
+        return SportsTeam::select('id')
+            ->where('name', 'Ravens')
+            ->orWhere('name', 'Seahawks')
+            ->orWhere('name', 'Cardinals')
+            ->orWhere('name', 'Eagles')
+            ->get();
+    }
 }
