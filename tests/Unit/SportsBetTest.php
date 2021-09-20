@@ -47,6 +47,23 @@ class SportsBetTest extends TestCase
     }
 
     /** @test */
+    public function bonus_points_only_applied_to_creators_bet()
+    {
+        $user = User::factory()->create();
+        $otherUser = User::factory()->create();
+        $this->actingAs($user);
+        $game = SportsGame::factory()->homeWins()->create();
+        $bet = SportsBet::factory()->create([
+            'sports_game_id' => $game->id,
+            'sports_team_id' => $game->home_team_id,
+            'user_id' => $otherUser->id
+        ]);
+
+        $expeced = SportsBet::BASE_VALUE;
+        $this->assertEquals($expeced, $bet->points());
+    }
+
+    /** @test */
     public function bonus_points_applied_to_creators_won_bet()
     {
         $user = User::factory()->create();
