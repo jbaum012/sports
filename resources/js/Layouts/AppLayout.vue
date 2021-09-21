@@ -29,7 +29,13 @@
                   :href="route('bets.index')"
                   :active="route().current('bets.index')"
                 >
-                  Picks
+                  Bets
+                </jet-nav-link>
+                <jet-nav-link
+                  :href="route('pending.index')"
+                  :active="route().current('pending.index')"
+                >
+                  Pending
                 </jet-nav-link>
                 <jet-nav-link
                   :href="route('results.index')"
@@ -261,7 +267,7 @@
               :href="route('bets.index')"
               :active="route().current('bets.index')"
             >
-              Picks
+              Bets
             </jet-responsive-nav-link>
             <jet-responsive-nav-link
               :href="route('results.index')"

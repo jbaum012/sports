@@ -68,7 +68,7 @@
 </template>
 <script>
 import AppLayout from '@/Layouts/AppLayout.vue'
-import SportsGameListItem from '@/Pages/SportsGames/Partials/SportsGameListItem.vue'
+import SportsGameListItem from '@/Sports/SportsGameListItem.vue'
 import { gameDay, gameTime } from '@/helpers.js'
 import SportsBetPick from './Partials/SportsBetPick.vue'
 export default{
