@@ -66,4 +66,5 @@ class SportsGameRepository
 
         return $game;
     }
+
 }

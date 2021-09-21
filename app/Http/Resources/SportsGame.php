@@ -34,7 +34,8 @@ class SportsGame extends JsonResource
             'home_team_spread' => $this->home_team_spread,
             'away_team_spread' => $this->away_team_spread,
             'starts_at' => $this->starts_at->format(DATE_ATOM),
-            'results' => $results
+            'results' => $results,
+            'bets' => $this->bets
         ];
     }
 }

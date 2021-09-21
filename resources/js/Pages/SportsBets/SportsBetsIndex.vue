@@ -9,6 +9,12 @@
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="grid grid-flow-row grid-cols-1">
           <div
+            v-if="bets.length === 0"
+            class="text-3xl"
+          >
+            Ain't no games here
+          </div>
+          <div
             v-for="(week, index) in bets"
             :key="index"
           >

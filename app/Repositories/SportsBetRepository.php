@@ -3,6 +3,7 @@ namespace App\Repositories;
 
 use Carbon\Carbon;
 use App\Models\SportsBet;
+use App\Http\Resources\BetForGame;
 use Illuminate\Support\Facades\Cache;
 use App\Exceptions\DuplicateBetException;
 use App\Exceptions\DoubleDownLimitReachedException;
@@ -10,6 +11,15 @@ use App\Http\Resources\SportsBet as SportsBetResource;
 
 class SportsBetRepository
 {
+    public function getBetsForGame(int $gameId)
+    {
+        $bets = SportsBet::with('user')
+            ->with('team')
+            ->where('sports_game_id', $gameId)
+            ->get();
+        return BetForGame::collection($bets);
+    }
+
     public function userDoubledForGroup(int $userId, int $gameGroupId)
     {
         return SportsBet::where('user_id', $userId)

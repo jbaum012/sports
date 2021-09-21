@@ -83,7 +83,7 @@ class SportsBet extends Model
         return $this->belongsTo(SportsTeam::class, 'sports_team_id');
     }
 
-    public function createdBy()
+    public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
