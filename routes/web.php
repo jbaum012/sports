@@ -1,15 +1,16 @@
 <?php
 
-use App\Http\Controllers\ResultsController;
-use App\Http\Controllers\SportsBetController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
 use App\Repositories\SportsBetRepository;
+use App\Http\Controllers\ResultsController;
+use App\Http\Controllers\SportsBetController;
 use App\Http\Controllers\SportsGameController;
-use App\Http\Controllers\SportsGameScoresController;
 use App\Http\Controllers\SportsTeamController;
+use App\Http\Controllers\PendingGamesController;
+use App\Http\Controllers\SportsGameScoresController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,4 +42,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::delete('games/{game}/scores', [SportsGameScoresController::class, 'destroy'])->name('scores.destroy');
     Route::get('bets', [SportsBetController::class, 'index'])->name('bets.index');
     Route::get('results', [ResultsController::class, 'index'])->name('results.index');
+    Route::get('pending', [PendingGamesController::class, 'index'])->name('pending.index');
 });

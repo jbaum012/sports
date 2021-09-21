@@ -6,19 +6,24 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use App\Http\Resources\SportsGame as SportsGameResource;
+use Carbon\Carbon;
 
 class SportsGameRepository
 {
-    public function search(): Collection
+    private function searchQuery()
     {
         return SportsGame::with('homeTeam')
             ->with('awayTeam')
             ->orderBy('game_group_id')
-            ->orderBy('starts_at')
-            ->get();
+            ->orderBy('starts_at');
     }
 
-    public function fullGamesList()
+    public function search(): Collection
+    {
+        return $this->searchQuery()->get();
+    }
+
+    public function fullGamesList(): array
     {
         $cacheTime = 60 * 60 * 24;
         return Cache::remember('sports_games', $cacheTime, function () {
@@ -27,6 +32,19 @@ class SportsGameRepository
             $reversed = array_reverse($groups->toArray());
             return $reversed;
         });
+    }
+
+    public function pendingGames(): array
+    {
+        $games = $this->searchQuery()
+            ->where('starts_at', '<=', Carbon::now())
+            ->whereNull('home_team_score')
+            ->whereNull('away_team_score')
+            ->get();
+        $collection = SportsGameResource::collection($games);
+        $groups = $collection->collection->groupBy('game_group_id');
+        $reversed = array_reverse($groups->toArray());
+        return $reversed;
     }
 
     public function create(array $args): SportsGame

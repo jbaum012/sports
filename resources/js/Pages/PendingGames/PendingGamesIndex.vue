@@ -2,7 +2,7 @@
   <app-layout>
     <template #header>
       <h2 class="font-semibold flex text-xl text-gray-800 leading-tight">
-        Games
+        Pending Games
         <Link
           class="ml-auto"
           :href="route('games.create')"
@@ -16,6 +16,12 @@
     <div class="py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="grid grid-flow-row grid-cols-1 gap-4">
+          <div
+            v-if="gamesByWeek.length === 0"
+            class="text-3xl"
+          >
+            Ain't no games here
+          </div>
           <div
             v-for="(week, index) in gamesByWeek"
             :key="index"
