@@ -38,6 +38,7 @@
                       <div>{{ gameTime(game.starts_at) }}</div>
                     </div>
                     <Link
+                      v-if="game.results !== null"
                       class="flex mx-auto"
                       :href="route('game.bets.index', {game: game.id})"
                     >
