@@ -270,6 +270,12 @@
               Bets
             </jet-responsive-nav-link>
             <jet-responsive-nav-link
+              :href="route('pending.index')"
+              :active="route().current('pending.index')"
+            >
+              Pending
+            </jet-responsive-nav-link>
+            <jet-responsive-nav-link
               :href="route('results.index')"
               :active="route().current('results.index')"
             >

@@ -10,6 +10,7 @@ use App\Http\Controllers\SportsBetController;
 use App\Http\Controllers\SportsGameController;
 use App\Http\Controllers\SportsTeamController;
 use App\Http\Controllers\PendingGamesController;
+use App\Http\Controllers\SportsGameBetsController;
 use App\Http\Controllers\SportsGameScoresController;
 
 /*
@@ -40,6 +41,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::apiResource('games', SportsGameController::class);
     Route::put('games/{game}/scores', [SportsGameScoresController::class, 'update'])->name('scores.update');
     Route::delete('games/{game}/scores', [SportsGameScoresController::class, 'destroy'])->name('scores.destroy');
+    Route::get('games/{game}/bets', [SportsGameBetsController::class, 'index'])->name('game.bets.index');
     Route::get('bets', [SportsBetController::class, 'index'])->name('bets.index');
     Route::get('results', [ResultsController::class, 'index'])->name('results.index');
     Route::get('pending', [PendingGamesController::class, 'index'])->name('pending.index');

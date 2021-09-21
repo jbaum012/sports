@@ -37,6 +37,14 @@
                       <div>{{ gameDay(game.starts_at) }}</div>
                       <div>{{ gameTime(game.starts_at) }}</div>
                     </div>
+                    <Link
+                      class="flex mx-auto"
+                      :href="route('game.bets.index', {game: game.id})"
+                    >
+                      <jet-button class="mx-auto text-sm">
+                        Bets
+                      </jet-button>
+                    </Link>
                   </div>
                 </div>
               </Link>
