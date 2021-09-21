@@ -67,8 +67,11 @@ class SportsBetTest extends TestCase
     public function bonus_points_applied_to_creators_won_bet()
     {
         $user = User::factory()->create();
+        $user = User::find($user->id);
         $this->actingAs($user);
-        $game = SportsGame::factory()->homeWins()->create();
+        $game = SportsGame::factory()->homeWins()->create([
+            'created_by' => $user->id
+        ]);
         $bet = SportsBet::factory()->create([
             'sports_game_id' => $game->id,
             'sports_team_id' => $game->home_team_id,
@@ -83,8 +86,11 @@ class SportsBetTest extends TestCase
     public function bonus_points_applied_to_creators_lost_bet()
     {
         $user = User::factory()->create();
+        $user = User::find($user->id);
         $this->actingAs($user);
-        $game = SportsGame::factory()->awayWins()->create();
+        $game = SportsGame::factory()->awayWins()->create([
+            'created_by' => $user->id
+        ]);
         $bet = SportsBet::factory()->create([
             'sports_game_id' => $game->id,
             'sports_team_id' => $game->home_team_id,

@@ -50,9 +50,10 @@ class SportsBet extends Model
         $authUser = Auth::check()
             ? Auth::user()->id
             : 0;
-        $bonus = $this->game->created_by === $authUser
+        $bonus = $this->game->createdBy == Auth::user()
             ? self::CREATOR_BONUS
             : 0;
+
         $multiplyer = $this->doubled ? 2 : 1;
         return ($base * $multiplyer) + $bonus;
     }
