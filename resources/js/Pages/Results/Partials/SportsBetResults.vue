@@ -16,15 +16,29 @@
       </span>
       {{ bet.won ? 'won' : 'lost' }}
     </div>
-    <div>{{ pointsDisplay(bet.points) }}</div>
+    <div>
+      <!-- {{ pointsDisplay(bet.points) }} -->
+      <Link
+        class="ml-auto col-span-2"
+        :href="route('game.bets.index', {game: bet.game.id})"
+      >
+        <jet-button class="mx-auto text-sm">
+          Bets
+        </jet-button>
+      </Link>
+    </div>
   </div>
 </template>
 <script>
 import TeamName from '@/Sports/TeamName.vue';
+import JetButton from '@/Jetstream/Button.vue'
+import { Link } from '@inertiajs/inertia-vue3'
 
 export default {
   components: {
     TeamName,
+    JetButton,
+    Link,
   },
   props: {
     bet: Object

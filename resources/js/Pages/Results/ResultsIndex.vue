@@ -55,7 +55,7 @@ export default{
   components: {
     AppLayout,
     SportsGameListItem,
-    SportsBetResults
+    SportsBetResults,
   },
   props:['bets'],
   setup(props) {
