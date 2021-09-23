@@ -26,7 +26,7 @@ class ResultsRepository
         return $results;
     }
 
-    public function getWinnersForGroup($group): ?array
+    public function getWinnersForGroup($group): ?Collection
     {
         if ($group->hasUnplayedGames()) {
             return null;
@@ -35,8 +35,8 @@ class ResultsRepository
         if ($results === null) {
             return null;
         }
-        $winners = array_keys($results, max($results));
-        return $winners;
+        $resultsCollection = collect($results);
+        return $resultsCollection->where('score', $resultsCollection->max('score'));
     }
 
     public function getResultsForGroup($group): array

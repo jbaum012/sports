@@ -50,8 +50,8 @@ class ResultsRepositoryTest extends TestCase
         $wonBet = SportsBet::factory()->hasPick($winner->id, $wins = true)->create([
             'game_group_id' => $group->id
         ]);
-        $results = $this->repo->getWinnersForGroup($group);
-        $this->assertCount(1, $results);
-        $this->assertEquals($winner->id, $results[0]->id);
+        $winners = $this->repo->getWinnersForGroup($group);
+        $this->assertCount(1, $winners);
+        $this->assertEquals($winner->id, $winners[0]['user_id']);
     }
 }
