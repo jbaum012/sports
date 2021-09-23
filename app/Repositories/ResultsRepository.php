@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\GameGroup;
 use Illuminate\Support\Collection;
@@ -10,31 +11,42 @@ class ResultsRepository
     public function allResults()
     {
         $results = [];
-        $groups = GameGroup::all();
+        $groups = GameGroup::with('games')
+            ->with('bets')
+            ->get()
+            ->reverse();
         foreach ($groups as $group) {
-            $data = [];
-            $data['results'] = $this->getResultsForGroup($group->id);
-            $data['winners'] = $this->getWinnersForGroup($group->id);
+            if ($group->hasPendingOrPlayedGames()) {
+                $data = [];
+                $data['results'] = $this->getResultsForGroup($group);
+                $data['winners'] = $this->getWinnersForGroup($group);
+                $results[$group->label] = $data;
+            }
         }
         return $results;
     }
 
-    public function getWinnersForGroup(int $groupId): Collection
+    public function getWinnersForGroup($group): Collection
     {
-        $results = $this->getResultsForGroup($groupId);
+        $results = $this->getResultsForGroup($group);
+        if ($results === null) {
+            return null;
+        }
         $winners = array_keys($results, max($results));
         return User::whereIn('id', $winners)->get();
     }
 
-    public function getResultsForGroup(int $groupId)
+    public function getResultsForGroup($group)
     {
-        $group = GameGroup::firstOrFail('id', $groupId);
         $userBets = $group->userBets();
         $results = [];
         foreach ($userBets as $userId => $bets) {
-            $score = $bets->reduce(function ($carry, $item) {
-                return $carry + $item->points();
-            });
+            $score = 0;
+            $betsArray = [];
+            foreach ($bets as $bet) {
+                $score += $bet->points();
+                $betsArray[$bet->id] = $bet->points();
+            }
             $results[$userId] = $score;
         }
         return $results;

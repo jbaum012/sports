@@ -12,7 +12,7 @@
             <div class="flex">
               <!-- Logo -->
               <div class="flex-shrink-0 flex items-center">
-                <Link :href="route('dashboard')">
+                <Link :href="route('standings')">
                   <jet-application-mark class="block h-9 w-auto" />
                 </Link>
               </div>
@@ -20,10 +20,10 @@
               <!-- Navigation Links -->
               <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                 <jet-nav-link
-                  :href="route('dashboard')"
-                  :active="route().current('dashboard')"
+                  :href="route('standings')"
+                  :active="route().current('standings')"
                 >
-                  Dashboard
+                  Standings
                 </jet-nav-link>
                 <jet-nav-link
                   :href="route('bets.index')"
@@ -258,10 +258,10 @@
         >
           <div class="pt-2 pb-3 space-y-1">
             <jet-responsive-nav-link
-              :href="route('dashboard')"
-              :active="route().current('dashboard')"
+              :href="route('standings')"
+              :active="route().current('standings')"
             >
-              Dashboard
+              Standings
             </jet-responsive-nav-link>
             <jet-responsive-nav-link
               :href="route('bets.index')"

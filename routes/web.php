@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\Repositories\SportsBetRepository;
 use App\Http\Controllers\ResultsController;
 use App\Http\Controllers\SportsBetController;
+use App\Http\Controllers\StandingsController;
 use App\Http\Controllers\SportsGameController;
 use App\Http\Controllers\SportsTeamController;
 use App\Http\Controllers\PendingGamesController;
@@ -28,14 +29,7 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::get('/dashboard', function () {
-        $temp = new SportsBetRepository();
-        $bets = $temp->getUnpickedBets(Auth::user()->id);
-        $groupedByWeek = $bets->groupBy('game_group_id');
-        return Inertia::render('Dashboard', [
-            'bets' => $groupedByWeek
-        ]);
-    })->name('dashboard');
+    Route::get('/standings', [StandingsController::class, 'index'])->name('standings');
     Route::apiResource('teams', SportsTeamController::class);
     Route::get('/games/create', [SportsGameController::class, 'create'])->name('games.create');
     Route::apiResource('games', SportsGameController::class);
