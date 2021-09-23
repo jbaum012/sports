@@ -49,6 +49,6 @@ class ResultsRepository
             }
             $results[$userId] = $score;
         }
-        return asort($results);
+        return $results;
     }
 }
