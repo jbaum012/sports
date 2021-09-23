@@ -15,6 +15,13 @@ class GameGroup extends Model
 {
     use HasFactory;
 
+    public function hasUnplayedGames(): bool
+    {
+        return $this->games->some(function ($game) {
+            return $game->starts_at > Carbon::Now();
+        });
+    }
+
     public function hasPendingOrPlayedGames(): bool
     {
         return $this->games->some(function ($game) {

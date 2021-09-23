@@ -18,12 +18,11 @@
               </h1>
               <div class="px-4 py-5 bg-white sm:p-6 shadow sm:rounded-md grid grid-flow-row grid-cols-1 gap-4 md:grid-cols-2">
                 <div>
-                  <div
-                    v-for="winner in data.winners"
-                    :key="winner.id"
-                    class="block"
-                  >
-                    Winners: {{ winner.name }}
+                  <div v-if="data.winners !== null">
+                    Winner(s): {{ winners(data.winners) }}
+                  </div>
+                  <div v-else>
+                    Waiting on games to finish
                   </div>
                   <table class="table-auto w-full">
                     <thead>
@@ -36,13 +35,13 @@
                     </thead>
                     <tbody>
                       <tr
-                        v-for="(result, userId) in data.results"
-                        :key="userId"
+                        v-for="(result) in data.results"
+                        :key="result.user_id"
                         class="border-b border-gray-200 hover:bg-gray-100"
                       >
-                        <td>{{ getUser(userId) }}</td>
+                        <td>{{ getUser(result.user_id) }}</td>
                         <td class="text-right">
-                          {{ result }}
+                          {{ result.score }}
                         </td>
                       </tr>
                     </tbody>
@@ -58,7 +57,6 @@
 </template>
 <script>
 import AppLayout from '@/Layouts/AppLayout';
-import { ref } from 'vue';
 export default {
   components: {
     AppLayout,
@@ -74,8 +72,16 @@ export default {
       }
       return matchedUsers[0].name;
     }
+    const winners = (allWinners) => {
+      const users = [];
+      allWinners.forEach(winner => {
+        users.push(getUser(winner))
+      });
+      return users.join(', ');
+    }
     return {
-      getUser
+      getUser,
+      winners,
     }
   }
 }

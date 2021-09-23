@@ -26,30 +26,33 @@ class ResultsRepository
         return $results;
     }
 
-    public function getWinnersForGroup($group): Collection
+    public function getWinnersForGroup($group): ?array
     {
+        if ($group->hasUnplayedGames()) {
+            return null;
+        }
         $results = $this->getResultsForGroup($group);
         if ($results === null) {
             return null;
         }
         $winners = array_keys($results, max($results));
-        return User::whereIn('id', $winners)->get();
+        return $winners;
     }
 
-    public function getResultsForGroup($group)
+    public function getResultsForGroup($group): array
     {
         $userBets = $group->userBets();
-        $results = [];
+        $results = collect([]);
         foreach ($userBets as $userId => $bets) {
-            $score = 0;
-            $betsArray = [];
+            $entry = [
+                'score' => 0,
+                'user_id' => $userId
+            ];
             foreach ($bets as $bet) {
-                $score += $bet->points();
-                $betsArray[$bet->id] = $bet->points();
+                $entry['score'] += $bet->points();
             }
-            $results[$userId] = $score;
+            $results->push($entry);
         }
-        asort($results);
-        return $results;
+        return array_values($results->sortByDesc('score')->toArray());
     }
 }
