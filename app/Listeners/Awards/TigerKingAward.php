@@ -45,7 +45,7 @@ class TigerKingAward
                         'sports_bet_id' => $bet->id,
                         'user_id' => $bet->user_id
                     ]);
-                    Log::info("Tiger king award created for {$bet->user_id}.");
+                    Log::info("Tiger king award found/created for {$bet->user_id}.");
                 }
             }
         }

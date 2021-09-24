@@ -16,6 +16,7 @@ use App\Events\SportsGames\SportsGameCreated;
 use App\Events\SportsGames\SportsGameUpdated;
 use App\Events\SportsGames\SportsGameScoresUpdated;
 use App\Listeners\Awards\BigBirdAward;
+use App\Listeners\Awards\BigBrainAward;
 use App\Listeners\Awards\TigerKingAward;
 use App\Listeners\ClearBetsCache;
 use App\Listeners\ClearResultsCache;
@@ -57,6 +58,7 @@ class EventServiceProvider extends ServiceProvider
             ClearSportsTeamGameCache::class,
             BigBirdAward::class,
             TigerKingAward::class,
+            BigBrainAward::class,
         ],
     ];
 
