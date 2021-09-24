@@ -9,7 +9,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use App\Repositories\SportsTeamRepository;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class BigBrainAward
+class BigBrainAward implements ShouldQueue
 {
     /**
      * Create the event listener.

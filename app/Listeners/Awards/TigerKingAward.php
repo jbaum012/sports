@@ -9,7 +9,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use App\Repositories\SportsTeamRepository;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class TigerKingAward
+class TigerKingAward implements ShouldQueue
 {
     /**
      * Create the event listener.
