@@ -2,7 +2,6 @@
 
 namespace App\Listeners\Awards;
 
-use App\Models\User;
 use App\Models\AwardType;
 use App\Models\SportsAward;
 use Illuminate\Support\Facades\Log;
@@ -10,7 +9,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use App\Repositories\SportsTeamRepository;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SuckerAward implements ShouldQueue
+class CheersAward implements ShouldQueue
 {
     /**
      * Create the event listener.
@@ -29,10 +28,10 @@ class SuckerAward implements ShouldQueue
     {
         $game = $event->sportsGame;
         $type = AwardType::firstOrCreate([
-            'name' => 'Sucker',
-            'description' => "You're a sucker, and your pick lost.",
-            'icon' => '&#1128058;',
-            'tailwind_class' => 'bg-indigo-300',
+            'name' => 'Cheers',
+            'description' => "'ello Gov'na",
+            'icon' => '&#127867;',
+            'tailwind_class' => 'bg-pink-300',
         ]);
         $losers = collect([]);
         foreach($game->bets as $bet) {
@@ -40,15 +39,16 @@ class SuckerAward implements ShouldQueue
                 $losers->push($bet);
             }
         }
-        if ($losers->count() === 1) {
-            $loneLoser = $losers->first();
-            $award = SportsAward::firstOrCreate([
-                'award_type_id' => $type->id,
-                'game_group_id' => $game->game_group_id,
-                'sports_bet_id' => $loneLoser->id,
-                'user_id' => $loneLoser->user_id
-            ]);
-            Log::info("Sucker award found/created for {$loneLoser->user_id}.");
+        if ($losers->count() === 0) {
+            foreach($game->bets as $bet) {
+                $award = SportsAward::firstOrCreate([
+                    'award_type_id' => $type->id,
+                    'game_group_id' => $game->game_group_id,
+                    'sports_bet_id' => $bet->id,
+                    'user_id' => $bet->user_id
+                ]);
+                Log::info("Cheers found/created for {$bet->user_id}.");
+            }
         }
     }
 }
