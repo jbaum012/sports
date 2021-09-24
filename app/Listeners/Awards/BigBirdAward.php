@@ -47,7 +47,7 @@ class BigBirdAward implements ShouldQueue
                         'sports_bet_id' => $bet->id,
                         'user_id' => $bet->user_id
                     ]);
-                    Log::info("Big bird award created for {$bet->user_id}.");
+                    Log::info("Big bird award found/created for {$bet->user_id}.");
                 }
             }
         }
