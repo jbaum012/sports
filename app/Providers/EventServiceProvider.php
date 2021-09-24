@@ -18,6 +18,7 @@ use App\Events\SportsGames\SportsGameScoresUpdated;
 use App\Listeners\Awards\BigBirdAward;
 use App\Listeners\Awards\BigBrainAward;
 use App\Listeners\Awards\LoneWolfAward;
+use App\Listeners\Awards\SuckerAward;
 use App\Listeners\Awards\TigerKingAward;
 use App\Listeners\ClearBetsCache;
 use App\Listeners\ClearResultsCache;
@@ -61,6 +62,7 @@ class EventServiceProvider extends ServiceProvider
             TigerKingAward::class,
             BigBrainAward::class,
             LoneWolfAward::class,
+            SuckerAward::class,
         ],
     ];
 
