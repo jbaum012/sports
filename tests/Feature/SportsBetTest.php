@@ -2,11 +2,10 @@
 
 namespace Tests\Feature;
 
-use App\Exceptions\DoubleDownLimitReachedException;
-use App\Models\GameGroup;
 use Carbon\Carbon;
 use Tests\TestCase;
 use App\Models\User;
+use App\Models\GameGroup;
 use App\Models\SportsBet;
 use App\Models\SportsGame;
 use App\Models\SportsTeam;
@@ -15,6 +14,7 @@ use App\Repositories\SportsBetRepository;
 use App\Repositories\SportsGameRepository;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Exceptions\PlaceBetAfterGameStartsException;
 
 class SportsBetTest extends TestCase
 {
@@ -26,6 +26,29 @@ class SportsBetTest extends TestCase
     {
         parent::setUp();
         $this->repo = new SportsBetRepository();
+    }
+
+    /** @test */
+    public function changing_bet_after_starts_throws_error()
+    {
+        $this->withoutExceptionHandling();
+        $this->expectException(PlaceBetAfterGameStartsException::class);
+        $user = User::factory()->create();
+        $game = SportsGame::factory()->homeWins()->create([
+            'starts_at' => Carbon::now()
+        ]);
+        $originalPick = $game->home_team_id;
+        $bet = $this->repo->findByUserAndGame($user->id, $game->id);
+        $bet->sports_team_id = $game->home_team_id;
+        $bet->save();
+        $pick = [
+            'sports_team_id' => $game->away_team_id,
+        ];
+
+        $this->asUser()->put("api/bets/{$bet->id}/pick", $pick);
+
+        $bet = SportsBet::find($bet->id);
+        $this->assertEquals($originalPick, $bet->sports_team_id);
     }
 
     /** @test */

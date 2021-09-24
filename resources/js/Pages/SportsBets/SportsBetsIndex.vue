@@ -35,7 +35,7 @@
                       <div class="h-1/2 mb-1">
                         <button
                           class="mr-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded-lg"
-                          @click="submitPick(bet, bet.game.home_team)"
+                          @click="submitPick(bet, bet.game.home_team, $event)"
                         >
                           pick
                         </button>
@@ -43,7 +43,7 @@
                       <div class="h-1/2 mb-1">
                         <button
                           class="mr-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded-lg"
-                          @click="submitPick(bet, bet.game.away_team)"
+                          @click="submitPick(bet, bet.game.away_team, $event)"
                         >
                           pick
                         </button>
@@ -85,12 +85,21 @@ export default{
   },
   props:['bets'],
   setup(props) {
-    const submitPick = async (bet, team) => {
-      await axios.put(route('submit-pick', {
-        bet: bet.id,
-        sports_team_id: team.id
-      }));
-      bet.team = team
+    const submitPick = async (bet, team, event) => {
+      try {
+        await axios.put(route('submit-pick', {
+          bet: bet.id,
+          sports_team_id: team.id
+        }));
+        bet.team = team
+      } catch(e) {
+        console.log(event)
+
+        event.target.classList.add('animate-shake');
+        setTimeout(()=> {
+          event.target.classList.remove('animate-shake')
+        }, 1000)
+      }
     };
     return {
       submitPick,
