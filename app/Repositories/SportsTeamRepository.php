@@ -37,6 +37,7 @@ class SportsTeamRepository
             ->orWhere('name', 'Seahawks')
             ->orWhere('name', 'Cardinals')
             ->orWhere('name', 'Eagles')
+            ->orWhere('name', 'Falcons')
             ->get();
     }
 }
