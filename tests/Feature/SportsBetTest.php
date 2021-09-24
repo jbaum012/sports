@@ -67,7 +67,9 @@ class SportsBetTest extends TestCase
     public function can_submit_pick()
     {
         $user = User::factory()->create();
-        $game = SportsGame::factory()->create();
+        $game = SportsGame::factory()->create([
+            'starts_at' => Carbon::tomorrow()
+        ]);
         $bet = $this->repo->findByUserAndGame($user->id, $game->id);
         $pick = [
             'sports_team_id' => $game->home_team_id,
