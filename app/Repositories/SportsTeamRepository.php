@@ -40,4 +40,14 @@ class SportsTeamRepository
             ->orWhere('name', 'Falcons')
             ->get();
     }
+
+    public function getCatTeamIds(): Collection
+    {
+        return SportsTeam::select('id')
+            ->where('name', 'Panthers')
+            ->orWhere('name', 'Lions')
+            ->orWhere('name', 'Jaguars')
+            ->orWhere('name', 'Bengals')
+            ->get();
+    }
 }

@@ -16,6 +16,7 @@ use App\Events\SportsGames\SportsGameCreated;
 use App\Events\SportsGames\SportsGameUpdated;
 use App\Events\SportsGames\SportsGameScoresUpdated;
 use App\Listeners\Awards\BigBirdAward;
+use App\Listeners\Awards\TigerKingAward;
 use App\Listeners\ClearBetsCache;
 use App\Listeners\ClearResultsCache;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -55,6 +56,7 @@ class EventServiceProvider extends ServiceProvider
             ClearGameListCache::class,
             ClearSportsTeamGameCache::class,
             BigBirdAward::class,
+            TigerKingAward::class,
         ],
     ];
 
