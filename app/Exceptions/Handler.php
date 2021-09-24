@@ -45,5 +45,9 @@ class Handler extends ExceptionHandler
         $this->reportable(function (DoubleDownLimitReachedException $e) {
             //
         });
+
+        $this->reportable(function (PlaceBetAfterGameStartsException $e) {
+            //
+        });
     }
 }
