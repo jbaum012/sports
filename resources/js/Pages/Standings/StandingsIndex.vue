@@ -75,7 +75,7 @@ export default {
     const winners = (allWinners) => {
       const users = [];
       allWinners.forEach(winner => {
-        users.push(getUser(winner))
+        users.push(getUser(winner.user_id))
       });
       return users.join(', ');
     }
